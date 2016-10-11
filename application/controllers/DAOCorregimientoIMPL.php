@@ -16,4 +16,12 @@ class DAOCorregimientoIMPL extends CI_Controller
 
 		echo $this->DAOCorregimiento->insert($datos_array);
 	}
+	public function update(){
+		$this->load->model('db/DAOCorregimiento');
+
+		$datos_array[0] = $this->input->post("p1");
+		$datos_array[1] = $this->input->post("p2");
+
+		echo $this->DAOCorregimiento->update($datos_array);
+	}
 }

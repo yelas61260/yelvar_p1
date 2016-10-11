@@ -44,4 +44,25 @@ class db_con extends CI_Model {
 			echo "error: ".$this->db->error();
 		}
 	}
+
+	public function findWhere($tabla, $parametros, $condicion, $order_by=null){
+		$sentenciaSQL = "SELECT DISTINCT";
+		$tamParam = count($parametros);
+		for($i=0; $i<$tamParam-1; $i++){
+			$sentenciaSQL .= " ".$parametros[$i].", ";
+		}
+		$sentenciaSQL .= " ".$parametros[$tamParam-1]." ";
+		
+		$sentenciaSQL .= " FROM $tabla WHERE ".$condicion;
+
+		if ($order_by == null) {
+			$sentenciaSQL .= ";";
+		}else{
+			$sentenciaSQL .= " ORDER BY ".$order_by." ASC;";
+		}
+		
+		$sql1=$this->db->query($sentenciaSQL) or die("No se pudo ejecutar la consulta ".$sentenciaSQL);
+		
+		return $sql1->result_array();
+	}
 }

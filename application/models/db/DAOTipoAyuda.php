@@ -20,5 +20,9 @@ class DAOTipo_ayuda extends CI_Model
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
+
+	public function update($param){
+		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
+	}
 	
 }

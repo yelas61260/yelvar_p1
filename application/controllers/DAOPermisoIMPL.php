@@ -16,4 +16,12 @@ class DAOPermisoIMPL extends CI_Controller
 
 		echo $this->DAOPermiso->insert($datos_array);
 	}
+	public function update(){
+		$this->load->model('db/DAOPermiso');
+
+		$datos_array[0] = $this->input->post("p1");
+		$datos_array[1] = $this->input->post("p2");
+
+		echo $this->DAOPermiso->update($datos_array);
+	}
 }

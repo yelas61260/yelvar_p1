@@ -26,5 +26,13 @@ class DAOUsuario extends CI_Model
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
+
+	public function update($param){
+		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
+	}
+
+	public function getUserAuth($user, $pass){
+		return $this->db_con->findWhere(self::$tabla, array("*"), array(self::$campos[1]."=".$user, self::$campos[2]."=".$pass));
+	}
 	
 }

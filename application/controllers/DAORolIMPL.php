@@ -16,4 +16,12 @@ class DAORolIMPL extends CI_Controller
 
 		echo $this->DAORol->insert($datos_array);
 	}
+	public function update(){
+		$this->load->model('db/DAORol');
+
+		$datos_array[0] = $this->input->post("p1");
+		$datos_array[1] = $this->input->post("p2");
+
+		echo $this->DAORol->update($datos_array);
+	}
 }
