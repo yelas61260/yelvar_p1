@@ -2,7 +2,7 @@
 /**
 * 
 */
-class DAOUsuarios_Roles extends CI_Model
+class DAOUsuarioRol extends CI_Model
 {
 	
 	private static $tabla;
@@ -17,6 +17,7 @@ class DAOUsuarios_Roles extends CI_Model
 		self::$campos[0] = "id";
 		self::$campos[1] = "user_id";
 		self::$campos[2] = "rol_id";
+	}
 
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
@@ -24,6 +25,14 @@ class DAOUsuarios_Roles extends CI_Model
 
 	public function update($param){
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
+	}
+
+	public function getTabla(){
+		return self::$tabla;
+	}
+
+	public function getCampos(){
+		return self::$campos;
 	}
 	
 }

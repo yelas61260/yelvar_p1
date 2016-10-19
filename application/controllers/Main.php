@@ -19,7 +19,11 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo "cambio";
+		if(empty($this->session->userdata('id'))){
+			header('Location: ' . base_url() . 'login' );
+		}else{
+			header('Location: ' . base_url() . 'exito');
+		}
 	}
 }
 

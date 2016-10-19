@@ -53,7 +53,16 @@ class db_con extends CI_Model {
 		}
 		$sentenciaSQL .= " ".$parametros[$tamParam-1]." ";
 		
-		$sentenciaSQL .= " FROM $tabla WHERE ".$condicion;
+		$sentenciaSQL .= " FROM $tabla";
+
+		$tamCond = count($condicion);
+		if ($tamCond>0) {
+			$sentenciaSQL .= " WHERE";
+			for ($i=0; $i < $tamCond-1; $i++) { 
+				$sentenciaSQL .= " ".$condicion[$i]." AND ";
+			}
+			$sentenciaSQL .= $condicion[$tamCond-1];
+		}
 
 		if ($order_by == null) {
 			$sentenciaSQL .= ";";
@@ -63,6 +72,11 @@ class db_con extends CI_Model {
 		
 		$sql1=$this->db->query($sentenciaSQL) or die("No se pudo ejecutar la consulta ".$sentenciaSQL);
 		
+		return $sql1->result_array();
+	}
+
+	public function getQuery($sentenciaSQL){
+		$sql1=$this->db->query($sentenciaSQL) or die("No se pudo ejecutar la consulta ".$sentenciaSQL);
 		return $sql1->result_array();
 	}
 }

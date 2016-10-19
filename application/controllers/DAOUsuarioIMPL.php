@@ -39,6 +39,13 @@ class DAOUsuarioIMPL extends CI_Controller
 	public function actionLogin(){
 		$this->load->model('db/DAOUsuario');
 
-		return $this->DAOUsuario->getUserAuth($this->input->post("p1"), $this->input->post("p2"));
+		print_r($this->input->post("p1"));
+		print_r($this->input->post("p2"));
+
+		$this->DAOUsuario->getUserAuth($this->input->post("p1"), $this->input->post("p2"));
+	}
+	public function actionLongout(){
+		$this->session->sess_destroy();
+		header("Location: ".base_url()."login");
 	}
 }
