@@ -9,19 +9,27 @@ class DAOCorregimientoIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Corregimientos";
 	}
 	public function insert(){
-		$this->load->model('db/DAOCorregimiento');
+		if ($this->lib->tienePermiso(14)) {
+			$this->load->model('db/DAOCorregimiento');
 
-		$datos_array[0] = null;
-		$datos_array[1] = $this->input->post("p2");
+			$datos_array[0] = null;
+			$datos_array[1] = $this->input->post("p2");
 
-		echo $this->DAOCorregimiento->insert($datos_array);
+			echo $this->DAOCorregimiento->insert($datos_array);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 	public function update(){
-		$this->load->model('db/DAOCorregimiento');
+		if ($this->lib->tienePermiso(15)) {
+			$this->load->model('db/DAOCorregimiento');
 
-		$datos_array[0] = $this->input->post("p1");
-		$datos_array[1] = $this->input->post("p2");
+			$datos_array[0] = $this->input->post("p1");
+			$datos_array[1] = $this->input->post("p2");
 
-		echo $this->DAOCorregimiento->update($datos_array);
+			echo $this->DAOCorregimiento->update($datos_array);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 }

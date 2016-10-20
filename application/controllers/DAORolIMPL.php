@@ -9,19 +9,27 @@ class DAORolIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Roles";
 	}
 	public function insert(){
-		$this->load->model('db/DAORol');
+		if ($this->lib->tienePermiso(7)) {
+			$this->load->model('db/DAORol');
 
-		$datos_array[0] = null;
-		$datos_array[1] = $this->input->post("p2");
+			$datos_array[0] = null;
+			$datos_array[1] = $this->input->post("p2");
 
-		echo $this->DAORol->insert($datos_array);
+			echo $this->DAORol->insert($datos_array);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 	public function update(){
-		$this->load->model('db/DAORol');
+		if ($this->lib->tienePermiso(8)) {
+			$this->load->model('db/DAORol');
 
-		$datos_array[0] = $this->input->post("p1");
-		$datos_array[1] = $this->input->post("p2");
+			$datos_array[0] = $this->input->post("p1");
+			$datos_array[1] = $this->input->post("p2");
 
-		echo $this->DAORol->update($datos_array);
+			echo $this->DAORol->update($datos_array);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 }

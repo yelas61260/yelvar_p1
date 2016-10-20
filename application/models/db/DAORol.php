@@ -33,5 +33,9 @@ class DAORol extends CI_Model
 	public function getCampos(){
 		return self::$campos;
 	}
+
+	public function getRecords(){
+		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
+	}
 	
 }

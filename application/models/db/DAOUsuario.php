@@ -44,12 +44,6 @@ class DAOUsuario extends CI_Model
 		}
 	}
 
-	public function requiredLogin(){
-		if(empty($this->session->userdata("id"))){
-			header("Location: ".base_url());
-		}
-	}
-
 	public function getPermissions($user_id){
 		$this->load->model('db/DAORolPermiso');
 		$this->load->model('db/DAORol');
@@ -63,5 +57,14 @@ class DAOUsuario extends CI_Model
 			$result[$i] = $result[$i][$campos_t1[2]];
 		}
 		return $result;
+	}
+
+	public function makeAdmin($user_id){
+		$this->load->model('db/DAOUsuarioRol');
+		$this->db_con->insert($this->DAOUsuarioRol->getTabla(), $this->DAOUsuarioRol->getCampos(), array(2, $user_id));
+	}
+
+	public function getRecords(){
+		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[3]);
 	}
 }

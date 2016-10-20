@@ -19,10 +19,10 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		if(empty($this->session->userdata('id'))){
-			header('Location: ' . base_url() . 'login' );
+		if($this->lib->tienePermiso(0)){
+			$this->load->view('viewHome');
 		}else{
-			header('Location: ' . base_url() . 'exito');
+			header('Location: ' . base_url() . 'login');
 		}
 	}
 }

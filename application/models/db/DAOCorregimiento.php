@@ -26,4 +26,8 @@ class DAOCorregimiento extends CI_Model
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function getRecords(){
+		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
+	}
+
 }

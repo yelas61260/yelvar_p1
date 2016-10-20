@@ -4,8 +4,7 @@ class Login extends CI_Controller {
 
 	public function index(){
 		if(empty($this->session->userdata("id"))){
-			$data = array();
-			$this->load->view('viewLogin', $data);
+			$this->load->view('viewLogin');
 		}else{
 			header("Location: ".base_url());
 		}
