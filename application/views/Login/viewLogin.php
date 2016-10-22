@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $titulo ?></title>
 	<?= $StyleView ?>
 	</head>
@@ -16,8 +16,8 @@
 		<IMG class="userim" SRC="<?=base_url() ?>recursos/pix/Login/userim.png">
 		<Input name="p1" class="usuario" type="text" max-length="20" placeholder="Usuario"/>
 		<IMG class="lock" SRC="<?=base_url() ?>recursos/pix/Login/lock.png">
-		<Input name="p2" class="password" type="password" max-length="20" placeholder="Contrase&ntilde;a"/>
-		<h4 class="recordarme">Recordarme</h4><h5><a href="Olvido Contraseña">Olvido Contrase&ntildea</a></h5>
+		<Input name="p2" class="password" type="password" max-length="20" placeholder="Contraseña"/>
+		<h4 class="recordarme">Recordarme</h4><h5><a href="Olvido Contraseña">Olvido Contraseña</a></h5>
 		<button type="subimit">Entrar</Button>	
 		</form>
 		</td>	
