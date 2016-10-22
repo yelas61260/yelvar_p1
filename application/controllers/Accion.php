@@ -11,7 +11,7 @@ class Accion extends CI_Controller
 
 	public function registrarSolicitud(){
 		if ($this->lib->tienePermiso(1)) {
-			echo "1";
+			$this->load->view('viewLogin');
 		}else{
 			header("Location: ".base_url());
 		}

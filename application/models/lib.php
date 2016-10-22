@@ -34,4 +34,16 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/estilotabla.css'>";
 		return $content;
 	}
+	public function print_lista_filtrada($tabla, $campo, $get_campo, $condiciones, $order_by=null){
+		$content = '<option value="">Seleccionar</option>';
+		if($order_by == null){
+			$datos = $this->db_con->get_all_records_tabla_where($tabla, $get_campo, $condiciones);
+		}else{
+			$datos = $this->db_con->get_all_records_tabla_where($tabla, $get_campo, $condiciones, $order_by);
+		}
+		foreach ($datos as $valor) {
+			$content .= '<option value="'.$valor[$campo[0]].'">'.$valor[$campo[1]].'</option>';
+		}
+		return $content;
+	}
 }
