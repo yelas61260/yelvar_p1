@@ -11,7 +11,20 @@ class Accion extends CI_Controller
 
 	public function registrarSolicitud(){
 		if ($this->lib->tienePermiso(1)) {
-			$this->load->view('viewLogin');
+			$this->load->model('db/DAOCorregimiento');
+			$this->load->model('db/DAODespacho');
+			$this->load->model('db/DAOPermiso');
+			$this->load->model('db/DAORol');
+			$this->load->model('db/DAOTipoAyuda');
+			$this->load->model('db/DAOVereda');
+			$data = array(
+				'titulo' => 'prueba',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'list1' => $this->DAOVereda->getList(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewPrueba', $data);
 		}else{
 			header("Location: ".base_url());
 		}

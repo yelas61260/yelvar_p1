@@ -37,5 +37,9 @@ class DAORol extends CI_Model
 	public function getRecords(){
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
+
+	public function getList(){
+		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
+	}
 	
 }

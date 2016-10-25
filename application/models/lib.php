@@ -30,9 +30,9 @@ class lib extends CI_Model
 	public function print_lista_filtrada($tabla, $campo, $get_campo, $condiciones, $order_by=null){
 		$content = '<option value="">Seleccionar</option>';
 		if($order_by == null){
-			$datos = $this->db_con->get_all_records_tabla_where($tabla, $get_campo, $condiciones);
+			$datos = $this->db_con->findWhere($tabla, $get_campo, $condiciones);
 		}else{
-			$datos = $this->db_con->get_all_records_tabla_where($tabla, $get_campo, $condiciones, $order_by);
+			$datos = $this->db_con->findWhere($tabla, $get_campo, $condiciones, $order_by);
 		}
 		foreach ($datos as $valor) {
 			$content .= '<option value="'.$valor[$campo[0]].'">'.$valor[$campo[1]].'</option>';
@@ -43,6 +43,8 @@ class lib extends CI_Model
 		return "menu";
 	}
 	public function print_header(){
+		$content = '';
+		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/general.css'>";
 		return "header";
 	}
 	public function print_footer(){
@@ -51,6 +53,10 @@ class lib extends CI_Model
 	public function style_login(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleLogin.css'>";
+		$content .= "<div class='header'>";
+		$content .= "<div id='logo_img'><img src='".base_url()."recursos/pix/logo.png'/></div>";
+		$content .= "<div id='logo_texto'>Plataforma de gestión de costos</div>";
+		$content .= "</div>";
 		return $content;
 	}
 	public function css_js_tables_responsive(){

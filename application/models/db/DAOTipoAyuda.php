@@ -2,7 +2,7 @@
 /**
 * 
 */
-class DAOTipo_ayuda extends CI_Model
+class DAOTipoAyuda extends CI_Model
 {
 	
 	private static $tabla;
@@ -16,6 +16,7 @@ class DAOTipo_ayuda extends CI_Model
 
 		self::$campos[0] = "id";
 		self::$campos[1] = "nombre";
+	}
 
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
@@ -27,6 +28,10 @@ class DAOTipo_ayuda extends CI_Model
 
 	public function getRecords(){
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
+	}
+
+	public function getList(){
+		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
 	}
 	
 }
