@@ -12,6 +12,7 @@ class Login extends CI_Controller {
 				);
 			$this->load->view('viewLogin',$data);
 		}else{
+
 			header("Location: ".base_url());
 		}
 	}
