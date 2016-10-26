@@ -40,7 +40,16 @@ class Accion extends CI_Controller
 
 	public function registrarUsuario(){
 		if ($this->lib->tienePermiso(3)) {
-			echo "3";
+			$data = array(
+				'titulo' => 'Registro de usuarios administrativos',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOUsuarioIMPL/insert',
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewRUser', $data);
 		}else{
 			header("Location: ".base_url());
 		}

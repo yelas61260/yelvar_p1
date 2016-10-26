@@ -50,6 +50,9 @@ class lib extends CI_Model
 	public function print_footer(){
 		return "footer";
 	}
+	public function print_chat(){
+		return "chat";
+	}
 	public function style_login(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleLogin.css'>";

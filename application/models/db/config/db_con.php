@@ -69,7 +69,6 @@ class db_con extends CI_Model {
 		}else{
 			$sentenciaSQL .= " ORDER BY ".$order_by." ASC;";
 		}
-		print_r($sentenciaSQL);
 		
 		$sql1=$this->db->query($sentenciaSQL) or die("No se pudo ejecutar la consulta ".$sentenciaSQL);
 		
