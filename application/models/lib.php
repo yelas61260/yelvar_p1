@@ -8,15 +8,6 @@ class lib extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
-		$opcionesMenu[1] = "Solicitud";
-		$opcionesMenu[1] = "Usuario";
-		$opcionesMenu[1] = "Despacho";
-		$opcionesMenu[1] = "Rol";
-		$opcionesMenu[1] = "Ayuda";
-		$opcionesMenu[1] = "Administradores";
-		$opcionesMenu[1] = "solicitud";
-		$opcionesMenu[1] = "solicitud";
-		$opcionesMenu[1] = "solicitud";
 	}
 	public function tienePermiso($id_permiso){
 		if(empty($this->session->userdata("id"))){
@@ -51,9 +42,9 @@ class lib extends CI_Model
 	}
 	public function print_menu(){
 		$content = '';
-		$content .= "<div id='menu'><div class='punta_menu'></div><div class='menuitems'>";
-		$content .= "<div id='salir_btn' class='btnMenu'><a href='".base_url()."DAOUsuarioIMPL/actionLongout'><img src='".base_url()."recursos/pix/salir.png'/><span>Salir</span></a></div>";
-		$content .= "</div></div>";
+		$content .= "<ul>";
+		$content .= "</ul>";
+		$content .= "<div id='salir_btn' class='btnMenu'><a href='".base_url()."DAOUsuarioIMPL/actionLongout'><span>Salir</span></a></div>";
 		return $content;
 	}
 	public function print_header(){
@@ -61,9 +52,11 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/general.css'>";
 		$content .= "<div class='header'>";
 		$content .= "<div id='logo_img'><img src='".base_url()."recursos/pix/logo.png'/></div>";
-//		if(!empty($this->session->userdata("id"))){
+		$content .= "<div id='menu'><div class='punta_menu'></div><div class='menuitems'>";
+		if(!empty($this->session->userdata("id"))){
 			$content .=  self::print_menu();
-//		}
+		}
+		$content .= "</div></div>";
 		$content .= "</div>";
 		return $content;
 	}

@@ -3,7 +3,7 @@
 class Login extends CI_Controller {
 
 	public function index(){
-		if(empty($this->session->userdata("id"))){
+		//if(empty($this->session->userdata("id"))){
 			$data= array(
 				'titulo'=>'Login',
 				'StyleView'=>$this->lib->style_login(), 
@@ -11,10 +11,10 @@ class Login extends CI_Controller {
 				'Footer'=>$this->lib->print_footer(), 
 				);
 			$this->load->view('viewLogin',$data);
-		}else{
+		//}else{
 
-			header("Location: ".base_url());
-		}
+		//	header("Location: ".base_url());
+		//}
 	}
 
 }

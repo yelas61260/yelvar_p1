@@ -14,9 +14,10 @@
 }
 .header #menu .menuitems{
 	background: #50A63F;
-	height: 40px;
+	height: 50px;
 	width: 90%;
     position: absolute;
+    padding-right: 10px;
 }
 #menu div {
     display: inline-block;
@@ -24,17 +25,22 @@
 .punta_menu{
 	width: 0;
 	height: 0;
-	border-top: 40px solid #50A63F;
+	border-top: 50px solid #50A63F;
 	border-left: 15px solid transparent;
-}
-.btnMenu {
-    height: 40px;
-    display: table-cell !important;
-    vertical-align: middle;
-    padding: 0 5px;
-    position: relative;
 }
 .btnMenu a{
 	color: #FFF;
-	font-weight: bold;
+    font-weight: bold;
+    height: 50px;
+    display: table-cell !important;
+    vertical-align: middle;
+    padding: 0 5px;
+    font-size: 20px;
+    text-decoration: none;
+}
+.btnMenu a:hover{
+	background: #585858;
+}
+#salir_btn {
+    float: right;
 }
