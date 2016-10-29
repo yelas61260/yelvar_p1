@@ -28,6 +28,9 @@
 	border-top: 50px solid #50A63F;
 	border-left: 15px solid transparent;
 }
+li.btnMenu {
+    display: inline-block;
+}
 .btnMenu a{
 	color: #FFF;
     font-weight: bold;

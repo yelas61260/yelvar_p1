@@ -41,10 +41,16 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function print_menu(){
+		$permisos_app = $this->db_con->getRecordsTable($this->db_struc->getTablas()[2]);
 		$content = '';
 		$content .= "<ul>";
+		$permisos = $this->session->userdata('permisos');
+		$c_permisos = count($permisos);
+		for ($i=0; $i < $c_permisos; $i++) {
+			$content .= "<li class='btnMenu'><a href='".base_url()."accion/".strtolower($permisos_app[intval($permisos[$i])-1]["accion"])."'>".$permisos_app[intval($permisos[$i])-1]["accion"]."</a></li>";
+		}
+		$content .= "<li id='salir_btn' class='btnMenu'><a href='".base_url()."DAOUsuarioIMPL/actionLongout'><span>Salir</span></a></li>";
 		$content .= "</ul>";
-		$content .= "<div id='salir_btn' class='btnMenu'><a href='".base_url()."DAOUsuarioIMPL/actionLongout'><span>Salir</span></a></div>";
 		return $content;
 	}
 	public function print_header(){

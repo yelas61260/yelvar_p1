@@ -20,16 +20,10 @@ class db_struc extends CI_Model {
 		self::$tablas[8] = "usuario";
 		self::$tablas[9] = "usuarios_roles";
 		self::$tablas[10] = "vereda";
-
-		self::$procedimientos[0] = "getPermissions";
 	}
 
 	public function getTablas(){
 		return self::$tablas;
-	}
-
-	public function getProcedimientos(){
-		return self::$procedimientos;
 	}
 
 }
