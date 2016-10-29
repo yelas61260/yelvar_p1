@@ -71,6 +71,11 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleLogin.css'>";
 		return $content;
 	}
+		public function style_home(){
+		$content = '';
+		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleHome.css'>";
+		return $content;
+	}
 	public function css_js_tables_responsive(){
 		$content = '';
 		$content .="<script type='text/javascript' src='".base_url()."recursos/js/responsive/jquery-1.12.0.min.js'></script>";

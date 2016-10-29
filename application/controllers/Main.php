@@ -20,7 +20,13 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		if($this->lib->tienePermiso(0)){
-			$this->load->view('registro/viewUser');
+			$data = array(
+				'titulo'=>'Bienvenidos',
+				'StyleView'=>$this->lib->style_home(), 
+				'Header'=>$this->lib->print_header(), 
+				'Footer'=>$this->lib->print_footer() 
+				);
+			$this->load->view('viewHome',$data);
 		}else{
 			header('Location: ' . base_url() . 'login');
 		}
