@@ -9,7 +9,7 @@ class DAOVeredaIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de las Veredas";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(12)) {
+		if ($this->lib->tienePermiso(6)) {
 			$this->load->model('db/DAOVereda');
 
 			$datos_array[0] = null;
@@ -22,7 +22,7 @@ class DAOVeredaIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(13)) {
+		if ($this->lib->tienePermiso(6)) {
 			$this->load->model('db/DAOVereda');
 
 			$datos_array[0] = $this->input->post("p1");

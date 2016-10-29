@@ -1,0 +1,40 @@
+.header{
+	width: 100%;
+	position: relative;
+}
+.header div{
+	display: table-cell;
+}
+.header #logo_img img{
+	width: 100px;
+}
+.header #menu{
+	width: 100%;
+	vertical-align: middle;
+}
+.header #menu .menuitems{
+	background: #50A63F;
+	height: 40px;
+	width: 90%;
+    position: absolute;
+}
+#menu div {
+    display: inline-block;
+}
+.punta_menu{
+	width: 0;
+	height: 0;
+	border-top: 40px solid #50A63F;
+	border-left: 15px solid transparent;
+}
+.btnMenu {
+    height: 40px;
+    display: table-cell !important;
+    vertical-align: middle;
+    padding: 0 5px;
+    position: relative;
+}
+.btnMenu a{
+	color: #FFF;
+	font-weight: bold;
+}

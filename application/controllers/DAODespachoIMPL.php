@@ -9,7 +9,7 @@ class DAODespachoIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Despachos";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(5)) {
+		if ($this->lib->tienePermiso(4)) {
 			$this->load->model('db/DAODespacho');
 
 			$datos_array[0] = null;
@@ -22,7 +22,7 @@ class DAODespachoIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(6)) {
+		if ($this->lib->tienePermiso(4)) {
 			$this->load->model('db/DAODespacho');
 
 			$datos_array[0] = $this->input->post("p1");

@@ -9,7 +9,7 @@ class DAOCorregimientoIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Corregimientos";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(14)) {
+		if ($this->lib->tienePermiso(7)) {
 			$this->load->model('db/DAOCorregimiento');
 
 			$datos_array[0] = null;
@@ -21,7 +21,7 @@ class DAOCorregimientoIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(15)) {
+		if ($this->lib->tienePermiso(7)) {
 			$this->load->model('db/DAOCorregimiento');
 
 			$datos_array[0] = $this->input->post("p1");

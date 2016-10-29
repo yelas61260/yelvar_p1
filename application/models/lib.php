@@ -4,9 +4,19 @@
 */
 class lib extends CI_Model
 {
+	private $opcionesMenu;
 	public function __construct()
 	{
 		parent::__construct();
+		$opcionesMenu[1] = "Solicitud";
+		$opcionesMenu[1] = "Usuario";
+		$opcionesMenu[1] = "Despacho";
+		$opcionesMenu[1] = "Rol";
+		$opcionesMenu[1] = "Ayuda";
+		$opcionesMenu[1] = "Administradores";
+		$opcionesMenu[1] = "solicitud";
+		$opcionesMenu[1] = "solicitud";
+		$opcionesMenu[1] = "solicitud";
 	}
 	public function tienePermiso($id_permiso){
 		if(empty($this->session->userdata("id"))){
@@ -40,12 +50,22 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function print_menu(){
-		return "menu";
+		$content = '';
+		$content .= "<div id='menu'><div class='punta_menu'></div><div class='menuitems'>";
+		$content .= "<div id='salir_btn' class='btnMenu'><a href='".base_url()."DAOUsuarioIMPL/actionLongout'><img src='".base_url()."recursos/pix/salir.png'/><span>Salir</span></a></div>";
+		$content .= "</div></div>";
+		return $content;
 	}
 	public function print_header(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/general.css'>";
-		return "header";
+		$content .= "<div class='header'>";
+		$content .= "<div id='logo_img'><img src='".base_url()."recursos/pix/logo.png'/></div>";
+//		if(!empty($this->session->userdata("id"))){
+			$content .=  self::print_menu();
+//		}
+		$content .= "</div>";
+		return $content;
 	}
 	public function print_footer(){
 		return "footer";
@@ -56,10 +76,6 @@ class lib extends CI_Model
 	public function style_login(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleLogin.css'>";
-		$content .= "<div class='header'>";
-		$content .= "<div id='logo_img'><img src='".base_url()."recursos/pix/logo.png'/></div>";
-		$content .= "<div id='logo_texto'>Plataforma de gestión de costos</div>";
-		$content .= "</div>";
 		return $content;
 	}
 	public function css_js_tables_responsive(){

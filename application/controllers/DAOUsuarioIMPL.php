@@ -9,7 +9,7 @@ class DAOUsuarioIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Usuarios";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(3)) {
+		if ($this->lib->tienePermiso(2)) {
 			$this->load->model('db/DAOUsuario');
 
 			$datos_array[0] = null;
@@ -27,7 +27,7 @@ class DAOUsuarioIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(4)) {
+		if ($this->lib->tienePermiso(2)) {
 			$this->load->model('db/DAOUsuario');
 
 			$datos_array[0] = $this->input->post("p1");
@@ -45,7 +45,7 @@ class DAOUsuarioIMPL extends CI_Controller
 		}
 	}
 	public function makeAdmin($user_id){
-		if ($this->lib->tienePermiso(11)) {
+		if ($this->lib->tienePermiso(8)) {
 			$this->load->model('db/DAOUsuario');
 			$this->DAOUsuario->makeAdmin($user_id);
 		}else{

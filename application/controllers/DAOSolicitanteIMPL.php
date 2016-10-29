@@ -30,7 +30,7 @@ class DAOSolicitanteIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(2)) {
+		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitante');
 
 			$datos_array[0] = $this->input->post("p1");

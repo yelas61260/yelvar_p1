@@ -9,7 +9,7 @@ class DAOPermisoIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Permisos";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(16)) {
+		if ($this->lib->tienePermiso(9)) {
 			$this->load->model('db/DAOPermiso');
 
 			$datos_array[0] = null;
@@ -21,7 +21,7 @@ class DAOPermisoIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(17)) {
+		if ($this->lib->tienePermiso(9)) {
 			$this->load->model('db/DAOPermiso');
 
 			$datos_array[0] = $this->input->post("p1");

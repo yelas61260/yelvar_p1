@@ -9,7 +9,7 @@ class DAOTipoAyudaIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Tipos de Ayuda";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(9)) {
+		if ($this->lib->tienePermiso(5)) {
 			$this->load->model('db/DAOTipoAyuda');
 
 			$datos_array[0] = null;
@@ -21,7 +21,7 @@ class DAOTipoAyudaIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(10)) {
+		if ($this->lib->tienePermiso(5)) {
 			$this->load->model('db/DAOTipoAyuda');
 
 			$datos_array[0] = $this->input->post("p1");

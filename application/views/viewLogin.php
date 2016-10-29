@@ -8,6 +8,7 @@
 	</head>
 <body>
 	<?= $Header ?>
+	<div class="contentarea">
 <table>
 	<tr>
 		<td>
@@ -26,6 +27,7 @@
 		</td>
 	</tr>
 </table>
+</div>
 	<?= $Footer ?>
 
 

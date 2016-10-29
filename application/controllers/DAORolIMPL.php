@@ -9,7 +9,7 @@ class DAORolIMPL extends CI_Controller
 		echo "Servicio REST para la manipulacion de los Roles";
 	}
 	public function insert(){
-		if ($this->lib->tienePermiso(7)) {
+		if ($this->lib->tienePermiso(3)) {
 			$this->load->model('db/DAORol');
 
 			$datos_array[0] = null;
@@ -21,7 +21,7 @@ class DAORolIMPL extends CI_Controller
 		}
 	}
 	public function update(){
-		if ($this->lib->tienePermiso(8)) {
+		if ($this->lib->tienePermiso(3)) {
 			$this->load->model('db/DAORol');
 
 			$datos_array[0] = $this->input->post("p1");
