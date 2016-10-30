@@ -59,7 +59,7 @@ class Accion extends CI_Controller
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
-			$this->load->view('registro/viewRUser', $data);
+			$this->load->view('registro/viewUser', $data);
 		}else{
 			header("Location: ".base_url());
 		}

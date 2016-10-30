@@ -1,3 +1,7 @@
+*{
+	margin:0px;
+	padding:0px;
+}
 .header{
 	width: 100%;
 	position: relative;
@@ -46,4 +50,28 @@ li.btnMenu {
 }
 #salir_btn {
     float: right;
+}
+
+.accion_btn{
+	width:135px;
+	height:50px;
+	position: absolute;
+	top: 85%;
+	left: 9.5%;
+	transform: translate(-50%, -50%);
+	border:1px solid #232323;
+	box-shadow:0px 2px 0px #000;
+	-moz-box-shadow:0px 2px 0px #000;
+	-webkit-box-shadow:0px 2px 0px #000;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background-color:#04B431;
+	color:#FFFFFF;
+	font-size:10pt;
+	font-weight:bold;
+}
+	
+.accion_btn:hover{
+	background:#3a3a3a;
 }

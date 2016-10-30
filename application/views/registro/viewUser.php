@@ -50,7 +50,7 @@
 				</tr>
 			</table>
 		</form>
-		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button class="accion_btn" id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>
