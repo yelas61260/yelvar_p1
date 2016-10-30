@@ -10,7 +10,7 @@
 	<?= $Header ?>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
-		<form action="" method="post" name="form_usuario" id="form_usuario">
+		<form action="" method="post" name="form_vereda" id="form_vereda">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
@@ -19,10 +19,16 @@
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<div class="form-label"><label for="p3">Corregimiento<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p3" id="p3" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
 				</tr>
 			</table>
 		</form>
-		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_vereda')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

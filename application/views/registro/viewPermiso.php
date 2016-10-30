@@ -10,7 +10,7 @@
 	<?= $Header ?>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
-		<form action="" method="post" name="form_usuario" id="form_usuario">
+		<form action="" method="post" name="form_permiso" id="form_permiso">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
@@ -22,7 +22,7 @@
 				</tr>
 			</table>
 		</form>
-		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_permiso')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>
