@@ -14,14 +14,14 @@
 <table>
 	<tr>
 		<td>
-		<form>
-		<h1>Bienvenido(a)</h1>		
-		<Input  class="usuarioLog" type="text" max-length="20" placeholder="Usuario"/>
-		<h4>Este es el  Sistema de gestion de acceso a para la Alcaldia de Tiquisio Bolivar</h4>
-		</form>
+			<form>
+			<h1>Bienvenido(a)</h1>		
+			<Input  class="usuarioLog" type="text" max-length="20" placeholder="Usuario"/>
+			<h4>Este es el  Sistema de gestion y control de acceso a para la Alcaldia de Tiquisio Bolivar</h4>
+			</form>
 		</td>	
 		<td>
-		<IMG class="pueblo1" SRC="<?=base_url() ?>recursos/pix/Home/pueblo1.png">
+			<IMG class="pueblo1" SRC="<?=base_url() ?>recursos/pix/Home/pueblo1.png">
 		</td>
 	</tr>
 		
