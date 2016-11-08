@@ -82,7 +82,7 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleHome.css'>";
 		return $content;
 	}
-		public function style_regusuarios(){
+		public function style_rgusuarios(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
 		return $content;
@@ -90,7 +90,7 @@ class lib extends CI_Model
 
 		public function style_solicitud(){
 		$content = '';
-		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
+		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormPeticion.css'>";
 		return $content;
 	}
 	public function css_js_tables_responsive(){

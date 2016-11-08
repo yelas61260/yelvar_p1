@@ -13,8 +13,8 @@
 
 <table>
 	<tr>
-		<td bgcolor="#000000">
-		<IMG class="Titulo" SRC="<?=base_url() ?>recursos/pix/RegistroUsuarios/TituloRegistroUsuarios.png" >	
+		<td>
+		<span>Registro de Usuarios Administrativos</span>
 		</td>
 	</tr>
 </table>	
