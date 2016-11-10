@@ -5,46 +5,90 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $titulo ?></title>
 	<?= $StyleView ?>
-</head>
+	</head>
 <body>
 	<?= $Header ?>
 	<div class="contentarea">
-
-
-	<table class="form_header" id="tab_datos">
-				
-					
-
-<table>
-	<tr>
-		<td>
-			<div class="header-sec-form"><span>Datos del solicitante</span></div>
-		</td>
-	</tr>
-</table>	
-		<form name="form_solicitud"  action="<?=base_url() ?>DAOUsuarioIMPL/actionLogin"  method="POST">
-		<Input  class="pwd1" type="password" max-length="20" placeholder="Confirmar Contraseña"/>
-		<h4 class="nombres">Nombres</h4>
-		<Input  class="nombres" type="text" max-length="20" placeholder="Nombres"/>
-		<h4 class="apellidos">Apellidos</h4>
-		<Input  class="apellidos"  max-length="20" placeholder="Apellidos"/>
-		<h4 class="User">Usuario</h4>
-		<Input  class="User" type="text" max-length="20" placeholder="Usuario"/>
-		<IMG class="ok" SRC="<?=base_url() ?>recursos/pix/RegistroUsuarios/ok.png">	
-		<h4 class="pwd">Contraseña</h4>
-		<Input  class="pwd" type="password" max-length="20" placeholder="Contraseña"/>
-		<IMG class="unok" SRC="<?=base_url() ?>recursos/pix/RegistroUsuarios/unok.png">	
-		<h4 class="pwd1">Confirmar Contraseña</h4>
-	</table>
-		
-	
-		
-		<button type="subimit">Actualizar o Registrar</Button>	
-	
-	</form>
-	
-		<?= $Footer ?>
-	
-
+		<div><?= $titulo ?></div>
+		<form action="" method="post" name="form_solicitud" id="form_solicitud">
+			<table class="form_header" id="tab_datos">
+				<tr>
+					<td>
+						<div class="header-sec-form"><span>Datos del solicitante</span></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2">Cédula<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p3">Nombres<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p4">Apellidos<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p5">Dirección<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p6">Teléfono<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="header-sec-form"><span>Datos de petición</span></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p8">Nombre<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p9">Despacho<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2">Tipo<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2">Estado<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2">Descripción<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+		</form>
+		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_solicitud')"/><?= $TextoBtn ?></button>
+	</div>
+	<?= $Footer ?>
+	<?= $Chat ?>
 </body>
 </html>
