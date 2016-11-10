@@ -82,6 +82,7 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleHome.css'>";
 		return $content;
 	}
+<<<<<<< HEAD
 		public function style_rgusuarios(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
@@ -89,6 +90,9 @@ class lib extends CI_Model
 	}
 
 		public function style_solicitud(){
+=======
+			public function style_regusuarios(){
+>>>>>>> parent of 2e7c7db... HV_2016_11_7
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormPeticion.css'>";
 		return $content;

@@ -5,10 +5,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $titulo ?></title>
 	<?= $StyleView ?>
-</head>
+	</head>
 <body>
 	<?= $Header ?>
 	<div class="contentarea">
+<<<<<<< HEAD
 
 
 <table>
@@ -40,5 +41,52 @@
 		<?= $Footer ?>
 	
 
+=======
+		<div><?= $titulo ?></div>
+		<form action="" method="post" name="form_usuario" id="form_usuario">
+			<table class="form_header" id="tab_datos">
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2">Usuario<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" pattern="[0-9]{5,15}" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2">Contraseña<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="45" value="" required /></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p2c">Confirmar Contraseña<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2c" id="p2c" size="45" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p3">Cedula</label></div>
+						<div class="form-input"><input type="text" name="p3" id="p3" size="45" value=""/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p4">Nombres</label></div>
+						<div class="form-input"><input type="text" name="p4" id="p4" size="45" value=""/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p5">Apellidos</label></div>
+						<div class="form-input"><input type="text" name="p5" id="p5" size="45" value=""/></div>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<button class="accion_btn" id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+	</div>
+	<?= $Footer ?>
+	<?= $Chat ?>
+>>>>>>> parent of 2e7c7db... HV_2016_11_7
 </body>
 </html>
