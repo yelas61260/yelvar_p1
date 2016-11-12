@@ -24,21 +24,30 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAOVereda');
 			$data = array(
 <<<<<<< HEAD
+<<<<<<< HEAD
 				'titulo' => 'Peticion',
 				'StyleView'=>$this->lib->style_solicitud(), 
 =======
 				'titulo' => 'prueba',
 				'StyleView' => '',
 >>>>>>> parent of 2e7c7db... HV_2016_11_7
+=======
+				'titulo' => 'prueba',
+				'StyleView'=>$this->lib->style_home(), 
+>>>>>>> parent of d2fe06e... HV_2016_11_08
 				'Header' => $this->lib->print_header(),
 				'list1' => $this->DAOVereda->getList(),
 				'Footer' => $this->lib->print_footer()
 				);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			$this->load->view('registro/viewSolicitud', $data);
 =======
 			$this->load->view('viewPrueba', $data);
 >>>>>>> parent of 2e7c7db... HV_2016_11_7
+=======
+			$this->load->view('viewHome', $data);
+>>>>>>> parent of d2fe06e... HV_2016_11_08
 		}else{
 			header("Location: ".base_url());
 		}
@@ -64,7 +73,7 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAOVereda');
 			$data = array(
 				'titulo' => 'Registro de usuarios administrativos',
-				'StyleView'=>$this->lib->style_rgusuarios(), 
+				'StyleView'=>$this->lib->style_regusuarios(), 
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAOUsuarioIMPL/insert',
 				'TextoBtn' => 'Registrar',
@@ -79,7 +88,7 @@ class Accion extends CI_Controller
 
 	}
 
-/*	public function registrarUsuario(){
+	public function registrarUsuario(){
 		if ($this->lib->tienePermiso(1)) {
 			
 =======
@@ -111,7 +120,7 @@ class Accion extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
-*/
+
 	//Funciones para ejecutar los roles Permiso 3
 	public function roles(){
 
