@@ -112,7 +112,8 @@ $autoload['language'] = array();
 $autoload['model'] = array(
 	'db/config/db_struc',
 	'db/config/db_con',
-	'lib');
+	'lib'
+	);
 
 
 /* End of file autoload.php */

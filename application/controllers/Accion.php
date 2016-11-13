@@ -11,7 +11,20 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar las solicitudes Permiso 1
 	public function solicitud(){
-
+		if ($this->lib->tienePermiso(1)) {
+			$data = array(
+				'titulo' => 'Solicitudes',
+				'StyleView'=>'', 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => '',
+				'mod_view' => 'accion/registrarSolicitud',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function registrarSolicitud(){
@@ -23,22 +36,16 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAOTipoAyuda');
 			$this->load->model('db/DAOVereda');
 			$data = array(
-<<<<<<< HEAD
 				'titulo' => 'Peticion',
-				'StyleView'=>$this->lib->style_solicitud(), 
-=======
+				'StyleView'=>$this->lib->style_solicitud(),
 				'titulo' => 'prueba',
 				'StyleView' => '',
->>>>>>> parent of 2e7c7db... HV_2016_11_7
 				'Header' => $this->lib->print_header(),
 				'list1' => $this->DAOVereda->getList(),
 				'Footer' => $this->lib->print_footer()
 				);
-<<<<<<< HEAD
 			$this->load->view('registro/viewSolicitud', $data);
-=======
 			$this->load->view('viewPrueba', $data);
->>>>>>> parent of 2e7c7db... HV_2016_11_7
 		}else{
 			header("Location: ".base_url());
 		}
@@ -54,8 +61,7 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar los usuarios Permiso 2
 	public function usuarios(){
-<<<<<<< HEAD
-			if ($this->lib->tienePermiso(1)) {
+		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOCorregimiento');
 			$this->load->model('db/DAODespacho');
 			$this->load->model('db/DAOPermiso');
@@ -75,20 +81,10 @@ class Accion extends CI_Controller
 		}else{
 			header("Location: ".base_url());
 		}
-
-
-	}
-
-/*	public function registrarUsuario(){
-		if ($this->lib->tienePermiso(1)) {
-			
-=======
-
 	}
 
 	public function registrarUsuario(){
 		if ($this->lib->tienePermiso(2)) {
->>>>>>> parent of 2e7c7db... HV_2016_11_7
 			$data = array(
 				'titulo' => 'Registro de usuarios administrativos',
 				'StyleView' => '',
@@ -111,7 +107,7 @@ class Accion extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
-*/
+
 	//Funciones para ejecutar los roles Permiso 3
 	public function roles(){
 
@@ -156,7 +152,21 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar los ayudas Permiso 5
 	public function ayudas(){
-
+		if ($this->lib->tienePermiso(5)) {
+			$this->load->model('db/DAOTipoAyuda');
+			$data = array(
+				'titulo' => 'Tipos de Ayudas',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => $this->DAOTipoAyuda->getTablaVista(),
+				'mod_view' => 'accion/registrarAyuda',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function registrarAyuda(){

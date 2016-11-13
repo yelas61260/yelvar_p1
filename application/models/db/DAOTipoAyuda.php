@@ -33,5 +33,9 @@ class DAOTipoAyuda extends CI_Model
 	public function getList(){
 		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
 	}
+
+	public function getTablaVista(){
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
+	}
 	
 }

@@ -48,3 +48,9 @@ function insert(param_formName){
 		alertify.alert("Hay campos obligatorios sin completar<br>Por favor llene todos los campos.");
 	}
 }
+function edit(id){
+	alertify.alert("Editando id "+id, function(){});
+}
+function delete(id){
+	alertify.alert("Eliminando id "+id, function(){});
+}
