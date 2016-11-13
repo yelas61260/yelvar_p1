@@ -151,6 +151,8 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function style_rgusuarios(){
+	}
+	public function style_regusuarios(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
 		return $content;
@@ -162,7 +164,7 @@ class lib extends CI_Model
 	
 	public function style_regusuarios(){
 		$content = '';
-		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormPeticion.css'>";
+		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
 		return $content;
 	}
 	

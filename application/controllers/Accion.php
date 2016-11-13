@@ -45,7 +45,6 @@ class Accion extends CI_Controller
 				'Footer' => $this->lib->print_footer()
 				);
 			$this->load->view('registro/viewSolicitud', $data);
-			$this->load->view('viewPrueba', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -70,7 +69,7 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAOVereda');
 			$data = array(
 				'titulo' => 'Registro de usuarios administrativos',
-				'StyleView'=>$this->lib->style_rgusuarios(), 
+				'StyleView'=>$this->lib->style_regusuarios(), 
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAOUsuarioIMPL/insert',
 				'TextoBtn' => 'Registrar',
@@ -81,6 +80,10 @@ class Accion extends CI_Controller
 		}else{
 			header("Location: ".base_url());
 		}
+	}
+
+	public function registrarUsuario(){
+		if ($this->lib->tienePermiso(1)) {}
 	}
 
 	public function registrarUsuario(){
