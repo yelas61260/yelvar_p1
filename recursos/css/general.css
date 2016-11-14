@@ -75,3 +75,151 @@ li.btnMenu {
 .accion_btn:hover{
 	background:#3a3a3a;
 }
+
+/* Boton General */
+
+button.guardar_btn {
+	width:135px;
+
+	height:50px;
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border:1px solid #232323;
+	box-shadow:0px 2px 0px #000;
+	-moz-box-shadow:0px 2px 0px #000;
+	-webkit-box-shadow:0px 2px 0px #000;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background-color:#04B431;
+	color:#FFFFFF;
+	font-size:10pt;
+	font-weight:bold;
+	}
+	
+button.guardar_btn:hover{
+	background:#3a3a3a;
+	}
+
+/* Formulario viewAdmin */
+
+form.form_usuario{
+	background:#FFBF00;
+	width:361px;
+	height:401px;
+	border:1px solid #FFBF00;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	box-shadow:inset 0 0 10px #000;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	}
+
+
+label.lblform{
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	top: 10%;
+	left: 20%;
+	transform: translate(-50%, -50%);
+
+	}
+
+input.inpform{
+	width:220px;
+	height:35px;
+	padding: 0px 10px;
+	margin:10px 30px;
+	color:#6d6d6d;
+	text-align:center;
+	position: absolute;
+	top: 15%;
+	left: 35%;
+	transform: translate(-50%, -50%);
+}
+	
+/* Formulario viewAyuda */
+
+form.form_ayuda{
+	background:#FFBF00;
+	width:361px;
+	height:401px;
+	border:1px solid #FFBF00;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	box-shadow:inset 0 0 10px #000;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	}
+
+label.lblfayuda{
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	top: 10%;
+	left: 32%;
+	transform: translate(-50%, -50%);
+
+	}
+
+input.inpfayuda{
+	width:220px;
+	height:35px;
+	padding: 0px 10px;
+	margin:10px 30px;
+	color:#6d6d6d;
+	text-align:center;
+	position: absolute;
+	top: 15%;
+	left: 35%;
+	transform: translate(-50%, -50%);
+}
+
+/* Formulario viewCorregimiento */
+
+form.form_corregimiento{
+	background:#FFBF00;
+	width:361px;
+	height:401px;
+	border:1px solid #FFBF00;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	box-shadow:inset 0 0 10px #000;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	}
+
+label.lblformc{
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	top: 10%;
+	left: 28%;
+	transform: translate(-50%, -50%);
+
+	}
+
+input.inptformc{
+	width:220px;
+	height:35px;
+	padding: 0px 10px;
+	margin:10px 30px;
+	color:#6d6d6d;
+	text-align:center;
+	position: absolute;
+	top: 15%;
+	left: 35%;
+	transform: translate(-50%, -50%);
+}

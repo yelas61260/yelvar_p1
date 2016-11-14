@@ -10,19 +10,19 @@
 	<?= $Header ?>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
-		<form action="" method="post" name="form_ayuda" id="form_ayuda">
+		<form class="form_ayuda" action="" method="post" name="form_ayuda" id="form_ayuda">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
-						<div class="form-label"><label for="p2">Nombre<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label class="lblfayuda" for="p2">Manual de Ayuda<span>*</span></label></div>
+						<div class="form-input"><input class="inpfayuda" type="text" name="p2" id="p2" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 				</tr>
 			</table>
 		</form>
-		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_ayuda')"/><?= $TextoBtn ?></button>
+		<button class="guardar_btn" id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_ayuda')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>
