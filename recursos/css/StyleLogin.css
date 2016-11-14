@@ -37,7 +37,7 @@
 	color:#fff;
 	font-weight:nw-resize;
 	font-size:15pt;
-	position: absolute;
+	position: relative;
 	top: 70%;
 	left: 30%;
 	transform: translate(-50%, -50%);
@@ -123,6 +123,21 @@
 	left: 64%;
 	transform: translate(-50%, -50%);
 	}
+
+	@media only screen and (max-width: 900px) {
+    img.pueblo {
+    display:none;
+    }
+    form{
+    position: relative;
+	height:361px;
+    width:401px;
+    margin:0 auto;
+   	left: 31%;
+   	align-content: center;
+
+    }
+	}	
 	
 	img.userim{
 	width:50px;
