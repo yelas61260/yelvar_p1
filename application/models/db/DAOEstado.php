@@ -2,7 +2,7 @@
 /**
 * 
 */
-class DAORol extends CI_Model
+class DAOEstado extends CI_Model
 {
 	
 	private static $tabla;
@@ -12,10 +12,14 @@ class DAORol extends CI_Model
 	{
 		parent::__construct();
 
-		self::$tabla = $this->db_struc->getTablas()[3];
+		self::$tabla = $this->db_struc->getTablas()[11];
 
 		self::$campos[0] = "id";
 		self::$campos[1] = "nombre";
+	}
+
+	public function getCampos(){
+		return self::$campos;
 	}
 
 	public function insert($param){
@@ -26,24 +30,12 @@ class DAORol extends CI_Model
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
 	}
 
-	public function getTabla(){
-		return self::$tabla;
-	}
-
-	public function getCampos(){
-		return self::$campos;
-	}
-
 	public function getRecords(){
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
 	public function getList(){
 		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
-	}
-
-	public function getTablaVista(){
-		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
 	}
 	
 }

@@ -24,6 +24,10 @@ class DAOUsuario extends CI_Model
 		self::$campos[7] = "timemodified";
 	}
 
+	public function getCampos(){
+		return self::$campos;
+	}
+
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
@@ -66,5 +70,23 @@ class DAOUsuario extends CI_Model
 
 	public function getRecords(){
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[3]);
+	}
+
+	public function getTablaVista(){
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Usuario", "Cedula", "Nombre", "Apellido"], self::$campos, [self::$campos[0],self::$campos[1],self::$campos[3],self::$campos[4],self::$campos[5]], null, ["edit", "delete"], ["edit", "delete"]);
+	}
+
+	public function getTablaVistaAdmin(){
+		$this->load->model('db/DAORol');
+		$this->load->model('db/DAOUsuarioRol');
+		$camposRU = $this->DAOUsuarioRol->getCampos();
+		$camposRol = $this->DAORol->getCampos();
+		return $this->lib->print_tabla(
+			[self::$tabla." AS t1",$this->DAORol->getTabla()." AS t2", $this->DAOUsuarioRol->getTabla()." AS t3"],
+			["ID", "Usuario", "Cedula", "Nombre", "Apellido"],
+			["t1.".self::$campos[0],"t1.".self::$campos[1],"t1.".self::$campos[3],"t1.".self::$campos[4],"t1.".self::$campos[5]],
+			[self::$campos[0],self::$campos[1],self::$campos[3],self::$campos[4],self::$campos[5]],
+			["t1.".self::$campos[0]."=t3.".$camposRU[1],"t2.".$camposRol[0]."=t3.".$camposRU[2],"(t2.".$camposRol[1]."='Admin' OR t2.".$camposRol[1]."='SuperAdmin')"],
+			["noAdmin"], ["noAdmin"]);
 	}
 }

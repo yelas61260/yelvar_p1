@@ -18,6 +18,10 @@ class DAOCorregimiento extends CI_Model
 		self::$campos[1] = "nombre";
 	}
 
+	public function getCampos(){
+		return self::$campos;
+	}
+
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
@@ -32,6 +36,10 @@ class DAOCorregimiento extends CI_Model
 
 	public function getList(){
 		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
+	}
+
+	public function getTablaVista(){
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
 	}
 
 }

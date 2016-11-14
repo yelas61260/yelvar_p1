@@ -27,6 +27,10 @@ class DAOSolicitante extends CI_Model
 		self::$campos[10] = "timemodified";
 	}
 
+	public function getCampos(){
+		return self::$campos;
+	}
+
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}

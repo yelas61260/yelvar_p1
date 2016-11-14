@@ -77,6 +77,7 @@ class lib extends CI_Model
 		if($order_by != null && !empty($order_by)){
 			$sentenciaSQL .= " ORDER BY ".$order_by;
 		}
+		print_r($sentenciaSQL);
 
 		//Script para definir la tabla a pintar
 		$datosSQL = $this->db_con->getQuery($sentenciaSQL);
@@ -145,7 +146,7 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleLogin.css'>";
 		return $content;
 	}
-		public function style_home(){
+	public function style_home(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleHome.css'>";
 		return $content;
@@ -159,13 +160,6 @@ class lib extends CI_Model
 	}
 
 	public function style_solicitud(){
-
-	}
-	
-	public function style_regusuarios(){
-		$content = '';
-		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
-		return $content;
 	}
 	
 	public function css_js_tables_responsive(){

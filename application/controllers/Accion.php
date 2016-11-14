@@ -12,12 +12,13 @@ class Accion extends CI_Controller
 	//Funciones para ejecutar las solicitudes Permiso 1
 	public function solicitud(){
 		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOSolicitud');
 			$data = array(
 				'titulo' => 'Solicitudes',
-				'StyleView'=>'', 
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
 				'Header' => $this->lib->print_header(),
-				'table_grafic' => '',
-				'mod_view' => 'accion/registrarSolicitud',
+				'table_grafic' => $this->DAOSolicitud->getTablaVista(),
+				'mod_view' => '',
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
@@ -29,11 +30,6 @@ class Accion extends CI_Controller
 
 	public function registrarSolicitud(){
 		if ($this->lib->tienePermiso(1)) {
-			$this->load->model('db/DAOCorregimiento');
-			$this->load->model('db/DAODespacho');
-			$this->load->model('db/DAOPermiso');
-			$this->load->model('db/DAORol');
-			$this->load->model('db/DAOTipoAyuda');
 			$this->load->model('db/DAOVereda');
 			$data = array(
 				'titulo' => 'Peticion',
@@ -61,29 +57,20 @@ class Accion extends CI_Controller
 	//Funciones para ejecutar los usuarios Permiso 2
 	public function usuarios(){
 		if ($this->lib->tienePermiso(1)) {
-			$this->load->model('db/DAOCorregimiento');
-			$this->load->model('db/DAODespacho');
-			$this->load->model('db/DAOPermiso');
-			$this->load->model('db/DAORol');
-			$this->load->model('db/DAOTipoAyuda');
-			$this->load->model('db/DAOVereda');
+			$this->load->model('db/DAOUsuario');
 			$data = array(
-				'titulo' => 'Registro de usuarios administrativos',
-				'StyleView'=>$this->lib->style_regusuarios(), 
+				'titulo' => 'Usuarios',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
 				'Header' => $this->lib->print_header(),
-				'AccionForm' => base_url().'DAOUsuarioIMPL/insert',
-				'TextoBtn' => 'Registrar',
+				'table_grafic' => $this->DAOUsuario->getTablaVista(),
+				'mod_view' => 'accion/registrarUsuario',
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
-			$this->load->view('registro/viewUser', $data);
+			$this->load->view('viewTabla', $data);
 		}else{
 			header("Location: ".base_url());
 		}
-	}
-
-	public function registrarUsuario(){
-		if ($this->lib->tienePermiso(1)) {}
 	}
 
 	public function registrarUsuario(){
@@ -113,7 +100,21 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar los roles Permiso 3
 	public function roles(){
-
+		if ($this->lib->tienePermiso(3)) {
+			$this->load->model('db/DAORol');
+			$data = array(
+				'titulo' => 'Roles',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => $this->DAORol->getTablaVista(),
+				'mod_view' => 'accion/registrarRol',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function registrarRol(){
@@ -134,7 +135,21 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar los despachos Permiso 4
 	public function despachos(){
-
+		if ($this->lib->tienePermiso(4)) {
+			$this->load->model('db/DAODespacho');
+			$data = array(
+				'titulo' => 'Despachos',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => $this->DAODespacho->getTablaVista(),
+				'mod_view' => 'accion/registrarDespacho',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function registrarDespacho(){
@@ -190,7 +205,21 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar las veredas Permiso 6 
 	public function veredas(){
-
+		if ($this->lib->tienePermiso(6)) {
+			$this->load->model('db/DAOVereda');
+			$data = array(
+				'titulo' => 'Veredas',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => $this->DAOVereda->getTablaVista(),
+				'mod_view' => 'accion/registrarVereda',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function registrarVereda(){
@@ -211,7 +240,21 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar los corregimientos Permiso 7
 	public function corregimientos(){
-		
+		if ($this->lib->tienePermiso(7)) {
+			$this->load->model('db/DAOCorregimiento');
+			$data = array(
+				'titulo' => 'Corregimientos',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => $this->DAOCorregimiento->getTablaVista(),
+				'mod_view' => 'accion/registrarCorregimiento',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function registrarCorregimiento(){
@@ -232,33 +275,26 @@ class Accion extends CI_Controller
 
 	//Funciones para ejecutar los administradores Permiso 8
 	public function administradores(){
-
+		if ($this->lib->tienePermiso(8)) {
+			$this->load->model('db/DAOUsuario');
+			$data = array(
+				'titulo' => 'Usuarios Administradores',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'table_grafic' => $this->DAOUsuario->getTablaVistaAdmin(),
+				'mod_view' => 'accion/registrarUsuario',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('viewTabla', $data);
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 
 	public function definirAdmin(){
 		if ($this->lib->tienePermiso(8)) {
 			echo "11";
-		}else{
-			header("Location: ".base_url());
-		}
-	}
-
-	//Funciones par ejecutar los permisos Permiso 9
-	public function permisos(){
-
-	}
-
-	public function registrarPermiso(){
-		if ($this->lib->tienePermiso(9)) {
-			echo "16";
-		}else{
-			header("Location: ".base_url());
-		}
-	}
-
-	public function actualizarPermiso(){
-		if ($this->lib->tienePermiso(9)) {
-			echo "17";
 		}else{
 			header("Location: ".base_url());
 		}
