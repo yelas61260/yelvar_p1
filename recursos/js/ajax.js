@@ -1,3 +1,6 @@
+function abrir_ruta(param_ruta){
+	window.location= param_ruta;
+}
 function validateData(param_formName){
 	for(i=0; i<document.forms[param_formName].length; i++){
 		if(document.forms[param_formName][i].value == "" && document.forms[param_formName][i].hasAttribute('required')){
@@ -6,7 +9,7 @@ function validateData(param_formName){
 	}
 	return true;
 }
-function insert(param_formName){
+function insert_fun(param_formName){
 	if(validateData(param_formName)){
 		var strDAtos = "";
 		var datosExtra = unirExtra();
@@ -48,9 +51,9 @@ function insert(param_formName){
 		alertify.alert("Hay campos obligatorios sin completar<br>Por favor llene todos los campos.");
 	}
 }
-function edit(id){
+function edit_fun(id){
 	alertify.alert("Editando id "+id, function(){});
 }
-function delete(id){
+function delete_fun(id){
 	alertify.alert("Eliminando id "+id, function(){});
 }
