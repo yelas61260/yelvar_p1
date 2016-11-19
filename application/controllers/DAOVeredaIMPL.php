@@ -16,7 +16,8 @@ class DAOVeredaIMPL extends CI_Controller
 			$datos_array[1] = $this->input->post("p2");
 			$datos_array[2] = $this->input->post("p3");
 
-			echo $this->DAOVereda->insert($datos_array);
+			$this->DAOVereda->insert($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}
@@ -29,7 +30,8 @@ class DAOVeredaIMPL extends CI_Controller
 			$datos_array[1] = $this->input->post("p2");
 			$datos_array[2] = $this->input->post("p3");
 
-			echo $this->DAOVereda->update($datos_array);
+			$this->DAOVereda->update($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}

@@ -16,7 +16,8 @@ class DAODespachoIMPL extends CI_Controller
 			$datos_array[1] = $this->input->post("p2");
 			$datos_array[2] = $this->input->post("p3");
 
-			echo $this->DAODespacho->insert($datos_array);
+			$this->DAODespacho->insert($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}
@@ -29,7 +30,8 @@ class DAODespachoIMPL extends CI_Controller
 			$datos_array[1] = $this->input->post("p2");
 			$datos_array[2] = $this->input->post("p3");
 
-			echo $this->DAODespacho->update($datos_array);
+			$this->DAODespacho->update($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}

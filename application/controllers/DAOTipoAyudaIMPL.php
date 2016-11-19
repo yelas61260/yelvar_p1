@@ -14,8 +14,10 @@ class DAOTipoAyudaIMPL extends CI_Controller
 
 			$datos_array[0] = null;
 			$datos_array[1] = $this->input->post("p2");
+			$datos_array[2] = $this->input->post("p3");
 
-			echo $this->DAOTipoAyuda->insert($datos_array);
+			$this->DAOTipoAyuda->insert($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}
@@ -27,7 +29,8 @@ class DAOTipoAyudaIMPL extends CI_Controller
 			$datos_array[0] = $this->input->post("p1");
 			$datos_array[1] = $this->input->post("p2");
 
-			echo $this->DAOTipoAyuda->update($datos_array);
+			$this->DAOTipoAyuda->update($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}

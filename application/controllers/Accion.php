@@ -119,7 +119,16 @@ class Accion extends CI_Controller
 
 	public function registrarRol(){
 		if ($this->lib->tienePermiso(3)) {
-			echo "7";
+			$data = array(
+				'titulo' => 'Registro de roles',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAORolIMPL/insert',
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewRol', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -154,7 +163,16 @@ class Accion extends CI_Controller
 
 	public function registrarDespacho(){
 		if ($this->lib->tienePermiso(4)) {
-			echo "5";
+			$data = array(
+				'titulo' => 'Registro de despachos',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAODespachoIMPL/insert',
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewDespacho', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -189,7 +207,16 @@ class Accion extends CI_Controller
 
 	public function registrarAyuda(){
 		if ($this->lib->tienePermiso(5)) {
-			echo "9";
+			$data = array(
+				'titulo' => 'Registro de ayudas',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOTipoAyudaIMPL/insert',
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewAyuda', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -224,7 +251,18 @@ class Accion extends CI_Controller
 
 	public function registrarVereda(){
 		if ($this->lib->tienePermiso(6)) {
-			echo "12";
+			$this->load->model('db/DAOCorregimiento');
+			$data = array(
+				'titulo' => 'Registro de veredas',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOVeredaIMPL/insert',
+				'lista_corr' => $this->DAOCorregimiento->getList(),
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewVereda', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -259,7 +297,16 @@ class Accion extends CI_Controller
 
 	public function registrarCorregimiento(){
 		if ($this->lib->tienePermiso(7)) {
-			echo "14";
+			$data = array(
+				'titulo' => 'Registro de corregimientos',
+				'StyleView' => '',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOCorregimientoIMPL/insert',
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewCorregimiento', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -282,7 +329,7 @@ class Accion extends CI_Controller
 				'StyleView'=> $this->lib->css_js_tables_responsive(), 
 				'Header' => $this->lib->print_header(),
 				'table_grafic' => $this->DAOUsuario->getTablaVistaAdmin(),
-				'mod_view' => 'accion/registrarUsuario',
+				'mod_view' => 'accion/definirAdmin',
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);

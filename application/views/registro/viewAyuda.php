@@ -14,8 +14,14 @@
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
-						<div class="form-label"><label class="lblfayuda" for="p2">Manual de Ayuda<span>*</span></label></div>
+						<div class="form-label"><label class="lblfayuda" for="p2">Nombre de Ayuda<span>*</span></label></div>
 						<div class="form-input"><input class="inpfayuda" type="text" name="p2" id="p2" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label class="" for="p3">Descripción<span>*</span></label></div>
+						<div class="form-input"><input class="" type="textarea" name="p3" id="p3" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>

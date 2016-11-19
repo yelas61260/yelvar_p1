@@ -21,7 +21,7 @@
 				<tr>
 					<td>
 						<div class="form-label"><label for="p3">Corregimiento<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p3" id="p3" size="25" value="" required/></div>
+						<div class="form-input"><select name="p3" id="p3" required><?= $lista_corr ?></select></div>
 					</td>
 				</tr>
 				<tr>

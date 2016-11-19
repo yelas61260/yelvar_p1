@@ -15,7 +15,8 @@ class DAOCorregimientoIMPL extends CI_Controller
 			$datos_array[0] = null;
 			$datos_array[1] = $this->input->post("p2");
 
-			echo $this->DAOCorregimiento->insert($datos_array);
+			$this->DAOCorregimiento->insert($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}
@@ -27,7 +28,8 @@ class DAOCorregimientoIMPL extends CI_Controller
 			$datos_array[0] = $this->input->post("p1");
 			$datos_array[1] = $this->input->post("p2");
 
-			echo $this->DAOCorregimiento->update($datos_array);
+			$this->DAOCorregimiento->update($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}

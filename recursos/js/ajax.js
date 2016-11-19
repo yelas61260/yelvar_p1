@@ -9,7 +9,7 @@ function validateData(param_formName){
 	}
 	return true;
 }
-function insert_fun(param_formName){
+function create(param_ruta, param_formName){
 	if(validateData(param_formName)){
 		var strDAtos = "";
 		var datosExtra = unirExtra();
@@ -33,11 +33,11 @@ function insert_fun(param_formName){
 		alert(strDAtos);
 		$.ajax({
 			type: "POST",
-			url: param_ruta+"/jinsert",
+			url: param_ruta+"",
 			datatype: "html",
 			data: strDAtos,
 			success: function(data) {
-				//alert(data);
+				alert(data);
 				if(data == "OK"){
 					alertify.alert("Registro exitoso!", function () {
 						window.location.reload(true);
@@ -56,4 +56,13 @@ function edit_fun(id){
 }
 function delete_fun(id){
 	alertify.alert("Eliminando id "+id, function(){});
+}
+function unirExtra(){
+	var returnVal = new Array();
+	$("#extra tr").each(function(index){
+		if($(this).attr("valor") != undefined){
+			returnVal.push($(this).attr("valor"));
+		}
+	});
+	return returnVal.join(";");
 }

@@ -16,6 +16,7 @@ class DAOTipoAyuda extends CI_Model
 
 		self::$campos[0] = "id";
 		self::$campos[1] = "nombre";
+		self::$campos[2] = "descripcion";
 	}
 
 	public function insert($param){
@@ -35,7 +36,7 @@ class DAOTipoAyuda extends CI_Model
 	}
 
 	public function getTablaVista(){
-		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre", "Descripción"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
 	}
 	
 }
