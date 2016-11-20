@@ -4,10 +4,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $titulo ?></title>
-	<?= $StyleView ?>
 	</head>
 <body>
 	<?= $Header ?>
+	<?= $StyleView ?>
 	<div class="contentarea">
 		<div id="principalTabla"><!--DIV PRINCIPAL-->
 			<div id="div_tabla">

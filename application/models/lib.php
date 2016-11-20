@@ -25,7 +25,7 @@ class lib extends CI_Model
 			return false;
 		}
 	}
-	public function print_tabla($tablas, $encabezados, $campos, $aliasSQL, $condiciones, $ico=null, $acciones=null, $order_by=null){
+	public function print_tabla($tablas, $encabezados, $campos, $aliasSQL, $condiciones, $ico=null, $acciones=null, $eventos=null, $order_by=null){
 		$datosSQL = null;
 		$sentenciaSQL = "SELECT ";
 
@@ -89,7 +89,7 @@ class lib extends CI_Model
 			}
 			$length = count($acciones);
 			for ($i=0; $i < $length ; $i++) {
-				$content .= "<td><button onclick='".$acciones[$i]."(".$value[$aliasSQL[0]].")'><img src='".base_url()."recursos/pix/".$ico[$i].".png' width='25' height='25'></button></td>";
+				$content .= "<td><button onclick='".$acciones[$i]."_fun(".$value[$aliasSQL[0]].",\"".base_url().$eventos[$i]."\")'><img src='".base_url()."recursos/pix/".$ico[$i].".png' width='25' height='25'></button></td>";
 			}
 			$content .= "</tr>";
 		}

@@ -19,6 +19,10 @@ class DAOTipoAyuda extends CI_Model
 		self::$campos[2] = "descripcion";
 	}
 
+	public function getCampos(){
+		return self::$campos;
+	}
+
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
@@ -31,12 +35,16 @@ class DAOTipoAyuda extends CI_Model
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
+	public function getDataFormById($id){
+		return $this->db_con->findWhere(self::$tabla, ["*"], [self::$campos[0]."=".$id])[0];
+	}
+
 	public function getList(){
 		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
 	}
 
 	public function getTablaVista(){
-		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre", "Descripción"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre", "Descripción"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"], ["accion/actualizarAyuda","DAOTipoAyudaIMPL/delete_fun"]);
 	}
 	
 }

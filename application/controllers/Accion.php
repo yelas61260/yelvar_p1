@@ -46,9 +46,18 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarSolicitud(){
+	public function actualizarSolicitud($id){
 		if ($this->lib->tienePermiso(1)) {
-			echo "2";
+			$data = array(
+				'titulo' => 'Actualización de solicitud',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOSolicitudIMPL/getRecords", "form_solicitud")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOSolicitudIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewSolicitud', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -90,9 +99,18 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarUsuario(){
+	public function actualizarUsuario($id){
 		if ($this->lib->tienePermiso(2)) {
-			echo "4";
+			$data = array(
+				'titulo' => 'Actualización de usuarios',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOUsuarioIMPL/getRecords", "form_usuario")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOUsuarioIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewUser', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -134,9 +152,18 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarRol(){
+	public function actualizarRol($id){
 		if ($this->lib->tienePermiso(3)) {
-			echo "8";
+			$data = array(
+				'titulo' => 'Actualización de roles',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAORolIMPL/getRecords", "form_rol")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAORolIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewRol', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -178,9 +205,18 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarDespacho(){
+	public function actualizarDespacho($id){
 		if ($this->lib->tienePermiso(4)) {
-			echo "6";
+			$data = array(
+				'titulo' => 'Actualización de despachos',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAODespachoIMPL/getRecords", "form_despacho")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAODespachoIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewDespacho', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -222,9 +258,18 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarAyuda(){
+	public function actualizarAyuda($id){
 		if ($this->lib->tienePermiso(5)) {
-			echo "10";
+			$data = array(
+				'titulo' => 'Actualización de ayudas',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOTipoAyudaIMPL/getRecords", "form_ayuda")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOTipoAyudaIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewAyuda', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -268,9 +313,20 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarVereda(){
+	public function actualizarVereda($id){
 		if ($this->lib->tienePermiso(6)) {
-			echo "13";
+			$this->load->model('db/DAOCorregimiento');
+			$data = array(
+				'titulo' => 'Actualización de veredas',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOVeredaIMPL/getRecords", "form_vereda")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOVeredaIMPL/update',
+				'lista_corr' => $this->DAOCorregimiento->getList(),
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewVereda', $data);
 		}else{
 			header("Location: ".base_url());
 		}
@@ -312,9 +368,18 @@ class Accion extends CI_Controller
 		}
 	}
 
-	public function actualizarCorregimiento(){
+	public function actualizarCorregimiento($id){
 		if ($this->lib->tienePermiso(7)) {
-			echo "15";
+			$data = array(
+				'titulo' => 'Actualizaciòn de corregimientos',
+				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOCorregimientoIMPL/getRecords", "form_corregimiento")</script>',
+				'Header' => $this->lib->print_header(),
+				'AccionForm' => base_url().'DAOCorregimientoIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('registro/viewCorregimiento', $data);
 		}else{
 			header("Location: ".base_url());
 		}

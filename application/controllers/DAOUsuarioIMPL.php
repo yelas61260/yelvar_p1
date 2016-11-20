@@ -53,6 +53,14 @@ class DAOUsuarioIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function removeadmin($user_id){
+		if ($this->lib->tienePermiso(8)) {
+			$this->load->model('db/DAOUsuario');
+			$this->DAOUsuario->removeadmin($user_id);
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 	public function actionLogin(){
 		$this->load->model('db/DAOUsuario');
 
@@ -64,5 +72,23 @@ class DAOUsuarioIMPL extends CI_Controller
 	public function actionLongout(){
 		$this->session->sess_destroy();
 		header("Location: ".base_url());
+	}
+	public function getRecords(){
+		if ($this->lib->tienePermiso(7)) {
+			$this->load->model('db/DAOUsuario');
+
+			$etiquetas = $this->DAOUsuario->getCamposForm();
+			$datos = $this->DAOUsuario->getDataFormById($this->input->post("id"));
+			$datosSTR = "";
+
+			$tam = count($etiquetas);
+			for($i = 0; $i<$tam-1; $i++) {
+				$datosSTR .= $datos[$etiquetas[$i]].",";
+			}
+			$datosSTR .= $datos[$etiquetas[$tam-1]]."";
+			echo $datosSTR;
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 }

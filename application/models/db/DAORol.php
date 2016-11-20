@@ -38,12 +38,16 @@ class DAORol extends CI_Model
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
+	public function getDataFormById($id){
+		return $this->db_con->findWhere(self::$tabla, ["*"], [self::$campos[0]."=".$id])[0];
+	}
+
 	public function getList(){
 		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
 	}
 
 	public function getTablaVista(){
-		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"]);
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Nombre"], self::$campos, self::$campos, null, ["edit", "delete"], ["edit", "delete"], ["accion/actualizarRol","DAORolIMPL/delete_fun"]);
 	}
 	
 }

@@ -4,13 +4,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $titulo ?></title>
-	<?= $StyleView ?>
 	</head>
 <body>
 	<?= $Header ?>
+	<?= $StyleView ?>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
 		<form action="" method="post" name="form_usuario" id="form_usuario">
+			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
@@ -50,7 +51,7 @@
 				</tr>
 			</table>
 		</form>
-		<button class="accion_btn" id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button class="accion_btn" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

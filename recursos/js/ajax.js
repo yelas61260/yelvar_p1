@@ -9,7 +9,7 @@ function validateData(param_formName){
 	}
 	return true;
 }
-function create(param_ruta, param_formName){
+function createUpdate(param_ruta, param_formName){
 	if(validateData(param_formName)){
 		var strDAtos = "";
 		var datosExtra = unirExtra();
@@ -51,11 +51,46 @@ function create(param_ruta, param_formName){
 		alertify.alert("Hay campos obligatorios sin completar<br>Por favor llene todos los campos.");
 	}
 }
-function edit_fun(id){
-	alertify.alert("Editando id "+id, function(){});
+function read(id, param_ruta, param_formName){
+	var strDAtos = "id="+id;
+	var datosArray;
+	mostrando = false;
+	$.ajax({
+		type: "POST",
+		url: param_ruta,
+		datatype: "html",
+		data: strDAtos,
+		success: function(data) {
+			alert(data);
+			datosArray = data.split(",");
+			for(i=0; i<document.forms[param_formName].length; i++){
+				if(datosArray[i] != ""){
+					document.forms[param_formName][i].value = datosArray[i];
+				}
+			}
+		}
+	});
 }
-function delete_fun(id){
-	alertify.alert("Eliminando id "+id, function(){});
+function edit_fun(id, param_ruta){
+	abrir_ruta(param_ruta+"/"+id);
+}
+function delete_fun(id, param_ruta){
+	alertify.confirm("¿Esta seguro de eliminar el registro?", function (e){
+		if (e){// validacion de eliminar
+			var strDAtos = "id="+paramId;
+			$.ajax({
+				type: "POST",
+				url: param_ruta,
+				datatype: "html",
+				data: strDAtos,
+				success: function(data) {
+					//alert(data);
+					window.location.reload(true);
+				}
+			});
+		}else{
+		}
+	});
 }
 function unirExtra(){
 	var returnVal = new Array();

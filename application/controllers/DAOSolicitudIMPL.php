@@ -46,4 +46,22 @@ class DAOSolicitudIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function getRecords(){
+		if ($this->lib->tienePermiso(7)) {
+			$this->load->model('db/DAOSolicitud');
+
+			$etiquetas = $this->DAOSolicitud->getCampos();
+			$datos = $this->DAOSolicitud->getDataFormById($this->input->post("id"));
+			$datosSTR = "";
+
+			$tam = count($etiquetas);
+			for($i = 0; $i<$tam-1; $i++) {
+				$datosSTR .= $datos[$etiquetas[$i]].",";
+			}
+			$datosSTR .= $datos[$etiquetas[$tam-1]]."";
+			echo $datosSTR;
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 }

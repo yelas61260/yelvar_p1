@@ -61,7 +61,7 @@ class db_con extends CI_Model {
 			for ($i=0; $i < $tamCond-1; $i++) { 
 				$sentenciaSQL .= " ".$condicion[$i]." AND ";
 			}
-			$sentenciaSQL .= $condicion[$tamCond-1];
+			$sentenciaSQL .= " ".$condicion[$tamCond-1];
 		}
 
 		if ($order_by == null) {

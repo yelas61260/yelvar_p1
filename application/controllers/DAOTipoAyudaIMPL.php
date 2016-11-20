@@ -28,9 +28,28 @@ class DAOTipoAyudaIMPL extends CI_Controller
 
 			$datos_array[0] = $this->input->post("p1");
 			$datos_array[1] = $this->input->post("p2");
+			$datos_array[2] = $this->input->post("p3");
 
 			$this->DAOTipoAyuda->update($datos_array);
 			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
+	public function getRecords(){
+		if ($this->lib->tienePermiso(7)) {
+			$this->load->model('db/DAOTipoAyuda');
+
+			$etiquetas = $this->DAOTipoAyuda->getCampos();
+			$datos = $this->DAOTipoAyuda->getDataFormById($this->input->post("id"));
+			$datosSTR = "";
+
+			$tam = count($etiquetas);
+			for($i = 0; $i<$tam-1; $i++) {
+				$datosSTR .= $datos[$etiquetas[$i]].",";
+			}
+			$datosSTR .= $datos[$etiquetas[$tam-1]]."";
+			echo $datosSTR;
 		}else{
 			header("Location: ".base_url());
 		}

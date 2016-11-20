@@ -28,12 +28,16 @@ class DAOUsuario extends CI_Model
 		return self::$campos;
 	}
 
+	public function getCamposForm(){
+		return [self::$campos[0],self::$campos[1],self::$campos[2],self::$campos[2],self::$campos[3],self::$campos[4],self::$campos[5]];
+	}
+
 	public function insert($param){
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
 
 	public function update($param){
-		return $this->db_con->update(self::$tabla, [self::$campos[1],self::$campos[2],self::$campos[3],self::$campos[4],self::$campos[5],self::$campos[7]], $param, array(self::$campos[0]), array($param[0]));
+		return $this->db_con->update(self::$tabla, [self::$campos[0],self::$campos[1],self::$campos[2],self::$campos[3],self::$campos[4],self::$campos[5],self::$campos[7]], $param, array(self::$campos[0]), array($param[0]));
 	}
 
 	public function getUserAuth($user, $pass){
@@ -68,12 +72,20 @@ class DAOUsuario extends CI_Model
 		$this->db_con->insert($this->DAOUsuarioRol->getTabla(), $this->DAOUsuarioRol->getCampos(), array(2, $user_id));
 	}
 
+	public function removeadmin($user_id){
+		$this->load->model('db/DAOUsuarioRol');
+	}
+
 	public function getRecords(){
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[3]);
 	}
 
+	public function getDataFormById($id){
+		return $this->db_con->findWhere(self::$tabla, ["*"], [self::$campos[0]."=".$id])[0];
+	}
+
 	public function getTablaVista(){
-		return $this->lib->print_tabla([self::$tabla], ["ID", "Usuario", "Cedula", "Nombre", "Apellido"], self::$campos, [self::$campos[0],self::$campos[1],self::$campos[3],self::$campos[4],self::$campos[5]], null, ["edit", "delete"], ["edit", "delete"]);
+		return $this->lib->print_tabla([self::$tabla], ["ID", "Usuario", "Cedula", "Nombre", "Apellido"], self::$campos, [self::$campos[0],self::$campos[1],self::$campos[3],self::$campos[4],self::$campos[5]], null, ["edit", "delete"], ["edit", "delete"], ["accion/actualizarUsuario","DAOUsuarioIMPL/delete_fun"]);
 	}
 
 	public function getTablaVistaAdmin(){
@@ -87,6 +99,6 @@ class DAOUsuario extends CI_Model
 			["t1.".self::$campos[0],"t1.".self::$campos[1],"t1.".self::$campos[3],"t1.".self::$campos[4],"t1.".self::$campos[5]],
 			[self::$campos[0],self::$campos[1],self::$campos[3],self::$campos[4],self::$campos[5]],
 			["t1.".self::$campos[0]."=t3.".$camposRU[1],"t2.".$camposRol[0]."=t3.".$camposRU[2],"(t2.".$camposRol[1]."='Admin' OR t2.".$camposRol[1]."='SuperAdmin')"],
-			["noAdmin"], ["noAdmin"]);
+			["delete"], ["noAdmin"], ["DAOUsuarioIMPL/removeadmin"]);
 	}
 }

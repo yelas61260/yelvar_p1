@@ -4,13 +4,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $titulo ?></title>
-	<?= $StyleView ?>
 	</head>
 <body>
 	<?= $Header ?>
+	<?= $StyleView ?>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
 		<form action="" method="post" name="form_rol" id="form_rol">
+			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
@@ -22,7 +23,7 @@
 				</tr>
 			</table>
 		</form>
-		<button id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_rol')"/><?= $TextoBtn ?></button>
+		<button id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_rol')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

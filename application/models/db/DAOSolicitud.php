@@ -41,6 +41,10 @@ class DAOSolicitud extends CI_Model
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
+	public function getDataFormById($id){
+		return $this->db_con->findWhere(self::$tabla, ["*"], [self::$campos[0]."=".$id])[0];
+	}
+
 	public function getTablaVista(){
 		$this->load->model('db/DAOSolicitante');
 		$cmpSolicitante = $this->DAOSolicitante->getCampos();
@@ -56,7 +60,7 @@ class DAOSolicitud extends CI_Model
 			["t1.".self::$campos[0],"t1.".self::$campos[1],"CONCAT(t2.".$cmpSolicitante[2].", t2.".$cmpSolicitante[3].") AS solicitante","CONCAT(t3.".$cmpUsuarios[4].", t3.".$cmpUsuarios[5].") AS colaborador","t4.".$cmpDespacho[1]." AS despacho"],
 			[self::$campos[0],self::$campos[1],"solicitante","colaborador","despacho"],
 			["t1.".self::$campos[2]."=t2.".$cmpSolicitante[0],"t1.".self::$campos[3]."=t3.".$cmpUsuarios[0],"t1.".self::$campos[4]."=t4.".$cmpDespacho[0],"t1.".self::$campos[2]."=t5.".$cmpEstado[0]],
-			["edit", "delete"], ["edit", "delete"]);
+			["edit", "delete"], ["edit", "delete"], ["accion/actualizarSolicitud","DAOSolicitudIMPL/delete_fun"]);
 	}
 	
 }
