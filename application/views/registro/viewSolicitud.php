@@ -20,32 +20,50 @@
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p2">Cédula<span>*</span></label></div>
+						<div class="form-label"><label for="p2">Cédula<span>*</span></label><button id="buscar_btn" onclick=""/>Buscar</button></div>
 						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="form-label"><label for="p3">Nombres<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-input"><input type="text" name="p3" id="p3" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="form-label"><label for="p4">Apellidos<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-input"><input type="text" name="p4" id="p4" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p5">Dirección<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p5">Teléfono<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p5" id="p5" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p6">Teléfono<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p6">Dirección<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p6" id="p6" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p7">Vereda<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p7" id="p7" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p8">Email<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p8" id="p8" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p9" id="p9" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
@@ -55,32 +73,32 @@
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p8">Nombre<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p10">Nombre<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p10" id="p10" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p9">Despacho<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p11">Despacho<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p11" id="p11" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p2">Tipo<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p12">Tipo<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p12" id="p12" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p2">Estado<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p13">Estado<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p13" id="p13" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p2">Descripción<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p14">Descripción<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p14" id="p14" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>

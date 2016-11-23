@@ -18,7 +18,7 @@ class Accion extends CI_Controller
 				'StyleView'=> $this->lib->css_js_tables_responsive(), 
 				'Header' => $this->lib->print_header(),
 				'table_grafic' => $this->DAOSolicitud->getTablaVista(),
-				'mod_view' => '',
+				'mod_view' => 'accion/registrarSolicitud',
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
@@ -30,14 +30,14 @@ class Accion extends CI_Controller
 
 	public function registrarSolicitud(){
 		if ($this->lib->tienePermiso(1)) {
-			$this->load->model('db/DAOVereda');
+			$this->load->model('db/DAOSolicitud');
 			$data = array(
 				'titulo' => 'Peticion',
-				'StyleView'=>$this->lib->style_solicitud(),
-				'titulo' => 'prueba',
-				'StyleView' => '',
 				'Header' => $this->lib->print_header(),
-				'list1' => $this->DAOVereda->getList(),
+				'StyleView' => '',
+				'AccionForm' => base_url().'DAOSolicitudIMPL/insert',
+				'TextoBtn' => 'Registrar',
+				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
 			$this->load->view('registro/viewSolicitud', $data);

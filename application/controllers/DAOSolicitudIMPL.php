@@ -11,18 +11,40 @@ class DAOSolicitudIMPL extends CI_Controller
 	public function insert(){
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitud');
+			$this->load->model('db/DAOSolicitante');
 
-			$datos_array[0] = null;
-			$datos_array[1] = $this->input->post("p2");
-			$datos_array[2] = $this->input->post("p3");
-			$datos_array[3] = $this->input->post("p4");
-			$datos_array[4] = $this->input->post("p5");
-			$datos_array[5] = $this->input->post("p6");
-			$datos_array[6] = $this->input->post("p7");
-			$datos_array[7] = $this->input->post("p8");
-			$datos_array[8] = $this->input->post("p9");
+			$id_solicitante = 0;
+			$obj_solicitante = $this->DAOSolicitante->getByCedula($this->input->post("p2"));
+			if($obj_solicitante == null){
+				$datos1_array[0] = null;
+				$datos1_array[1] = $this->input->post("p2");
+				$datos1_array[2] = $this->input->post("p3");
+				$datos1_array[3] = $this->input->post("p4");
+				$datos1_array[4] = $this->input->post("p5");
+				$datos1_array[5] = $this->input->post("p6");
+				$datos1_array[6] = $this->input->post("p7");
+				$datos1_array[7] = $this->input->post("p8");
+				$datos1_array[8] = $this->input->post("p9");
+				$datos1_array[9] = time();
+				$datos1_array[10] = time();
+				$id_solicitante = $this->DAOSolicitante->insert($datos1_array);
+			}else{
+				$id_solicitante = $obj_solicitante["id"];
+			}
+			
 
-			echo $this->DAOSolicitud->insert($datos_array);
+			$datos2_array[0] = null;
+			$datos2_array[1] = $this->input->post("p10");
+			$datos2_array[2] = $id_solicitante;
+			$datos2_array[3] = $this->session->userdata("id");
+			$datos2_array[4] = $this->input->post("p11");
+			$datos2_array[5] = $this->input->post("p12");
+			$datos2_array[6] = time();
+			$datos2_array[7] = $this->input->post("p13");
+			$datos2_array[8] = $this->input->post("p14");
+
+			$this->DAOSolicitud->insert($datos2_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}
@@ -30,18 +52,22 @@ class DAOSolicitudIMPL extends CI_Controller
 	public function update(){
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitud');
+			$this->load->model('db/DAOSolicitante');
 
-			$datos_array[0] = $this->input->post("p1");
-			$datos_array[1] = $this->input->post("p2");
-			$datos_array[2] = $this->input->post("p3");
-			$datos_array[3] = $this->input->post("p4");
-			$datos_array[4] = $this->input->post("p5");
-			$datos_array[5] = $this->input->post("p6");
-			$datos_array[6] = $this->input->post("p7");
-			$datos_array[7] = $this->input->post("p8");
-			$datos_array[8] = $this->input->post("p9");
+			$obj_solicitante = $this->DAOSolicitante->getByCedula($this->input->post("p2"));
 
-			echo $this->DAOSolicitud->update($datos_array);
+			$datos2_array[0] = $this->input->post("p1");
+			$datos2_array[1] = $this->input->post("p10");
+			$datos2_array[2] = $obj_solicitante["id"];
+			$datos2_array[3] = $this->session->userdata("id");
+			$datos2_array[4] = $this->input->post("p11");
+			$datos2_array[5] = $this->input->post("p12");
+			$datos2_array[6] = time();
+			$datos2_array[7] = $this->input->post("p13");
+			$datos2_array[8] = $this->input->post("p14");
+
+			$this->DAOSolicitud->update($datos2_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}

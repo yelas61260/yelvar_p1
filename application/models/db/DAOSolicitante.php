@@ -43,4 +43,13 @@ class DAOSolicitante extends CI_Model
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
+	public function getByCedula($cedula){
+		$result = $this->db_con->findWhere(self::$tabla, self::$campos, [self::$campos[1]."=".$cedula]);
+		if (count($result)>0) {
+			return $result[0];
+		}else{
+			return null;
+		}
+	}
+
 }
