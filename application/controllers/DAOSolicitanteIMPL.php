@@ -50,4 +50,8 @@ class DAOSolicitanteIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function getRecords(){
+		if ($this->lib->tienePermiso(1)) {
+		}
+	}
 }
