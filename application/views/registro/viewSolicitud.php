@@ -10,17 +10,20 @@
 	<?= $StyleView ?>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
+		<div class="header-sec-form"><span>Datos del solicitante</span></div>
+		<button class="form_button">Buscar Solicitante</button>
+		<button class="form_button">Actualizar Solicitante</button>
 		<form action="" method="post" name="form_solicitud" id="form_solicitud">
 			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
-						<div class="header-sec-form"><span>Datos del solicitante</span></div>
+						
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p2">Cédula<span>*</span></label><button id="buscar_btn" onclick=""/>Buscar</button></div>
+						<div class="form-label"><label for="p2">Cédula<span>*</span></label></div>
 						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
 					</td>
 				</tr>
@@ -63,7 +66,8 @@
 				<tr>
 					<td>
 						<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p9" id="p9" size="25" value="" required/></div>
+						<div class="foto-imag"><img src=""></div>
+						<div class="form-input"><input type="hidden" name="p9" id="p9" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
