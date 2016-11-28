@@ -31,6 +31,10 @@ class Accion extends CI_Controller
 	public function registrarSolicitud(){
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitud');
+			$this->load->model('db/DAOVereda');
+			$this->load->model('db/DAODespacho');
+			$this->load->model('db/DAOTipoAyuda');
+			$this->load->model('db/DAOEstado');
 			$data = array(
 				'titulo' => 'Peticion',
 				'Header' => $this->lib->print_header(),
@@ -38,7 +42,11 @@ class Accion extends CI_Controller
 				'AccionForm' => base_url().'DAOSolicitudIMPL/insert',
 				'TextoBtn' => 'Registrar',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'list_vereda' => $this->DAOVereda->getList(),
+				'list_despacho' => $this->DAODespacho->getList(),
+				'list_tipo' => $this->DAOTipoAyuda->getList(),
+				'list_estado' => $this->DAOEstado->getList()
 				);
 			$this->load->view('registro/viewSolicitud', $data);
 		}else{
@@ -48,6 +56,11 @@ class Accion extends CI_Controller
 
 	public function actualizarSolicitud($id){
 		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOSolicitud');
+			$this->load->model('db/DAOVereda');
+			$this->load->model('db/DAODespacho');
+			$this->load->model('db/DAOTipoAyuda');
+			$this->load->model('db/DAOEstado');
 			$data = array(
 				'titulo' => 'Actualización de solicitud',
 				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOSolicitudIMPL/getRecords", "form_solicitud")</script>',
@@ -55,9 +68,28 @@ class Accion extends CI_Controller
 				'AccionForm' => base_url().'DAOSolicitudIMPL/update',
 				'TextoBtn' => 'Actualizar',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'list_vereda' => $this->DAOVereda->getList(),
+				'list_despacho' => $this->DAODespacho->getList(),
+				'list_tipo' => $this->DAOTipoAyuda->getList(),
+				'list_estado' => $this->DAOEstado->getList()
 				);
 			$this->load->view('registro/viewSolicitud', $data);
+		}else{
+			header("Location: ".base_url());
+		}
+	}
+
+	public function actualizarSolicitante($id){
+		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOVereda');
+			$data = array(
+				'StyleView' => $this->lib->style_js_general().'<script>read('.$id.', "'.base_url().'DAOSolicitanteIMPL/getRecords", "form_solicitante")</script>',
+				'AccionForm' => base_url().'DAOSolicitanteIMPL/update',
+				'TextoBtn' => 'Actualizar',
+				'list_vereda' => $this->DAOVereda->getList()
+				);
+			$this->load->view('registro/viewSolicitante', $data);
 		}else{
 			header("Location: ".base_url());
 		}

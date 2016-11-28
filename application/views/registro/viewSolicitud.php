@@ -8,6 +8,9 @@
 <body>
 	<?= $Header ?>
 	<?= $StyleView ?>
+	<div class="modal">
+		<iframe src="<?= $update_solicitante; ?>"></iframe>
+	</div>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
@@ -54,7 +57,7 @@
 				<tr>
 					<td>
 						<div class="form-label"><label for="p7">Vereda<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p7" id="p7" size="25" value="" required/></div>
+						<div class="form-input"><select name="p7" id="p7" required><?= $list_vereda ?></select></div>
 					</td>
 				</tr>
 				<tr>
@@ -84,19 +87,19 @@
 				<tr>
 					<td>
 						<div class="form-label"><label for="p11">Despacho<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p11" id="p11" size="25" value="" required/></div>
+						<div class="form-input"><select name="p11" id="p11" required><?= $list_despacho ?></select></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="form-label"><label for="p12">Tipo<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p12" id="p12" size="25" value="" required/></div>
+						<div class="form-input"><select name="p12" id="p12" required><?= $list_tipo ?></select></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div class="form-label"><label for="p13">Estado<span>*</span></label></div>
-						<div class="form-input"><input type="text" name="p13" id="p13" size="25" value="" required/></div>
+						<div class="form-input"><select name="p13" id="p13" required><?= $list_estado ?></select></div>
 					</td>
 				</tr>
 				<tr>

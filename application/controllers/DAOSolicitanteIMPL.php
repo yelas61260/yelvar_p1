@@ -21,8 +21,6 @@ class DAOSolicitanteIMPL extends CI_Controller
 			$datos_array[6] = $this->input->post("p7");
 			$datos_array[7] = $this->input->post("p8");
 			$datos_array[8] = $this->input->post("p9");
-			$datos_array[9] = $this->input->post("p10");
-			$datos_array[10] = $this->input->post("p11");
 
 			echo $this->DAOSolicitante->insert($datos_array);
 		}else{
@@ -42,8 +40,6 @@ class DAOSolicitanteIMPL extends CI_Controller
 			$datos_array[6] = $this->input->post("p7");
 			$datos_array[7] = $this->input->post("p8");
 			$datos_array[8] = $this->input->post("p9");
-			$datos_array[9] = $this->input->post("p10");
-			$datos_array[10] = $this->input->post("p11");
 
 			echo $this->DAOSolicitante->update($datos_array);
 		}else{
@@ -52,6 +48,21 @@ class DAOSolicitanteIMPL extends CI_Controller
 	}
 	public function getRecords(){
 		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOSolicitante');
+
+			$etiquetas_solicitante = $this->DAOSolicitante->getCamposForm();
+			$datos_solicitante = $this->DAOSolicitante->getDataFormById($this->input->post("id"));
+
+			$datosSTR = "";
+
+			$tam = count($etiquetas_solicitante);
+			for($i = 0; $i<$tam-1; $i++) {
+				$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$i]].",";
+			}
+			$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$tam-1]]."";
+			echo $datosSTR;
+		}else{
+			header("Location: ".base_url());
 		}
 	}
 }

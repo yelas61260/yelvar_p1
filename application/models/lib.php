@@ -123,14 +123,7 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function print_header(){
-		$content = '';
-		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/general.css'>";
-		$content .= "<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/alertify.core.css' />";
-		$content .= "<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/alertify.default.css' />";
-		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/jquery-1.7.1.min.js'></script>";
-		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/jquery.js'></script>";
-		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/alertify.js'></script>";
-		$content .="<script type='text/javascript' src='".base_url()."recursos/js/ajax.js'></script>";
+		$content = self::style_js_general();
 		$content .= "<div class='header'>";
 		$content .= "<div id='logo_img'><img src='".base_url()."recursos/pix/logo.png'/></div>";
 		$content .= "<div id='menu'><div class='punta_menu'></div><div class='menuitems'>";
@@ -146,6 +139,17 @@ class lib extends CI_Model
 	}
 	public function print_chat(){
 		return "chat";
+	}
+	public function style_js_general(){
+		$content = '';
+		$content .= "<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/general.css'>";
+		$content .= "<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/alertify.core.css' />";
+		$content .= "<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/alertify.default.css' />";
+		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/jquery-1.7.1.min.js'></script>";
+		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/jquery.js'></script>";
+		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/alertify.js'></script>";
+		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/ajax.js'></script>";
+		return $content;
 	}
 	public function style_login(){
 		$content = '';
