@@ -9,7 +9,7 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="modal">
-		<iframe src="<?= $update_solicitante; ?>"></iframe>
+		<iframe id="solicitante" url="<?= base_url(); ?>accion/actualizarSolicitante/" src=""></iframe>
 	</div>
 	<div class="contentarea">
 		<div><?= $titulo ?></div>
@@ -70,7 +70,7 @@
 					<td>
 						<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
 						<div class="foto-imag"><img src=""></div>
-						<div class="form-input"><input type="hidden" name="p9" id="p9" size="25" value="" required/></div>
+						<div class="form-input"><input type="hidden" name="p9" id="p9" size="25" value=""/></div>
 					</td>
 				</tr>
 				<tr>

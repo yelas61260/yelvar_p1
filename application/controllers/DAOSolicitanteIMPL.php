@@ -51,7 +51,7 @@ class DAOSolicitanteIMPL extends CI_Controller
 			$this->load->model('db/DAOSolicitante');
 
 			$etiquetas_solicitante = $this->DAOSolicitante->getCamposForm();
-			$datos_solicitante = $this->DAOSolicitante->getDataFormById($this->input->post("id"));
+			$datos_solicitante = $this->DAOSolicitante->getByCedula($this->input->post("id"));
 
 			$datosSTR = "";
 

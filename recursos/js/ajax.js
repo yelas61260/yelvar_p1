@@ -61,8 +61,10 @@ function read(id, param_ruta, param_formName){
 		datatype: "html",
 		data: strDAtos,
 		success: function(data) {
-			alert(data);
 			datosArray = data.split(",");
+			if (param_formName == "form_solicitud") {
+				$("#solicitante").attr("src", $("#solicitante").attr("url")+""+datosArray[1]);
+			}
 			for(i=0; i<document.forms[param_formName].length; i++){
 				if(datosArray[i] != ""){
 					document.forms[param_formName][i].value = datosArray[i];
@@ -70,6 +72,9 @@ function read(id, param_ruta, param_formName){
 			}
 		}
 	});
+}
+function read_solicitante(id){
+
 }
 function edit_fun(id, param_ruta){
 	abrir_ruta(param_ruta+"/"+id);
