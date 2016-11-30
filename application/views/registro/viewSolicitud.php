@@ -8,17 +8,17 @@
 <body>
 	<?= $Header ?>
 	<?= $StyleView ?>
-	<div class="modal">
+	<div class="modal_solicitante">
 		<iframe id="solicitante" url="<?= base_url(); ?>accion/actualizarSolicitante/" src=""></iframe>
 	</div>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
+		<div class="title_main"><?= $titulo ?></div>
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
 		<button class="form_button">Buscar Solicitante</button>
 		<button class="form_button">Actualizar Solicitante</button>
 		<form action="" method="post" name="form_solicitud" id="form_solicitud">
 			<input type="hidden" name="p1" id="p1" value="">
-			<table class="form_header" id="tab_datos">
+			<table class="form_table" id="tab_datos">
 				<tr>
 					<td>
 						

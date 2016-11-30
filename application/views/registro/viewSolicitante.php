@@ -1,7 +1,7 @@
 <?= $StyleView ?>
 <form action="" method="post" name="form_solicitante" id="form_solicitante">
 	<input type="hidden" name="p1" id="p1" value="">
-	<table class="form_header" id="tab_datos">
+	<table class="form_table" id="tab_datos">
 		<tr>
 			<td>
 				<div class="form-label"><label for="p2">Cédula<span>*</span></label></div>

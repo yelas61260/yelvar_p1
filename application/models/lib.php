@@ -169,7 +169,10 @@ class lib extends CI_Model
 		return $content;
 	}
 
-	public function style_solicitud(){
+	public function style_js_solicitud(){
+		$content = '';
+		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/say-cheese.js'></script>";
+		return $content;
 	}
 	
 	public function css_js_tables_responsive(){

@@ -223,9 +223,46 @@ input.inptformc{
 	left: 35%;
 	transform: translate(-50%, -50%);
 }
-
-
-
-
-
-
+.form_table td{
+	padding-top: 10px;
+}
+.modal_solicitante{
+	display: none;
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    background: rgba(0,0,0,0.8);
+    top: 0;
+    text-align: center;
+    padding-top: 50px;
+}
+.modal_solicitante iframe{
+	width: 700px;
+    height: 450px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
+    margin: auto;
+}
+.contentarea {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.title_main{
+	background: #FCC324;
+	text-align: center;
+	font-weight: bold;
+	color: #FFF;
+	padding: 10px;
+}
+.header-sec-form{
+	background: #50A63F;
+	font-weight: bold;
+	color: #FFF;
+	padding: 10px;
+}
+.form_table{
+	width: 100%;
+}
