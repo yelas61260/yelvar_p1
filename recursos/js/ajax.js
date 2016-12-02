@@ -63,7 +63,7 @@ function read(id, param_ruta, param_formName){
 		success: function(data) {
 			datosArray = data.split(",");
 			if (param_formName == "form_solicitud") {
-				$("#solicitante").attr("src", $("#solicitante").attr("url")+""+datosArray[1]);
+				$("#img_sol").attr("src", datosArray[8]);
 			}
 			for(i=0; i<document.forms[param_formName].length; i++){
 				if(datosArray[i] != ""){

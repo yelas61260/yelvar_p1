@@ -172,6 +172,7 @@ class lib extends CI_Model
 	public function style_js_solicitud(){
 		$content = '';
 		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/say-cheese.js'></script>";
+		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/camara.js'></script>";
 		return $content;
 	}
 	

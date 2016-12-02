@@ -16,9 +16,15 @@
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
 		<button class="form_button">Buscar Solicitante</button>
 		<button class="form_button">Actualizar Solicitante</button>
+		<div class="cuadro_foto">
+			<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
+			<div class="foto-imag"><div id="cam_sol"></div><div id="img_sol"></div></div>
+			<button id="foto_btn" onclick="tomarFoto()"/>Tomar Foto</button>
+		</div>
 		<form action="" method="post" name="form_solicitud" id="form_solicitud">
 			<input type="hidden" name="p1" id="p1" value="">
-			<table class="form_table" id="tab_datos">
+			<table class="form_table" id="tab_datos_solicitante">
+				<tbody>
 				<tr>
 					<td>
 						
@@ -67,17 +73,16 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
-						<div class="foto-imag"><img src=""></div>
+					<td>	
 						<div class="form-input"><input type="hidden" name="p9" id="p9" size="25" value=""/></div>
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<div class="header-sec-form"><span>Datos de petición</span></div>
-					</td>
-				</tr>
+				</tbody>
+			</table>
+			
+			<div class="header-sec-form"><span>Datos de petición</span></div>
+			<table class="form_table" id="tab_datos_solicitud">
+				<tbody>
 				<tr>
 					<td>
 						<div class="form-label"><label for="p10">Nombre<span>*</span></label></div>
@@ -110,6 +115,7 @@
 				</tr>
 				<tr>
 				</tr>
+				</tbody>
 			</table>
 		</form>
 		<button id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_solicitud')"/><?= $TextoBtn ?></button>

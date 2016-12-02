@@ -38,7 +38,7 @@ class Accion extends CI_Controller
 			$data = array(
 				'titulo' => 'Peticion',
 				'Header' => $this->lib->print_header(),
-				'StyleView' => '',
+				'StyleView' => $this->lib->style_js_solicitud().'',
 				'AccionForm' => base_url().'DAOSolicitudIMPL/insert',
 				'TextoBtn' => 'Registrar',
 				'Chat' => $this->lib->print_chat(),
@@ -63,7 +63,7 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAOEstado');
 			$data = array(
 				'titulo' => 'Actualización de solicitud',
-				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOSolicitudIMPL/getRecords", "form_solicitud")</script>',
+				'StyleView' => $this->lib->style_js_solicitud().'<script>read('.$id.', "'.base_url().'DAOSolicitudIMPL/getRecords", "form_solicitud")</script>',
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAOSolicitudIMPL/update',
 				'TextoBtn' => 'Actualizar',
@@ -84,7 +84,7 @@ class Accion extends CI_Controller
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOVereda');
 			$data = array(
-				'StyleView' => $this->lib->style_js_general().'<script>read('.$id.', "'.base_url().'DAOSolicitanteIMPL/getRecords", "form_solicitante")</script>',
+				'StyleView' => $this->lib->style_js_general().$this->lib->style_js_solicitud().'<script>read('.$id.', "'.base_url().'DAOSolicitanteIMPL/getRecords", "form_solicitante")</script>',
 				'AccionForm' => base_url().'DAOSolicitanteIMPL/update',
 				'TextoBtn' => 'Actualizar',
 				'list_vereda' => $this->DAOVereda->getList()

@@ -42,7 +42,8 @@ var SayCheese = (function() {
             videoSource: null,
             snapshots: true,
             audio: false,
-            width: 320
+            width: 280,
+            height: 280
         };
 
         this.setOptions(options);
@@ -91,7 +92,7 @@ var SayCheese = (function() {
 
     SayCheese.prototype.createVideo = function createVideo() {
         var width     = this.options.width,
-            height    = 0,
+            height    = this.options.height,
             streaming = false;
 
         this.video = document.createElement('video');
