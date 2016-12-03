@@ -9,6 +9,9 @@ class lib extends CI_Model
 	{
 		parent::__construct();
 	}
+	public function separador(){
+		return "|yv|";
+	}
 	public function tienePermiso($id_permiso){
 		if(empty($this->session->userdata("id"))){
 			return false;

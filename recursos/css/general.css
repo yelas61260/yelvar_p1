@@ -51,7 +51,6 @@ li.btnMenu {
 #salir_btn {
     float: right;
 }
-
 .accion_btn{
 	width:135px;
 	height:50px;
@@ -70,17 +69,13 @@ li.btnMenu {
 	color:#FFFFFF;
 	font-size:10pt;
 	font-weight:bold;
-}
-	
+}	
 .accion_btn:hover{
 	background:#3a3a3a;
 }
-
 /* Boton General */
-
 button.guardar_btn {
 	width:135px;
-
 	height:50px;
 	position: absolute;
 	top: 90%;
@@ -97,14 +92,11 @@ button.guardar_btn {
 	color:#FFFFFF;
 	font-size:10pt;
 	font-weight:bold;
-	}
-	
+}
 button.guardar_btn:hover{
 	background:#3a3a3a;
-	}
-
+}
 /* Formulario viewAdmin */
-
 form.form_usuario{
 	background:#FFBF00;
 	width:361px;
@@ -118,9 +110,7 @@ form.form_usuario{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	}
-
-
+}
 label.lblform{
 	font-size: 20px;
 	font-weight: bold;
@@ -128,9 +118,7 @@ label.lblform{
 	top: 10%;
 	left: 20%;
 	transform: translate(-50%, -50%);
-
-	}
-
+}
 input.inpform{
 	width:220px;
 	height:35px;
@@ -142,10 +130,8 @@ input.inpform{
 	top: 15%;
 	left: 35%;
 	transform: translate(-50%, -50%);
-}
-	
+}	
 /* Formulario viewAyuda */
-
 form.form_ayuda{
 	background:#FFBF00;
 	width:361px;
@@ -159,8 +145,7 @@ form.form_ayuda{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	}
-
+}
 label.lblfayuda{
 	font-size: 20px;
 	font-weight: bold;
@@ -168,9 +153,7 @@ label.lblfayuda{
 	top: 10%;
 	left: 32%;
 	transform: translate(-50%, -50%);
-
-	}
-
+}
 input.inpfayuda{
 	width:220px;
 	height:35px;
@@ -183,9 +166,7 @@ input.inpfayuda{
 	left: 35%;
 	transform: translate(-50%, -50%);
 }
-
 /* Formulario viewCorregimiento */
-
 form.form_corregimiento{
 	background:#FFBF00;
 	width:361px;
@@ -199,8 +180,7 @@ form.form_corregimiento{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	}
-
+}
 label.lblformc{
 	font-size: 20px;
 	font-weight: bold;
@@ -208,9 +188,7 @@ label.lblformc{
 	top: 10%;
 	left: 28%;
 	transform: translate(-50%, -50%);
-
-	}
-
+}
 input.inptformc{
 	width:220px;
 	height:35px;

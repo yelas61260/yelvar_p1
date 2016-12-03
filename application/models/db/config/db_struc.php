@@ -21,6 +21,7 @@ class db_struc extends CI_Model {
 		self::$tablas[9] = "usuarios_roles";
 		self::$tablas[10] = "vereda";
 		self::$tablas[11] = "estado";
+		self::$tablas[12] = "fotos";
 	}
 
 	public function getTablas(){

@@ -12,10 +12,14 @@ class DAOSolicitudIMPL extends CI_Controller
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitud');
 			$this->load->model('db/DAOSolicitante');
+			$this->load->model('db/DAOFotos');
 
 			$id_solicitante = 0;
 			$obj_solicitante = $this->DAOSolicitante->getByCedula($this->input->post("p2"));
 			if($obj_solicitante == null){
+				$datos_foto[0] = null;
+				$datos_foto[1] = $this->input->post("p9");
+
 				$datos1_array[0] = null;
 				$datos1_array[1] = $this->input->post("p2");
 				$datos1_array[2] = $this->input->post("p3");
@@ -24,7 +28,7 @@ class DAOSolicitudIMPL extends CI_Controller
 				$datos1_array[5] = $this->input->post("p6");
 				$datos1_array[6] = $this->input->post("p7");
 				$datos1_array[7] = $this->input->post("p8");
-				$datos1_array[8] = $this->input->post("p9");
+				$datos1_array[8] = $this->DAOFotos->insert($datos_foto);
 				$datos1_array[9] = time();
 				$datos1_array[10] = time();
 				$id_solicitante = $this->DAOSolicitante->insert($datos1_array);
@@ -96,16 +100,16 @@ class DAOSolicitudIMPL extends CI_Controller
 			$etiquetas_solicitante = $this->DAOSolicitante->getCamposForm();
 			$datos_solicitante = $this->DAOSolicitante->getDataFormById($datos_solicitud[$etiquetas_solicitud[1]]);
 
-			$datosSTR = $datos_solicitud[$etiquetas_solicitud[0]].",";
+			$datosSTR = $datos_solicitud[$etiquetas_solicitud[0]]."".$this->lib->separador();
 
 			$tam = count($etiquetas_solicitante);
 			for($i = 1; $i<$tam; $i++) {
-				$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$i]].",";
+				$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$i]]."".$this->lib->separador();
 			}
 
 			$tam = count($etiquetas_solicitud);
 			for($i = 2; $i<$tam-1; $i++) {
-				$datosSTR .= $datos_solicitud[$etiquetas_solicitud[$i]].",";
+				$datosSTR .= $datos_solicitud[$etiquetas_solicitud[$i]]."".$this->lib->separador();
 			}
 			$datosSTR .= $datos_solicitud[$etiquetas_solicitud[$tam-1]]."";
 			echo $datosSTR;

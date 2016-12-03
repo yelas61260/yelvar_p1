@@ -18,7 +18,7 @@
 		<button class="form_button">Actualizar Solicitante</button>
 		<div class="cuadro_foto">
 			<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
-			<div class="foto-imag"><div id="cam_sol"></div><div id="img_sol"></div></div>
+			<div class="foto-imag"><div id="cam_sol"></div><div url="<?= base_url(); ?>DAOSolicitanteIMPL/getFoto" id="img_sol"><img src=""></div></div>
 			<button id="foto_btn" onclick="tomarFoto()"/>Tomar Foto</button>
 		</div>
 		<form action="" method="post" name="form_solicitud" id="form_solicitud">

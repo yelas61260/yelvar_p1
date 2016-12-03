@@ -57,12 +57,22 @@ class DAOSolicitanteIMPL extends CI_Controller
 
 			$tam = count($etiquetas_solicitante);
 			for($i = 0; $i<$tam-1; $i++) {
-				$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$i]].",";
+				$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$i]]."".$this->lib->separador();
 			}
 			$datosSTR .= $datos_solicitante[$etiquetas_solicitante[$tam-1]]."";
 			echo $datosSTR;
 		}else{
 			header("Location: ".base_url());
 		}
+	}
+	public function getFoto(){
+		//if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOFotos');
+
+			$foto = $this->DAOFotos->getFotoById($this->input->post("id"));
+			$this->output->set_output($foto);
+		//}else{
+		//	header("Location: ".base_url());
+		//}
 	}
 }

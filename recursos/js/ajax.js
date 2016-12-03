@@ -1,3 +1,4 @@
+var separador_split = "|yv|";
 function abrir_ruta(param_ruta){
 	window.location= param_ruta;
 }
@@ -61,9 +62,9 @@ function read(id, param_ruta, param_formName){
 		datatype: "html",
 		data: strDAtos,
 		success: function(data) {
-			datosArray = data.split(",");
+			datosArray = data.split(separador_split);
 			if (param_formName == "form_solicitud") {
-				$("#img_sol").attr("src", datosArray[8]);
+				cargarFoto(datosArray[8]);
 			}
 			for(i=0; i<document.forms[param_formName].length; i++){
 				if(datosArray[i] != ""){

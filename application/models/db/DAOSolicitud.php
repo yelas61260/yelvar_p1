@@ -72,7 +72,7 @@ class DAOSolicitud extends CI_Model
 			["ID", "Nombre", "Solicitante", "Colaborador", "Despacho"],
 			["t1.".self::$campos[0],"t1.".self::$campos[1],"CONCAT(t2.".$cmpSolicitante[2].", ' ', t2.".$cmpSolicitante[3].") AS solicitante","CONCAT(t3.".$cmpUsuarios[4].", t3.".$cmpUsuarios[5].") AS colaborador","t4.".$cmpDespacho[1]." AS despacho"],
 			[self::$campos[0],self::$campos[1],"solicitante","colaborador","despacho"],
-			["t1.".self::$campos[2]."=t2.".$cmpSolicitante[0],"t1.".self::$campos[3]."=t3.".$cmpUsuarios[0],"t1.".self::$campos[4]."=t4.".$cmpDespacho[0],"t1.".self::$campos[2]."=t5.".$cmpEstado[0]],
+			["t1.".self::$campos[2]."=t2.".$cmpSolicitante[0],"t1.".self::$campos[3]."=t3.".$cmpUsuarios[0],"t1.".self::$campos[4]."=t4.".$cmpDespacho[0],"t1.".self::$campos[7]."=t5.".$cmpEstado[0]],
 			["edit", "delete"], ["edit", "delete"], ["accion/actualizarSolicitud","DAOSolicitudIMPL/delete_fun"]);
 	}
 	

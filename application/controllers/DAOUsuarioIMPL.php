@@ -83,7 +83,7 @@ class DAOUsuarioIMPL extends CI_Controller
 
 			$tam = count($etiquetas);
 			for($i = 0; $i<$tam-1; $i++) {
-				$datosSTR .= $datos[$etiquetas[$i]].",";
+				$datosSTR .= $datos[$etiquetas[$i]]."".$this->lib->separador();
 			}
 			$datosSTR .= $datos[$etiquetas[$tam-1]]."";
 			echo $datosSTR;
