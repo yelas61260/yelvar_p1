@@ -116,12 +116,14 @@ class Accion extends CI_Controller
 
 	public function registrarUsuario(){
 		if ($this->lib->tienePermiso(2)) {
+			$this->load->model('db/DAORol');
 			$data = array(
 				'titulo' => 'Registro de usuarios administrativos',
 				'StyleView' => '',
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAOUsuarioIMPL/insert',
 				'TextoBtn' => 'Registrar',
+				'lista_roles' => $this->DAORol->getList(),
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
@@ -133,12 +135,22 @@ class Accion extends CI_Controller
 
 	public function actualizarUsuario($id){
 		if ($this->lib->tienePermiso(2)) {
+			$this->load->model('db/DAORol');
+			$this->load->model('db/DAOUsuario');
+
+			$script_roles = '';
+			$datos = $this->DAOUsuario->getRoles($id);
+			foreach ($datos as $dato) {
+				$script_roles .= 'read_roles_usuario_edit('.$dato.', '.$id.');';
+			}
+
 			$data = array(
 				'titulo' => 'Actualización de usuarios',
-				'StyleView' => '<script>read('.$id.', "'.base_url().'DAOUsuarioIMPL/getRecords", "form_usuario")</script>',
+				'StyleView' => '<script>$(function(){'.$script_roles.'read('.$id.', "'.base_url().'DAOUsuarioIMPL/getRecords", "form_usuario")});</script>',
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAOUsuarioIMPL/update',
 				'TextoBtn' => 'Actualizar',
+				'lista_roles' => $this->DAORol->getList(),
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
@@ -169,12 +181,14 @@ class Accion extends CI_Controller
 
 	public function registrarRol(){
 		if ($this->lib->tienePermiso(3)) {
+			$this->load->model('db/DAOPermiso');
 			$data = array(
 				'titulo' => 'Registro de roles',
 				'StyleView' => '',
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAORolIMPL/insert',
 				'TextoBtn' => 'Registrar',
+				'lista_permisos' => $this->DAOPermiso->getList(),
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);
@@ -186,12 +200,22 @@ class Accion extends CI_Controller
 
 	public function actualizarRol($id){
 		if ($this->lib->tienePermiso(3)) {
+			$this->load->model('db/DAOPermiso');
+			$this->load->model('db/DAORol');
+
+			$script_permisos = '';
+			$datos = $this->DAORol->getPermisos($id);
+			foreach ($datos as $dato) {
+				$script_permisos .= 'read_permiso_edit('.$dato.', '.$id.');';
+			}
+
 			$data = array(
 				'titulo' => 'Actualización de roles',
-				'StyleView' => '<script>read('.$id.', "'.base_url().'DAORolIMPL/getRecords", "form_rol")</script>',
+				'StyleView' => '<script>$(function(){'.$script_permisos.'read('.$id.', "'.base_url().'DAORolIMPL/getRecords", "form_rol")});</script>',
 				'Header' => $this->lib->print_header(),
 				'AccionForm' => base_url().'DAORolIMPL/update',
 				'TextoBtn' => 'Actualizar',
+				'lista_permisos' => $this->DAOPermiso->getList(),
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);

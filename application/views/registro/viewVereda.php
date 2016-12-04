@@ -9,7 +9,8 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
+		<div class="title_main"><?= $titulo ?></div>
+		<div class="header-sec-form"><span>Datos de la vereda</span></div>
 		<form action="" method="post" name="form_vereda" id="form_vereda">
 			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">

@@ -9,7 +9,8 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
+		<div class="title_main"><?= $titulo ?></div>
+		<div class="header-sec-form"><span>Datos del usuario</span></div>
 		<form action="" method="post" name="form_usuario" id="form_usuario">
 			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
@@ -51,7 +52,30 @@
 				</tr>
 			</table>
 		</form>
-		<button class="accion_btn" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<div class="header-sec-form"><span>Roles del usuario</span></div>
+		<div class="cont_tbl_roles">
+			<table>
+				<tr>
+					<td><div class="form-label"><label for="rol">Rol</label></td>
+					<td><select name="rol" id="rol" required>
+						<?= $lista_roles ?>
+					</select></td>
+				</tr>
+				<tr>
+					<td>
+						<button id="roles_btn" onclick="read_roles_usuario()"/>Agregar Rol</button>
+					</td>
+				</tr>
+			</table>
+			<table id="extra" class="tabla_general" border="2">
+				<thead>
+					<th>Rol</th>
+					<th>Acción</th>
+				</thead>
+				<tbody id="cont_roles"></tbody>
+			</table>
+		</div>
+		<button class="" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

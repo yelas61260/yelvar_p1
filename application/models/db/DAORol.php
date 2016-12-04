@@ -38,12 +38,23 @@ class DAORol extends CI_Model
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
+	public function getPermisos($rol_id){
+		$this->load->model('db/DAORolPermiso');
+		$campos_t1 = $this->DAORolPermiso->getCampos();
+		$result = $this->db_con->getQuery("SELECT ".$campos_t1[2]." FROM ".$this->DAORolPermiso->getTabla()." WHERE ".$campos_t1[1]."='".$rol_id."'");
+		$count = count($result);
+		for ($i=0; $i < $count ; $i++) { 
+			$result[$i] = $result[$i][$campos_t1[2]];
+		}
+		return $result;
+	}
+
 	public function getDataFormById($id){
 		return $this->db_con->findWhere(self::$tabla, ["*"], [self::$campos[0]."=".$id])[0];
 	}
 
 	public function getList(){
-		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
+		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [self::$campos[0]."<>1"], self::$campos[1]);
 	}
 
 	public function getTablaVista(){

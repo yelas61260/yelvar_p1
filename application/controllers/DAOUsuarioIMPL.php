@@ -11,6 +11,7 @@ class DAOUsuarioIMPL extends CI_Controller
 	public function insert(){
 		if ($this->lib->tienePermiso(2)) {
 			$this->load->model('db/DAOUsuario');
+			$this->load->model('db/DAOUsuarioRol');
 
 			$datos_array[0] = null;
 			$datos_array[1] = $this->input->post("p2");
@@ -21,7 +22,17 @@ class DAOUsuarioIMPL extends CI_Controller
 			$datos_array[6] = time();
 			$datos_array[7] = time();
 
-			$this->DAOUsuario->insert($datos_array);
+			$id_user = $this->DAOUsuario->insert($datos_array);
+
+			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
+				$datos_array = explode(";", $this->input->post('extra'));
+
+				foreach ($datos_array as $dato_rol) {
+					if($dato_rol != ""){
+						$this->DAOUsuarioRol->insert([null, $id_user, $dato_rol]);
+					}
+				}
+			}
 			echo "OK";
 		}else{
 			header("Location: ".base_url());
@@ -30,6 +41,7 @@ class DAOUsuarioIMPL extends CI_Controller
 	public function update(){
 		if ($this->lib->tienePermiso(2)) {
 			$this->load->model('db/DAOUsuario');
+			$this->load->model('db/DAOUsuarioRol');
 
 			$datos_array[0] = $this->input->post("p1");
 			$datos_array[1] = $this->input->post("p2");
@@ -40,6 +52,19 @@ class DAOUsuarioIMPL extends CI_Controller
 			$datos_array[6] = time();
 
 			$this->DAOUsuario->update($datos_array);
+
+			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
+				$datos_array = explode(";", $this->input->post('extra'));
+
+				$roles_user = $this->DAOUsuario->getRoles($id_user);
+
+				foreach ($datos_array as $dato_rol) {
+					if($dato_rol != ""){
+						if($this->lib->existeEnArreglo()){}
+						$this->DAOUsuarioRol->insert([null, $datos_array[0], $dato_rol]);
+					}
+				}
+			}
 			echo "OK";
 		}else{
 			header("Location: ".base_url());

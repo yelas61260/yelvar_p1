@@ -260,3 +260,9 @@ input.inptformc{
     background: #000;
     display: none;
 }
+.tabla_general thead{
+	background:#50A63F;
+	border-color:#50A63F;
+	color:#fff;
+	font-weight:bold;
+}

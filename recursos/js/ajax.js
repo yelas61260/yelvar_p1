@@ -107,3 +107,40 @@ function unirExtra(){
 	});
 	return returnVal.join(";");
 }
+
+//Acciones de formularios
+function read_roles_usuario(){
+	var content = "<tr id='ext_"+document.getElementById("rol").value+"' valor='"+document.getElementById("rol").value+"'><td>"+$("#rol option:selected").html()+"</td>";
+	content += "<td><button onclick='quitar("+document.getElementById("rol").value+", "+0+");'>Quitar</button></td></tr>";
+	document.getElementById("cont_roles").innerHTML += content;
+}
+function read_roles_usuario_edit(id_rol, id_prin){
+	var content = "<tr id='ext_"+id_rol+"' valor='"+id_rol+"'><td>"+$("#rol option[value='"+id_rol+"']").text()+"</td>";
+	content += "<td><button onclick='quitar("+id_rol+", "+id_prin+");'>Quitar</button></td></tr>";
+	document.getElementById("cont_roles").innerHTML += content;
+}
+function read_permiso(){
+	var content = "<tr id='ext_"+document.getElementById("permiso").value+"' valor='"+document.getElementById("permiso").value+"'><td>"+$("#permiso option:selected").html()+"</td>";
+	content += "<td><button onclick='quitar("+document.getElementById("permiso").value+", "+0+");'>Quitar</button></td></tr>";
+	document.getElementById("cont_permisos").innerHTML += content;
+}
+function read_permiso_edit(id_permiso, id_prin){
+	var content = "<tr id='ext_"+id_permiso+"' valor='"+id_permiso+"'><td>"+$("#permiso option[value='"+id_permiso+"']").text()+"</td>";
+	content += "<td><button onclick='quitar("+id_permiso+", "+id_prin+");'>Quitar</button></td></tr>";
+	document.getElementById("cont_permisos").innerHTML += content;
+}
+function quitar(id_ext, id_ext_parent){
+	$("#ext_"+id_ext).remove();
+	if(id_ext_parent != 0){
+		strDAtos = "p1_extra="+id_ext_parent+"&p2_extra="+id_ext;
+		$.ajax({
+			type: "POST",
+			url: "./q",
+			datatype: "html",
+			data: strDAtos,
+			success: function(data) {
+				//alert(data);
+			}
+		});
+	}
+}

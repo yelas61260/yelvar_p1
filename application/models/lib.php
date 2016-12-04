@@ -190,4 +190,13 @@ class lib extends CI_Model
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/estilotabla.css'>";
 		return $content;
 	}
+
+	public function existeEnArreglo($lista, $valor){
+		foreach ($lista as $element) {
+			if ($element == $valor) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

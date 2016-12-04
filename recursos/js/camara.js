@@ -9,7 +9,6 @@ $(function(){
 		$('#cam_sol').hide();
 		$('#img_sol').show();
 
-		img.src = snapshot.toDataURL('image/png');
 		$('#p9').val($("#img_sol img").attr("src"));
 	});
 	sayCheese.start();

@@ -11,11 +11,24 @@ class DAORolIMPL extends CI_Controller
 	public function insert(){
 		if ($this->lib->tienePermiso(3)) {
 			$this->load->model('db/DAORol');
+			$this->load->model('db/DAORolPermiso');
 
 			$datos_array[0] = null;
 			$datos_array[1] = $this->input->post("p2");
 
-			$this->DAORol->insert($datos_array);
+			$id_rol = $this->DAORol->insert($datos_array);
+
+			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
+				$datos_array = explode(";", $this->input->post('extra'));
+
+				$permisos_rol = $this->DAORol->getPermisos($id_rol);
+				
+				foreach ($datos_array as $dato_rol) {
+					if($dato_rol != ""){
+						$this->DAORolPermiso->insert([null, $id_rol, $dato_rol]);
+					}
+				}
+			}
 			echo "OK";
 		}else{
 			header("Location: ".base_url());
@@ -29,6 +42,16 @@ class DAORolIMPL extends CI_Controller
 			$datos_array[1] = $this->input->post("p2");
 
 			$this->DAORol->update($datos_array);
+
+			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
+				$datos_array = explode(";", $this->input->post('extra'));
+
+				foreach ($datos_array as $dato_rol) {
+					if($dato_rol != ""){
+						$this->DAOUsuarioRol->insert([null, $datos_array[0], $dato_rol]);
+					}
+				}
+			}
 			echo "OK";
 		}else{
 			header("Location: ".base_url());

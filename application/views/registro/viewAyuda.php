@@ -9,20 +9,21 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
-		<form class="form_ayuda" action="" method="post" name="form_ayuda" id="form_ayuda">
+		<div class="title_main"><?= $titulo ?></div>
+		<div class="header-sec-form"><span>Datos del solicitante</span></div>
+		<form action="" method="post" name="form_ayuda" id="form_ayuda">
 			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
-						<div class="form-label"><label class="lblfayuda" for="p2">Nombre de Ayuda<span>*</span></label></div>
-						<div class="form-input"><input class="inpfayuda" type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p2">Nombre de Ayuda<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label class="" for="p3">Descripción<span>*</span></label></div>
-						<div class="form-input"><input class="" type="textarea" name="p3" id="p3" size="25" value="" required/></div>
+						<div class="form-label"><label for="p3">Descripción<span>*</span></label></div>
+						<div class="form-input"><input type="textarea" name="p3" id="p3" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>

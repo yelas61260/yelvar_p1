@@ -67,6 +67,23 @@ class DAOUsuario extends CI_Model
 		return $result;
 	}
 
+	public function getRoles($user_id){
+		$this->load->model('db/DAOUsuarioRol');
+		$campos_t1 = $this->DAOUsuarioRol->getCampos();
+		$result = $this->db_con->getQuery("SELECT ".$campos_t1[2]." FROM ".$this->DAOUsuarioRol->getTabla()." WHERE ".$campos_t1[1]."='".$user_id."'");
+		$count = count($result);
+		for ($i=0; $i < $count ; $i++) { 
+			$result[$i] = $result[$i][$campos_t1[2]];
+		}
+		return $result;
+	}
+
+	public function quitRol($user_id, $rol_id){
+		$this->load->model('db/DAOUsuarioRol');
+		$campos_t1 = $this->DAOUsuarioRol->getCampos();
+		$this->db_con->getQuery("DELETE FROM ".$this->DAOUsuarioRol->getTabla()." WHERE ".$campos_t1[1]."='".$user_id."' AND ".$campos_t1[2]."='".$rol_id."'")
+	}
+
 	public function makeAdmin($user_id){
 		$this->load->model('db/DAOUsuarioRol');
 		$this->db_con->insert($this->DAOUsuarioRol->getTabla(), $this->DAOUsuarioRol->getCampos(), array(2, $user_id));

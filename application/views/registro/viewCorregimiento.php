@@ -9,21 +9,22 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
-		<form class="form_corregimiento" action="" method="post" name="form_corregimiento" id="form_corregimiento">
+		<div class="title_main"><?= $titulo ?></div>
+		<div class="header-sec-form"><span>Datos del corregimiento</span></div>
+		<form action="" method="post" name="form_corregimiento" id="form_corregimiento">
 			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
 				<tr>
 					<td>
-						<div class="form-label"><label class="lblformc" for="p2">Corregimiento<span>*</span></label></div>
-						<div class="form-input"><input class="inptformc" type="text" name="p2" id="p2" size="25" value="" required/></div>
+						<div class="form-label"><label for="p2">Corregimiento<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p2" id="p2" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>
 				</tr>
 			</table>
 		</form>
-		<button class="guardar_btn" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_corregimiento')"/><?= $TextoBtn ?></button>
+		<button id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_corregimiento')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>
