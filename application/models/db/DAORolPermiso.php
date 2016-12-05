@@ -27,6 +27,10 @@ class DAORolPermiso extends CI_Model
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function deletePermiso($rol_id, $permiso_id){
+		return $this->db_con->getQuery("DELETE FROM ".self::$tabla." WHERE ".self::$campos[1]."='".$rol_id."' AND ".self::$campos[2]."='".$permiso_id."'");
+	}
+
 	public function getTabla(){
 		return self::$tabla;
 	}

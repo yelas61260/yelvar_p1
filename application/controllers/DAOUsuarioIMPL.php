@@ -54,14 +54,21 @@ class DAOUsuarioIMPL extends CI_Controller
 			$this->DAOUsuario->update($datos_array);
 
 			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
-				$datos_array = explode(";", $this->input->post('extra'));
+				$datos_array_extra = explode(";", $this->input->post('extra'));
 
-				$roles_user = $this->DAOUsuario->getRoles($id_user);
+				$roles_user = $this->DAOUsuario->getRoles($datos_array[0]);
+				print_r($roles_user);
+				print_r($datos_array[0]);
 
-				foreach ($datos_array as $dato_rol) {
-					if($dato_rol != ""){
-						if($this->lib->existeEnArreglo()){}
+				foreach ($datos_array_extra as $dato_rol) {
+					if($dato_rol != "" && !$this->lib->existeEnArreglo($roles_user, $dato_rol)){
 						$this->DAOUsuarioRol->insert([null, $datos_array[0], $dato_rol]);
+					}
+				}
+				$roles_user = $this->DAOUsuario->getRoles($datos_array[0]);
+				foreach ($roles_user as $dato_rol) {
+					if (!$this->lib->existeEnArreglo($datos_array_extra, $dato_rol)) {
+						$this->DAOUsuarioRol->deleteRol($datos_array[0], $dato_rol);
 					}
 				}
 			}

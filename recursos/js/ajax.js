@@ -131,16 +131,4 @@ function read_permiso_edit(id_permiso, id_prin){
 }
 function quitar(id_ext, id_ext_parent){
 	$("#ext_"+id_ext).remove();
-	if(id_ext_parent != 0){
-		strDAtos = "p1_extra="+id_ext_parent+"&p2_extra="+id_ext;
-		$.ajax({
-			type: "POST",
-			url: "./q",
-			datatype: "html",
-			data: strDAtos,
-			success: function(data) {
-				//alert(data);
-			}
-		});
-	}
 }

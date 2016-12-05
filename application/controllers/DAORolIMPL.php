@@ -20,8 +20,6 @@ class DAORolIMPL extends CI_Controller
 
 			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
 				$datos_array = explode(";", $this->input->post('extra'));
-
-				$permisos_rol = $this->DAORol->getPermisos($id_rol);
 				
 				foreach ($datos_array as $dato_rol) {
 					if($dato_rol != ""){
@@ -37,6 +35,7 @@ class DAORolIMPL extends CI_Controller
 	public function update(){
 		if ($this->lib->tienePermiso(3)) {
 			$this->load->model('db/DAORol');
+			$this->load->model('db/DAORolPermiso');
 
 			$datos_array[0] = $this->input->post("p1");
 			$datos_array[1] = $this->input->post("p2");
@@ -44,11 +43,19 @@ class DAORolIMPL extends CI_Controller
 			$this->DAORol->update($datos_array);
 
 			if(!empty($this->input->post('extra')) && $this->input->post('extra')!=""){
-				$datos_array = explode(";", $this->input->post('extra'));
+				$datos_array_extra = explode(";", $this->input->post('extra'));
 
-				foreach ($datos_array as $dato_rol) {
-					if($dato_rol != ""){
-						$this->DAOUsuarioRol->insert([null, $datos_array[0], $dato_rol]);
+				$permisos_rol = $this->DAORol->getPermisos($datos_array[0]);
+
+				foreach ($datos_array_extra as $dato_permiso) {
+					if($dato_permiso != "" && !$this->lib->existeEnArreglo($permisos_rol, $dato_permiso)){
+						$this->DAORolPermiso->insert([null, $datos_array[0], $dato_permiso]);
+					}
+				}
+				$permisos_rol = $this->DAORol->getPermisos($datos_array[0]);
+				foreach ($permisos_rol as $dato_rol) {
+					if (!$this->lib->existeEnArreglo($datos_array_extra, $dato_rol)) {
+						$this->DAORolPermiso->deletePermiso($datos_array[0], $dato_rol);
 					}
 				}
 			}
