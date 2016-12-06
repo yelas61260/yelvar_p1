@@ -9,7 +9,7 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div class="title_main"><?= $titulo ?></div>
+		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
 		<form action="" method="post" name="form_ayuda" id="form_ayuda">
 			<input type="hidden" name="p1" id="p1" value="">
@@ -30,7 +30,7 @@
 				</tr>
 			</table>
 		</form>
-		<button class="guardar_btn" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_ayuda')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_ayuda')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

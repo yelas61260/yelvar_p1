@@ -111,22 +111,22 @@ function unirExtra(){
 //Acciones de formularios
 function read_roles_usuario(){
 	var content = "<tr id='ext_"+document.getElementById("rol").value+"' valor='"+document.getElementById("rol").value+"'><td>"+$("#rol option:selected").html()+"</td>";
-	content += "<td><button onclick='quitar("+document.getElementById("rol").value+", "+0+");'>Quitar</button></td></tr>";
+	content += "<td><button class='form_button' style='margin-top: 0 !important;' onclick='quitar("+document.getElementById("rol").value+", "+0+");'>Quitar</button></td></tr>";
 	document.getElementById("cont_roles").innerHTML += content;
 }
 function read_roles_usuario_edit(id_rol, id_prin){
 	var content = "<tr id='ext_"+id_rol+"' valor='"+id_rol+"'><td>"+$("#rol option[value='"+id_rol+"']").text()+"</td>";
-	content += "<td><button onclick='quitar("+id_rol+", "+id_prin+");'>Quitar</button></td></tr>";
+	content += "<td><button class='form_button' style='margin-top: 0 !important;' onclick='quitar("+id_rol+", "+id_prin+");'>Quitar</button></td></tr>";
 	document.getElementById("cont_roles").innerHTML += content;
 }
 function read_permiso(){
 	var content = "<tr id='ext_"+document.getElementById("permiso").value+"' valor='"+document.getElementById("permiso").value+"'><td>"+$("#permiso option:selected").html()+"</td>";
-	content += "<td><button onclick='quitar("+document.getElementById("permiso").value+", "+0+");'>Quitar</button></td></tr>";
+	content += "<td><button class='form_button' style='margin-top: 0 !important;' onclick='quitar("+document.getElementById("permiso").value+", "+0+");'>Quitar</button></td></tr>";
 	document.getElementById("cont_permisos").innerHTML += content;
 }
 function read_permiso_edit(id_permiso, id_prin){
 	var content = "<tr id='ext_"+id_permiso+"' valor='"+id_permiso+"'><td>"+$("#permiso option[value='"+id_permiso+"']").text()+"</td>";
-	content += "<td><button onclick='quitar("+id_permiso+", "+id_prin+");'>Quitar</button></td></tr>";
+	content += "<td><button class='form_button' style='margin-top: 0 !important;' onclick='quitar("+id_permiso+", "+id_prin+");'>Quitar</button></td></tr>";
 	document.getElementById("cont_permisos").innerHTML += content;
 }
 function quitar(id_ext, id_ext_parent){

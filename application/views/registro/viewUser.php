@@ -9,7 +9,7 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div class="title_main"><?= $titulo ?></div>
+		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<div class="header-sec-form"><span>Datos del usuario</span></div>
 		<form action="" method="post" name="form_usuario" id="form_usuario">
 			<input type="hidden" name="p1" id="p1" value="">
@@ -63,7 +63,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button id="roles_btn" onclick="read_roles_usuario()"/>Agregar Rol</button>
+						<button class="form_button" id="roles_btn" onclick="read_roles_usuario()"/>Agregar Rol</button>
 					</td>
 				</tr>
 			</table>
@@ -75,7 +75,7 @@
 				<tbody id="cont_roles"></tbody>
 			</table>
 		</div>
-		<button class="" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

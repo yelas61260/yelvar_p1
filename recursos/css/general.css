@@ -33,7 +33,11 @@
 	border-left: 15px solid transparent;
 }
 li.btnMenu {
-    display: inline-block;
+	display: inline-block;
+    border-color: #fff;
+    border-width: 0px;
+    border-right-width: 1px;
+    border-style: solid;
 }
 .btnMenu a{
 	color: #FFF;
@@ -51,6 +55,7 @@ li.btnMenu {
 #salir_btn {
     float: right;
 }
+/*
 .accion_btn{
 	width:135px;
 	height:50px;
@@ -73,7 +78,9 @@ li.btnMenu {
 .accion_btn:hover{
 	background:#3a3a3a;
 }
+*/
 /* Boton General */
+/*
 button.guardar_btn {
 	width:135px;
 	height:50px;
@@ -96,7 +103,9 @@ button.guardar_btn {
 button.guardar_btn:hover{
 	background:#3a3a3a;
 }
+*/
 /* Formulario viewAdmin */
+/*
 form.form_usuario{
 	background:#FFBF00;
 	width:361px;
@@ -131,7 +140,9 @@ input.inpform{
 	left: 35%;
 	transform: translate(-50%, -50%);
 }	
+*/
 /* Formulario viewAyuda */
+/*
 form.form_ayuda{
 	background:#FFBF00;
 	width:361px;
@@ -166,7 +177,9 @@ input.inpfayuda{
 	left: 35%;
 	transform: translate(-50%, -50%);
 }
+*/
 /* Formulario viewCorregimiento */
+/*
 form.form_corregimiento{
 	background:#FFBF00;
 	width:361px;
@@ -201,6 +214,7 @@ input.inptformc{
 	left: 35%;
 	transform: translate(-50%, -50%);
 }
+*/
 .form_table{
 	display: inline-block;
 }
@@ -238,6 +252,13 @@ input.inptformc{
 	color: #FFF;
 	padding: 10px;
 }
+.title_main span{
+	font-size: 20px;
+    vertical-align: super;
+}
+.title_main img{
+	height: 30px;
+}
 .header-sec-form{
 	background: #50A63F;
 	font-weight: bold;
@@ -265,4 +286,44 @@ input.inptformc{
 	border-color:#50A63F;
 	color:#fff;
 	font-weight:bold;
+}
+.form-input input, .form-input select {
+    border-radius: 10px;
+    padding: 5px;
+}
+.form_button {
+    background: #50A63F;
+    padding: 5px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+table#extra {
+    margin-top: 10px;
+}
+.footer {
+    margin-top: 20px;
+    position: relative;
+    bottom: 0px;
+}
+.footer #logo_img {
+    width: 18%;
+    text-align: center;
+    display: inline-block;
+}
+.footer #block_info {
+    background: #50A63F;
+    width: 82%;
+    height: 92px;
+    display: inline-block;
+}
+#block_info span {
+    display: block;
+    float: right;
+    clear: both;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 50px;
+    margin-top: 10px;
 }

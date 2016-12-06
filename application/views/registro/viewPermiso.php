@@ -9,7 +9,7 @@
 	<?= $Header ?>
 	<?= $StyleView ?>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
+		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<form action="" method="post" name="form_permiso" id="form_permiso">
 			<input type="hidden" name="p1" id="p1" value="">
 			<table class="form_header" id="tab_datos">
@@ -23,7 +23,7 @@
 				</tr>
 			</table>
 		</form>
-		<button id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_permiso')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_permiso')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

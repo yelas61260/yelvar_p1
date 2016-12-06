@@ -53,4 +53,4 @@
 		</tr>
 	</table>
 </form>
-<button id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_solicitante')"/><?= $TextoBtn ?></button>
+<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_solicitante')"/><?= $TextoBtn ?></button>

@@ -24,7 +24,7 @@ class Main extends CI_Controller {
 				'titulo'=>'Bienvenidos',
 				'StyleView'=>$this->lib->style_home(), 
 				'Header'=>$this->lib->print_header(), 
-				'Footer'=>$this->lib->print_footer() 
+				'Footer'=>''/*$this->lib->print_footer()*/ 
 				);
 			$this->load->view('viewHome',$data);
 		}else{

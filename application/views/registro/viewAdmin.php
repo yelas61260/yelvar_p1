@@ -9,7 +9,7 @@
 <body>
 	<?= $Header ?>
 	<div class="contentarea">
-		<div><?= $titulo ?></div>
+		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<form class="form_usuario" action="" method="post" name="form_usuario" id="form_usuario">
 			<table class="form_header" id="tab_datos">
 				<tr>
@@ -22,7 +22,7 @@
 				</tr>
 			</table>
 		</form>
-		<button class="guardar_btn" id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="create('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

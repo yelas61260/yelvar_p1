@@ -80,7 +80,6 @@ class lib extends CI_Model
 		if($order_by != null && !empty($order_by)){
 			$sentenciaSQL .= " ORDER BY ".$order_by;
 		}
-		print_r($sentenciaSQL);
 
 		//Script para definir la tabla a pintar
 		$datosSQL = $this->db_con->getQuery($sentenciaSQL);
@@ -138,10 +137,18 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function print_footer(){
-		return "footer";
+		$content = '';
+		$content .= "<div class='footer'>";
+		$content .= "<div id='logo_img'><img src='".base_url()."recursos/pix/logo2.png'/></div>";
+		$content .= "<div id='block_info'>";
+		$content .= "<span>Celular: 315 509 9352 - 304 379 4016 - 322 217 9751</span>";
+		$content .= "<span>Ciudad: Magangué - Bolivar / NIT:9116661-0</span>";
+		$content .= "</div>";
+		$content .= "</div>";
+		return $content;
 	}
 	public function print_chat(){
-		return "chat";
+		return "";
 	}
 	public function style_js_general(){
 		$content = '';

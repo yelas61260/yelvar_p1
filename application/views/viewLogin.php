@@ -20,7 +20,7 @@
 				<Input name="p1" class="usuario" type="text" max-length="20" placeholder="Usuario"/>
 				<IMG class="lock" SRC="<?=base_url() ?>recursos/pix/Login/lock.png">
 				<Input name="p2" class="password" type="password" max-length="20" placeholder="Contraseña"/>
-				<button type="subimit">Entrar</Button><br/>
+				<button class="form_button" type="subimit">Entrar</Button><br/>
 				<a href="Olvido Contraseña">Olvido Contraseña</a>
 				</form>
 			</td><td class="ocultar">
@@ -30,4 +30,5 @@
 		
 	
 	</div>
+	<?= $Footer ?>
 </body>
