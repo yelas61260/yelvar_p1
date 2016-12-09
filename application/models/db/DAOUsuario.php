@@ -40,6 +40,10 @@ class DAOUsuario extends CI_Model
 		return $this->db_con->update(self::$tabla, [self::$campos[0],self::$campos[1],self::$campos[2],self::$campos[3],self::$campos[4],self::$campos[5],self::$campos[7]], $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function getListNombre(){
+		return $this->lib->print_lista_filtrada(self::$tabla, ['id','concat(nombres, " ", apellidos)'], ['id','concat(nombres, " ", apellidos)'], [], self::$campos[0]);
+	}
+
 	public function getUserAuth($user, $pass){
 		$sql1 = $this->db_con->findWhere(self::$tabla, array("*"), array(self::$campos[1]."='".$user."'", self::$campos[2]."='".$pass."'"));
 		if(count($sql1)<=0 || count($sql1[0])<=1){

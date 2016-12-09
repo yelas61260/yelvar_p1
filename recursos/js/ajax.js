@@ -132,3 +132,41 @@ function read_permiso_edit(id_permiso, id_prin){
 function quitar(id_ext, id_ext_parent){
 	$("#ext_"+id_ext).remove();
 }
+
+//Funciones de chat
+function abrirCerrarChat(){
+	$('#content_chat').show();
+}
+$(document).on("ready", function(){				
+	registerMessages();
+	$.ajaxSetup({"cache":false});
+	setInterval("loadOldMessages()", 500);
+});
+var registerMessages = function(){
+	$("#chat_btn").on("click", function(e){
+		e.preventDefault();
+		var strDAtos = "p1="+$('#chat_user_send').attr('id_user')+"&p2="+$('#user_chat').val()+"&p3="+$('#chat_msn').val();
+		$.ajax({
+			type: "POST",
+			url: $('#chat_user_send').attr('url_chat')+"DAOChatIMPL/insert",
+			data: strDAtos
+		}).done(function(info){
+			$("#chat_msn").val("");
+		})
+	});
+}
+var loadOldMessages = function(){
+	var strDAtos = "p1="+$('#chat_user_send').attr('id_user')+"&p2="+$('#user_chat').val();
+	console.log(strDAtos);
+	if($('#user_chat').val() != undefined && $('#user_chat').val() != ""){
+		$.ajax({
+			type: "POST",
+			url: $('#chat_user_send').attr('url_chat')+"DAOChatIMPL/getRecords",
+			data: strDAtos
+		}).done(function( info ){
+			$("#chat_text").html( info );
+			var  altura = $("#chat_text").prop("scrollHeight");
+			$("#chat_text").scrollTop(altura);
+		});
+	}
+}

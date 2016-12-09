@@ -22,6 +22,7 @@ class db_struc extends CI_Model {
 		self::$tablas[10] = "vereda";
 		self::$tablas[11] = "estado";
 		self::$tablas[12] = "fotos";
+		self::$tablas[13] = "chat";
 	}
 
 	public function getTablas(){

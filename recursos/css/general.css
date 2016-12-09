@@ -244,6 +244,7 @@ input.inptformc{
 .contentarea {
     margin-left: 100px;
     margin-right: 100px;
+    min-height: 440px;
 }
 .title_main{
 	background: #FCC324;
@@ -326,4 +327,44 @@ table#extra {
     font-weight: bold;
     margin-right: 50px;
     margin-top: 10px;
+}
+
+/* chat */
+.chat{
+	width: 300px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #FCC324;
+}
+.header_chat{
+	text-align: center;
+}
+.header_chat img{
+	height: 25px;
+}
+.header_chat span{
+	vertical-align: super;
+}
+.content_chat{
+	/*display: none;*/
+}
+.chat_text{
+	height: 200px;
+    background: #EEE;
+    border-style: solid;
+    border-width: 1px;
+    overflow-x: hidden;
+    position: relative;
+}
+.chat_btn{
+	background: #585858;
+	color: #FFF;
+	vertical-align: top;
+	height: 30px;
+	width: 70px;
+}
+.chat_controller textarea {
+    width: 228px;
+    height: 30px;
 }

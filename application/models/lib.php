@@ -148,8 +148,24 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function print_chat(){
-		return "";
+		$this->load->model('db/DAOUsuario');
+		$content = '';
+		$content .= "<div class='chat'>";
+		$content .= "<div id='chat_user_send' id_user='".$this->session->userdata("id")."' url_chat='".base_url()."'></div>";
+		$content .= "<div class='header_chat' onclick='abrirCerrarChat();'><img src='".base_url()."recursos/pix/chat.png'/><span>Chat</span></div>";
+		$content .= "<div class='content_chat' id='content_chat'>";
+		$content .= "<span>Usuarios: </span><select id='user_chat'>".$this->DAOUsuario->getListNombre()."</select>";
+		$content .= "<div class='chat_text' id='chat_text'>";
+		$content .= "</div>";
+		$content .= "<div class='chat_controller'>";
+		$content .= "<textarea id='chat_msn'></textarea>";
+		$content .= "<button class='chat_btn' id='chat_btn'>Enviar</button>";
+		$content .= "</div>";
+		$content .= "</div>";
+		$content .= "</div>";
+		return $content;
 	}
+
 	public function style_js_general(){
 		$content = '';
 		$content .= "<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/general.css'>";
@@ -161,18 +177,19 @@ class lib extends CI_Model
 		$content .= "<script type='text/javascript' src='".base_url()."recursos/js/ajax.js'></script>";
 		return $content;
 	}
+
 	public function style_login(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleLogin.css'>";
 		return $content;
 	}
+
 	public function style_home(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleHome.css'>";
 		return $content;
 	}
-	public function style_rgusuarios(){
-	}
+
 	public function style_regusuarios(){
 		$content = '';
 		$content .="<link rel='stylesheet' type='text/css' href='".base_url()."recursos/css/StyleFormUsuarios.css'>";
