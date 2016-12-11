@@ -1,7 +1,7 @@
 var sayCheese = null;
 var img = null;
 $(function(){
-	sayCheese = new SayCheese('#cam_sol', { audio: false });
+	sayCheese = new SayCheese('#cam_sol', { audio: false, snapshots: true });
 	sayCheese.on('start', function() {
 	});
 	sayCheese.on('snapshot', function(snapshot) {
@@ -11,12 +11,26 @@ $(function(){
 
 		$('#p9').val($("#img_sol img").attr("src"));
 	});
+	$("#act_sol").on('click', guardarFoto);
 	sayCheese.start();
 });
 function tomarFoto(){
 	sayCheese.takeSnapshot(280,280);
 	return false;
 }
+/*
+function guardarFoto(){
+	$.ajax({
+		type: "POST",
+		url: "http://localhost/GitHub/yelvar_p1/DAOSolicitanteIMPL/setFoto",
+		data: {
+			p9: $("#img_sol img").attr("src")
+		},
+		success: function() {
+		}
+	});
+}
+*/
 function cargarFoto(id){
 	$.ajax({
 		type: "POST",

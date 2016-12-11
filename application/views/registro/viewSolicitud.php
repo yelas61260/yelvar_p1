@@ -15,7 +15,7 @@
 		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
 		<button class="form_button">Buscar Solicitante</button>
-		<button class="form_button">Actualizar Solicitante</button>
+		<button class="form_button" id="act_sol">Actualizar Solicitante</button>
 		<div class="cuadro_foto">
 			<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
 			<div class="foto-imag"><div id="cam_sol"></div><div url="<?= base_url(); ?>DAOSolicitanteIMPL/getFoto" id="img_sol"><img src=""></div></div>

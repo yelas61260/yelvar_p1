@@ -18,7 +18,10 @@ class DAOSolicitudIMPL extends CI_Controller
 			$obj_solicitante = $this->DAOSolicitante->getByCedula($this->input->post("p2"));
 			if($obj_solicitante == null){
 				$datos_foto[0] = null;
-				$datos_foto[1] = $this->input->post("p9");
+				$url_foto = $this->input->post("p9");
+				list(, $url_foto) = explode(';', $url_foto);
+				list(, $url_foto) = explode(',', $url_foto);
+				$datos_foto[1] = base64_decode($url_foto);
 
 				$datos1_array[0] = null;
 				$datos1_array[1] = $this->input->post("p2");

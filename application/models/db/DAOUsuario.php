@@ -41,7 +41,7 @@ class DAOUsuario extends CI_Model
 	}
 
 	public function getListNombre(){
-		return $this->lib->print_lista_filtrada(self::$tabla, ['id','concat(nombres, " ", apellidos)'], ['id','concat(nombres, " ", apellidos)'], [], self::$campos[0]);
+		return $this->lib->print_lista_filtrada(self::$tabla, ['id','concat(nombres, " ", apellidos)'], ['id','concat(nombres, " ", apellidos)'], ['id <> '.$this->session->userdata("id")], self::$campos[0]);
 	}
 
 	public function getUserAuth($user, $pass){

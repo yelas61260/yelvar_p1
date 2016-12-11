@@ -66,13 +66,13 @@ class DAOSolicitanteIMPL extends CI_Controller
 		}
 	}
 	public function getFoto(){
-		//if ($this->lib->tienePermiso(1)) {
+		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOFotos');
 
 			$foto = $this->DAOFotos->getFotoById($this->input->post("id"));
-			$this->output->set_output($foto);
-		//}else{
-		//	header("Location: ".base_url());
-		//}
+			$this->output->set_output('data:image/png;base64,'.base64_encode($foto));
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 }

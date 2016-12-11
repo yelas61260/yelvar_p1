@@ -347,7 +347,7 @@ table#extra {
 	vertical-align: super;
 }
 .content_chat{
-	/*display: none;*/
+	display: none;
 }
 .chat_text{
 	height: 200px;

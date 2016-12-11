@@ -12,26 +12,23 @@ function validateData(param_formName){
 }
 function createUpdate(param_ruta, param_formName){
 	if(validateData(param_formName)){
-		var strDAtos = "";
+		var strDAtos = {};
 		var datosExtra = unirExtra();
 		if(datosExtra != ""){
-			strDAtos += "extra="+datosExtra+"&";
+			strDAtos["extra"] = datosExtra;
 		}
 		for(i=0; i<document.forms[param_formName].length; i++){
 			if(document.forms[param_formName][i].type != "checkbox"){
-				strDAtos += document.forms[param_formName][i].name+"="+document.forms[param_formName][i].value;
+				strDAtos[document.forms[param_formName][i].name+""] = document.forms[param_formName][i].value;
 			}else{
 				if(document.forms[param_formName][i].checked){
-					strDAtos += document.forms[param_formName][i].name+"=1";
+					strDAtos[document.forms[param_formName][i].name+""] = 1;
 				}else{
-					strDAtos += document.forms[param_formName][i].name+"=0";
+					strDAtos[document.forms[param_formName][i].name+""] = 0;
 				}
 			}
-			if(i<document.forms[param_formName].length-1){
-				strDAtos += "&";
-			}
 		}
-		alert(strDAtos);
+		alert(JSON.stringify(strDAtos));
 		$.ajax({
 			type: "POST",
 			url: param_ruta+"",
@@ -135,7 +132,13 @@ function quitar(id_ext, id_ext_parent){
 
 //Funciones de chat
 function abrirCerrarChat(){
-	$('#content_chat').show();
+	if ($('#content_chat').attr('visible') == '0') {
+		$('#content_chat').attr('visible',1);
+		$('#content_chat').show();
+	}else{
+		$('#content_chat').attr('visible',0);
+		$('#content_chat').hide();
+	}
 }
 $(document).on("ready", function(){				
 	registerMessages();
@@ -143,6 +146,7 @@ $(document).on("ready", function(){
 	setInterval("loadOldMessages()", 500);
 });
 var registerMessages = function(){
+	$('#content_chat').attr('visible',0);
 	$("#chat_btn").on("click", function(e){
 		e.preventDefault();
 		var strDAtos = "p1="+$('#chat_user_send').attr('id_user')+"&p2="+$('#user_chat').val()+"&p3="+$('#chat_msn').val();

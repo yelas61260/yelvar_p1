@@ -26,7 +26,7 @@ class DAOChatIMPL extends CI_Controller
 	}
 
 	public function getRecords(){
-		//if ($this->lib->tienePermiso(1)) {
+		if ($this->lib->tienePermiso(1)) {
 			$mensaje_str = '';
 			$this->load->model('db/DAOChat');
 
@@ -35,8 +35,8 @@ class DAOChatIMPL extends CI_Controller
 				$mensaje_str .= "<p><b>".$result[$i]['nombre_usuario'].":</b> ".$result[$i]['mensaje']."</p>";
 			}
 			echo $mensaje_str;
-		//}else{
-		//	header("Location: ".base_url());
-		//}
+		}else{
+			header("Location: ".base_url());
+		}
 	}
 }
