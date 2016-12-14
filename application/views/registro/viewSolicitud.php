@@ -8,13 +8,13 @@
 <body>
 	<?= $Header ?>
 	<?= $StyleView ?>
-	<div class="modal_solicitante">
+	<div class="modal_solicitante" id="modal_solicitante">
 		<iframe id="solicitante" url="<?= base_url(); ?>accion/actualizarSolicitante/" src=""></iframe>
 	</div>
 	<div class="contentarea">
 		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
-		<button class="form_button">Buscar Solicitante</button>
+		<button class="form_button" id="bus_sol" url='<?= base_url() ?>DAOSolicitanteIMPL/getRecords'>Buscar Solicitante</button>
 		<button class="form_button" id="act_sol">Actualizar Solicitante</button>
 		<div class="cuadro_foto">
 			<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
@@ -109,8 +109,14 @@
 				</tr>
 				<tr>
 					<td>
-						<div class="form-label"><label for="p14">Descripción<span>*</span></label></div>
+						<div class="form-label"><label for="p14">Valor<span>*</span></label></div>
 						<div class="form-input"><input type="text" name="p14" id="p14" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p15">Descripción<span>*</span></label></div>
+						<div class="form-input"><input type="text" name="p15" id="p15" size="25" value="" required/></div>
 					</td>
 				</tr>
 				<tr>

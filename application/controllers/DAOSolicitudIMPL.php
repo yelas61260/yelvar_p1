@@ -49,6 +49,7 @@ class DAOSolicitudIMPL extends CI_Controller
 			$datos2_array[6] = time();
 			$datos2_array[7] = $this->input->post("p13");
 			$datos2_array[8] = $this->input->post("p14");
+			$datos2_array[9] = $this->input->post("p15");
 
 			$this->DAOSolicitud->insert($datos2_array);
 			echo "OK";
@@ -72,20 +73,9 @@ class DAOSolicitudIMPL extends CI_Controller
 			$datos2_array[6] = time();
 			$datos2_array[7] = $this->input->post("p13");
 			$datos2_array[8] = $this->input->post("p14");
+			$datos2_array[9] = $this->input->post("p15");
 
 			$this->DAOSolicitud->update($datos2_array);
-
-			$datos1_array[0] = $obj_solicitante["id"];
-			$datos1_array[1] = $this->input->post("p2");
-			$datos1_array[2] = $this->input->post("p3");
-			$datos1_array[3] = $this->input->post("p4");
-			$datos1_array[4] = $this->input->post("p5");
-			$datos1_array[5] = $this->input->post("p6");
-			$datos1_array[6] = $this->input->post("p7");
-			$datos1_array[7] = $this->input->post("p8");
-			$datos1_array[8] = $this->input->post("p9");
-
-			$this->DAOSolicitante->update($datos1_array);
 
 			echo "OK";
 		}else{

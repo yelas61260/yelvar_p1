@@ -23,7 +23,8 @@ class DAOSolicitud extends CI_Model
 		self::$campos[5] = "tipo_id";
 		self::$campos[6] = "fecha";
 		self::$campos[7] = "estado_id";
-		self::$campos[8] = "descripcion";
+		self::$campos[8] = "valor";
+		self::$campos[9] = "descripcion";
 
 		self::$campos_form[0] = "id";
 		self::$campos_form[1] = "solicitante_id";
@@ -31,7 +32,8 @@ class DAOSolicitud extends CI_Model
 		self::$campos_form[3] = "despacho_id";
 		self::$campos_form[4] = "tipo_id";
 		self::$campos_form[5] = "estado_id";
-		self::$campos_form[6] = "descripcion";
+		self::$campos_form[6] = "valor";
+		self::$campos_form[7] = "descripcion";
 	}
 
 	public function getCampos(){

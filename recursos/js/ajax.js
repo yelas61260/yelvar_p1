@@ -38,7 +38,13 @@ function createUpdate(param_ruta, param_formName){
 				alert(data);
 				if(data == "OK"){
 					alertify.alert("Registro exitoso!", function () {
-						window.location.reload(true);
+						if (param_formName == "form_solicitante") {
+//							window.top.location.reload();
+							$('#modal_solicitante', window.parent.document).hide();
+							parent.buscar_solicitante();
+						}else{
+							window.location.reload(true);
+						}
 					});
 				}else{
 					alertify.alert("No se pudo guardar el registro<br>"+data);
@@ -70,9 +76,6 @@ function read(id, param_ruta, param_formName){
 			}
 		}
 	});
-}
-function read_solicitante(id){
-
 }
 function edit_fun(id, param_ruta){
 	abrir_ruta(param_ruta+"/"+id);

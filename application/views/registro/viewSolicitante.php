@@ -46,8 +46,6 @@
 		</tr>
 		<tr>
 			<td>
-				<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
-				<div class="foto-imag"><img src=""></div>
 				<div class="form-input"><input type="hidden" name="p9" id="p9" size="25" value="" required/></div>
 			</td>
 		</tr>

@@ -41,7 +41,8 @@ class DAOSolicitanteIMPL extends CI_Controller
 			$datos_array[7] = $this->input->post("p8");
 			$datos_array[8] = $this->input->post("p9");
 
-			echo $this->DAOSolicitante->update($datos_array);
+			$this->DAOSolicitante->update($datos_array);
+			echo "OK";
 		}else{
 			header("Location: ".base_url());
 		}
