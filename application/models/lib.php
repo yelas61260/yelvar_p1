@@ -99,6 +99,37 @@ class lib extends CI_Model
 
 		return $content;
 	}
+	public function print_tabla_simple($sentenciaSQL, $encabezados, $aliasSQL){
+		$datosSQL = null;
+
+		$content = "";
+		$content .= '<thead><tr>';
+
+		$length = count($encabezados);
+		for ($i=0; $i < $length; $i++) {
+			$content .= '<th id="encabezado">'.$encabezados[$i].'</th>';
+		}
+		$length = count($acciones);
+		for ($i=0; $i < $length ; $i++) {
+			$content .= '<th id="encabezado"></th>';
+		}
+		$content .= '</tr></thead>';
+		$content .= '<tbody>';
+
+		//Script para definir la tabla a pintar
+		$datosSQL = $this->db_con->getQuery($sentenciaSQL);
+		foreach ($datosSQL as $value) {
+			$content .= "<tr>";
+			$length = count($aliasSQL);
+			for ($i=0; $i < $length ; $i++) {
+				$content .= "<td class='campo'>".$value[$aliasSQL[$i]]."</td>";
+			}
+			$content .= "</tr>";
+		}
+		$content .= "</tbody>";
+
+		return $content;
+	}
 	public function print_lista_filtrada($tabla, $campo, $get_campo, $condiciones, $order_by=null){
 		$content = '<option value="">Seleccionar</option>';
 		if($order_by == null){

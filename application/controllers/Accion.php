@@ -468,4 +468,21 @@ class Accion extends CI_Controller
 		}
 	}
 
+	//funcion para ejectar los reportes
+	public function reportes(){
+		if ($this->lib->tienePermiso(9)) {
+			$this->load->model('Reportes');
+			$data = array(
+				'titulo' => 'Reportes',
+				'StyleView'=> $this->lib->css_js_tables_responsive(), 
+				'Header' => $this->lib->print_header(),
+				'Chat' => $this->lib->print_chat(),
+				'Footer' => $this->lib->print_footer()
+				);
+			$this->load->view('reporte/viewReport', $data);
+		}else{
+			header("Location: ".base_url());
+		}
+	}
+
 }
