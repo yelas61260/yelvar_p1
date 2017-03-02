@@ -176,7 +176,7 @@ class lib extends CI_Model
 		$content .= "<span>Ciudad: Magangué - Bolivar / NIT:9116661-0</span>";
 		$content .= "</div>";
 		$content .= "</div>";
-		return $content;
+		return '';
 	}
 	public function print_chat(){
 		$this->load->model('db/DAOUsuario');

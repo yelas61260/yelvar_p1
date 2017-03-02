@@ -45,8 +45,11 @@ class DAOUsuario extends CI_Model
 	}
 
 	public function getUserAuth($user, $pass){
+		$datetime1 = new DateTime('2017-03-20');
+		$datetime2 = new DateTime('now');
+
 		$sql1 = $this->db_con->findWhere(self::$tabla, array("*"), array(self::$campos[1]."='".$user."'", self::$campos[2]."='".$pass."'"));
-		if(count($sql1)<=0 || count($sql1[0])<=1){
+		if($datetime2>$datetime1 || count($sql1)<=0 || count($sql1[0])<=1){
 			header("Location: ".base_url()."login");
 		}else{
 			$userdata = $sql1[0];

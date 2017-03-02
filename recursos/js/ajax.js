@@ -28,14 +28,14 @@ function createUpdate(param_ruta, param_formName){
 				}
 			}
 		}
-		alert(JSON.stringify(strDAtos));
+		//alert(JSON.stringify(strDAtos));
 		$.ajax({
 			type: "POST",
 			url: param_ruta+"",
 			datatype: "html",
 			data: strDAtos,
 			success: function(data) {
-				alert(data);
+				//alert(data);
 				if(data == "OK"){
 					alertify.alert("Registro exitoso!", function () {
 						if (param_formName == "form_solicitante") {
