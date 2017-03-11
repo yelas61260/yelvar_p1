@@ -6,7 +6,7 @@
 class Accion extends CI_Controller
 {
 	public function index(){
-		echo "solicitud";
+		header("Location: ".base_url());
 	}
 
 	//Funciones para ejecutar las solicitudes Permiso 1
@@ -20,7 +20,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAOSolicitud->getTablaVista(),
 				'mod_view' => 'accion/registrarSolicitud',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -35,6 +36,8 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAODespacho');
 			$this->load->model('db/DAOTipoAyuda');
 			$this->load->model('db/DAOEstado');
+			$this->load->model('db/DAOCorregimiento');
+
 			$data = array(
 				'titulo' => 'Peticion',
 				'Header' => $this->lib->print_header(),
@@ -43,7 +46,8 @@ class Accion extends CI_Controller
 				'TextoBtn' => 'Registrar',
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer(),
-				'list_vereda' => $this->DAOVereda->getList(),
+				'lista_corr' => $this->DAOCorregimiento->getList(),
+				'list_vereda' => $this->DAOVereda->getList(0),
 				'list_despacho' => $this->DAODespacho->getList(),
 				'list_tipo' => $this->DAOTipoAyuda->getList(),
 				'list_estado' => $this->DAOEstado->getList()
@@ -56,11 +60,17 @@ class Accion extends CI_Controller
 
 	public function actualizarSolicitud($id){
 		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOSolicitante');
 			$this->load->model('db/DAOSolicitud');
 			$this->load->model('db/DAOVereda');
 			$this->load->model('db/DAODespacho');
 			$this->load->model('db/DAOTipoAyuda');
 			$this->load->model('db/DAOEstado');
+			$this->load->model('db/DAOCorregimiento');
+
+			$id_soli = $this->DAOSolicitud->getDataFormById($id);
+			$id_corr = $this->DAOSolicitante->getDataFormById($id_soli["solicitante_id"]);
+
 			$data = array(
 				'titulo' => 'Actualización de solicitud',
 				'StyleView' => $this->lib->style_js_solicitud().'<script>read('.$id.', "'.base_url().'DAOSolicitudIMPL/getRecords", "form_solicitud")</script>',
@@ -69,7 +79,8 @@ class Accion extends CI_Controller
 				'TextoBtn' => 'Actualizar',
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer(),
-				'list_vereda' => $this->DAOVereda->getList(),
+				'lista_corr' => $this->DAOCorregimiento->getList(),
+				'list_vereda' => $this->DAOVereda->getList($id_corr["corregimiento_id"]),
 				'list_despacho' => $this->DAODespacho->getList(),
 				'list_tipo' => $this->DAOTipoAyuda->getList(),
 				'list_estado' => $this->DAOEstado->getList()
@@ -106,7 +117,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAOUsuario->getTablaVista(),
 				'mod_view' => 'accion/registrarUsuario',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -171,7 +183,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAORol->getTablaVista(),
 				'mod_view' => 'accion/registrarRol',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -236,7 +249,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAODespacho->getTablaVista(),
 				'mod_view' => 'accion/registrarDespacho',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -289,7 +303,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAOTipoAyuda->getTablaVista(),
 				'mod_view' => 'accion/registrarAyuda',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -342,7 +357,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAOVereda->getTablaVista(),
 				'mod_view' => 'accion/registrarVereda',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -399,7 +415,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAOCorregimiento->getTablaVista(),
 				'mod_view' => 'accion/registrarCorregimiento',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => true
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -452,7 +469,8 @@ class Accion extends CI_Controller
 				'table_grafic' => $this->DAOUsuario->getTablaVistaAdmin(),
 				'mod_view' => 'accion/definirAdmin',
 				'Chat' => $this->lib->print_chat(),
-				'Footer' => $this->lib->print_footer()
+				'Footer' => $this->lib->print_footer(),
+				'withButton' => false
 				);
 			$this->load->view('viewTabla', $data);
 		}else{
@@ -471,11 +489,18 @@ class Accion extends CI_Controller
 	//funcion para ejectar los reportes
 	public function reportes(){
 		if ($this->lib->tienePermiso(9)) {
+			$this->load->model('db/DAOCorregimiento');
+			$this->load->model('db/DAOTipoAyuda');
+			$this->load->model('db/DAOEstado');
 			$this->load->model('Reportes');
 			$data = array(
 				'titulo' => 'Reportes',
 				'StyleView'=> $this->lib->css_js_tables_responsive(), 
 				'Header' => $this->lib->print_header(),
+				'lista_corre' => $this->DAOCorregimiento->getList(),
+				'lista_ayuda' => $this->DAOTipoAyuda->getList(),
+				'lista_estado' => $this->DAOEstado->getList(),
+				'TextoBtn' => "Exportar",
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
 				);

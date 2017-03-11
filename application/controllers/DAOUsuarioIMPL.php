@@ -57,8 +57,6 @@ class DAOUsuarioIMPL extends CI_Controller
 				$datos_array_extra = explode(";", $this->input->post('extra'));
 
 				$roles_user = $this->DAOUsuario->getRoles($datos_array[0]);
-				print_r($roles_user);
-				print_r($datos_array[0]);
 
 				foreach ($datos_array_extra as $dato_rol) {
 					if($dato_rol != "" && !$this->lib->existeEnArreglo($roles_user, $dato_rol)){
@@ -72,6 +70,16 @@ class DAOUsuarioIMPL extends CI_Controller
 					}
 				}
 			}
+			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
+	public function delete_fun(){
+		if ($this->lib->tienePermiso(2)) {
+			$this->load->model('db/DAOUsuario');
+
+			$this->DAOUsuario->delete($this->input->post("id"));
 			echo "OK";
 		}else{
 			header("Location: ".base_url());

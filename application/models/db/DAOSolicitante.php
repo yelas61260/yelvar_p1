@@ -21,11 +21,12 @@ class DAOSolicitante extends CI_Model
 		self::$campos[3] = "apellidos";
 		self::$campos[4] = "telefono";
 		self::$campos[5] = "direccion";
-		self::$campos[6] = "vereda_id";
-		self::$campos[7] = "email";
-		self::$campos[8] = "imagen";
-		self::$campos[9] = "timecreated";
-		self::$campos[10] = "timemodified";
+		self::$campos[6] = "corregimiento_id";
+		self::$campos[7] = "vereda_id";
+		self::$campos[8] = "email";
+		self::$campos[9] = "imagen";
+		self::$campos[10] = "timecreated";
+		self::$campos[11] = "timemodified";
 
 		self::$campos_form[0] = "id";
 		self::$campos_form[1] = "cedula";
@@ -33,9 +34,10 @@ class DAOSolicitante extends CI_Model
 		self::$campos_form[3] = "apellidos";
 		self::$campos_form[4] = "telefono";
 		self::$campos_form[5] = "direccion";
-		self::$campos_form[6] = "vereda_id";
-		self::$campos_form[7] = "email";
-		self::$campos_form[8] = "imagen";
+		self::$campos_form[6] = "corregimiento_id";
+		self::$campos_form[7] = "vereda_id";
+		self::$campos_form[8] = "email";
+		self::$campos_form[9] = "imagen";
 	}
 
 	public function getCampos(){
@@ -52,6 +54,10 @@ class DAOSolicitante extends CI_Model
 
 	public function update($param){
 		return $this->db_con->update(self::$tabla, self::$campos_form, $param, array(self::$campos[0]), array($param[0]));
+	}
+
+	public function delete($id){
+		return $this->db_con->delete(self::$tabla, self::$campos[0], $id);
 	}
 
 	public function getRecords(){

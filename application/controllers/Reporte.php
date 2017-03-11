@@ -8,6 +8,18 @@ class Reporte extends CI_Controller
 	public function index(){
 		echo "Servicios para descargar los reportes";
 	}
+	public function reporteFiltrado(){
+		if ($this->lib->tienePermiso(9)) {
+			$this->load->model('Reportes');
+			$data = array(
+				'titulo' => 'Reporte Completo',
+				'tabla' => $this->Reportes->reporteFiltrado($this->input->post("p1"),$this->input->post("p2"),$this->input->post("p3"),$this->input->post("p4"))
+				);
+			$this->load->view('reporte/viewExcelExport',$data);
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 	public function reporteCompleto(){
 		if ($this->lib->tienePermiso(9)) {
 			$this->load->model('Reportes');

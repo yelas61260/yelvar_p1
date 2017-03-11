@@ -24,7 +24,7 @@
 				</tr>
 			</table>
 		</form>
-		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_corregimiento')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_corregimiento','<?= base_url() ?>accion/corregimientos')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

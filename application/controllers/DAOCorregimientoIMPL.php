@@ -34,6 +34,16 @@ class DAOCorregimientoIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function delete_fun(){
+		if ($this->lib->tienePermiso(7)) {
+			$this->load->model('db/DAOCorregimiento');
+
+			$this->DAOCorregimiento->delete($this->input->post("id"));
+			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 	public function getRecords(){
 		if ($this->lib->tienePermiso(7)) {
 			$this->load->model('db/DAOCorregimiento');

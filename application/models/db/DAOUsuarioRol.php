@@ -27,6 +27,14 @@ class DAOUsuarioRol extends CI_Model
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function deleteForUser($id){
+		return $this->db_con->delete(self::$tabla, self::$campos[1], $id);
+	}
+
+	public function deleteForRol($id){
+		return $this->db_con->delete(self::$tabla, self::$campos[2], $id);
+	}
+
 	public function deleteRol($user_id, $rol_id){
 		return $this->db_con->getQuery("DELETE FROM ".self::$tabla." WHERE ".self::$campos[1]."='".$user_id."' AND ".self::$campos[2]."='".$rol_id."'");
 	}

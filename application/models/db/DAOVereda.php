@@ -31,6 +31,10 @@ class DAOVereda extends CI_Model
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function delete($id){
+		return $this->db_con->delete(self::$tabla, self::$campos[0], $id);
+	}
+
 	public function getDataFormById($id){
 		return $this->db_con->findWhere(self::$tabla, ["*"], [self::$campos[0]."=".$id])[0];
 	}
@@ -39,8 +43,8 @@ class DAOVereda extends CI_Model
 		return $this->db_con->getRecordsTable(self::$tabla, self::$campos[1]);
 	}
 
-	public function getList(){
-		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [], self::$campos[1]);
+	public function getList($id){
+		return $this->lib->print_lista_filtrada(self::$tabla, self::$campos, ['*'], [self::$campos[2]."=".$id], self::$campos[1]);
 	}
 
 	public function getTablaVista(){

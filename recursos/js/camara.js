@@ -13,11 +13,23 @@ $(function(){
 	});
 	$("#act_sol").on('click', actualizar_solicitante);
 	$("#bus_sol").on('click', buscar_solicitante);
+	
 	sayCheese.start();
 });
 function tomarFoto(){
 	sayCheese.takeSnapshot(280,280);
+	if($("#p9").val() != ''){
+		$("#foto_btn").html("Cambiar Foto");
+		$("#foto_btn").attr("onclick","cambiarFoto()");
+	}	
 	return false;
+}
+function cambiarFoto(){
+	$("#p9").val('');
+	$('#cam_sol').show();
+	$('#img_sol').hide();
+	$("#foto_btn").html("Tomar Foto");
+	$("#foto_btn").attr("onclick","tomarFoto()");
 }
 function buscar_solicitante(){
 	var strDAtos = "id="+$('#p2').val();
@@ -29,13 +41,23 @@ function buscar_solicitante(){
 		datatype: "html",
 		data: strDAtos,
 		success: function(data) {
-			datosArray = data.split(separador_split);
+			console.log(data);
+			datosArray = data.split(separador_split);			
+			readListVereda($("#url_base").html()+"DAOVeredaIMPL/getListVeredas", datosArray[6]);
 			for(i=2; i<=9; i++){
 				if(datosArray[i] != ""){
-					$('#p'+i).val(datosArray[i-1]);
+					if(i<7){
+						$('#p'+i).val(datosArray[i-1]);
+					}else if(i==7){
+						$('#p7s').val(datosArray[i-1]);
+						console.log(datosArray[i]);
+						$('#p7').val(datosArray[i]);
+					}else{
+						$('#p'+i).val(datosArray[i]);
+					}
 				}
 			}
-			cargarFoto(datosArray[8]);
+			cargarFoto(datosArray[9]);
 		}
 	});
 }

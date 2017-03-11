@@ -109,10 +109,6 @@ class lib extends CI_Model
 		for ($i=0; $i < $length; $i++) {
 			$content .= '<th id="encabezado">'.$encabezados[$i].'</th>';
 		}
-		$length = count($acciones);
-		for ($i=0; $i < $length ; $i++) {
-			$content .= '<th id="encabezado"></th>';
-		}
 		$content .= '</tr></thead>';
 		$content .= '<tbody>';
 
@@ -131,7 +127,7 @@ class lib extends CI_Model
 		return $content;
 	}
 	public function print_lista_filtrada($tabla, $campo, $get_campo, $condiciones, $order_by=null){
-		$content = '<option value="">Seleccionar</option>';
+		$content = '<option class="opt0" value="">Seleccionar</option>';
 		if($order_by == null){
 			$datos = $this->db_con->findWhere($tabla, $get_campo, $condiciones);
 		}else{

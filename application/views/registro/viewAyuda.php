@@ -30,7 +30,7 @@
 				</tr>
 			</table>
 		</form>
-		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_ayuda')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_ayuda','<?= base_url() ?>accion/ayudas')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

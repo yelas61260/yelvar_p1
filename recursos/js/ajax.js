@@ -10,7 +10,7 @@ function validateData(param_formName){
 	}
 	return true;
 }
-function createUpdate(param_ruta, param_formName){
+function createUpdate(param_ruta, param_formName, param_redirect){
 	if(validateData(param_formName)){
 		var strDAtos = {};
 		var datosExtra = unirExtra();
@@ -43,7 +43,7 @@ function createUpdate(param_ruta, param_formName){
 							$('#modal_solicitante', window.parent.document).hide();
 							parent.buscar_solicitante();
 						}else{
-							window.location.reload(true);
+							abrir_ruta(param_redirect);
 						}
 					});
 				}else{
@@ -67,7 +67,11 @@ function read(id, param_ruta, param_formName){
 		success: function(data) {
 			datosArray = data.split(separador_split);
 			if (param_formName == "form_solicitud") {
-				cargarFoto(datosArray[8]);
+				if(datosArray[9] != ''){
+					$("#foto_btn").html("Cambiar Foto");
+					$("#foto_btn").attr("onclick","cambiarFoto()");
+				}
+				cargarFoto(datosArray[9]);
 			}
 			for(i=0; i<document.forms[param_formName].length; i++){
 				if(datosArray[i] != ""){
@@ -77,13 +81,30 @@ function read(id, param_ruta, param_formName){
 		}
 	});
 }
+function readListVereda(param_ruta, param_id){
+	var xmlhttp;
+
+	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}else{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			document.getElementById("p7").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("POST",param_ruta,true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("id="+param_id);
+}
 function edit_fun(id, param_ruta){
 	abrir_ruta(param_ruta+"/"+id);
 }
 function delete_fun(id, param_ruta){
 	alertify.confirm("¿Esta seguro de eliminar el registro?", function (e){
 		if (e){// validacion de eliminar
-			var strDAtos = "id="+paramId;
+			var strDAtos = "id="+id;
 			$.ajax({
 				type: "POST",
 				url: param_ruta,

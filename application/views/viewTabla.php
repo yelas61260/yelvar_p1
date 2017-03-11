@@ -15,7 +15,9 @@
 					<?= $table_grafic ?>
 				</table>
 				<br>
+				<?php if($withButton){ ?>
 				<button class="form_button" id="boton_agregar" onclick="abrir_ruta('<?= base_url().$mod_view; ?>')">Agregar</button>
+				<?php } ?>
 				<br>
 			</div>
 		</div>

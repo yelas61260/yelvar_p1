@@ -55,6 +55,16 @@ li.btnMenu {
 #salir_btn {
     float: right;
 }
+#usuarioLog{
+	background-color: #fff;
+    width: 80%;
+    text-align: center;
+    font-size: 25px;
+    margin: auto;
+    height: 27px;
+    padding: 3px;
+    vertical-align: middle;
+}
 /*
 .accion_btn{
 	width:135px;

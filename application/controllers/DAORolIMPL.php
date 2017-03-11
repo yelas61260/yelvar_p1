@@ -64,6 +64,16 @@ class DAORolIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function delete_fun(){
+		if ($this->lib->tienePermiso(3)) {
+			$this->load->model('db/DAORol');
+
+			$this->DAORol->delete($this->input->post("id"));
+			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 	public function getRecords(){
 		if ($this->lib->tienePermiso(7)) {
 			$this->load->model('db/DAORol');

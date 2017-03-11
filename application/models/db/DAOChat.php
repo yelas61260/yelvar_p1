@@ -28,6 +28,10 @@ class DAOChat extends CI_Model
 		return $this->db_con->insert(self::$tabla, self::$campos, $param);
 	}
 
+	public function delete($id){
+		return $this->db_con->delete(self::$tabla, self::$campos[0], $id);
+	}
+
 	public function getFotoById($id){
 		return $this->db_con->findWhere(self::$tabla, self::$campos, [self::$campos[0]."=".$id])[0][self::$campos[1]];
 	}

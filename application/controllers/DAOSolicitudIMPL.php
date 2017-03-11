@@ -19,6 +19,10 @@ class DAOSolicitudIMPL extends CI_Controller
 			if($obj_solicitante == null){
 				$datos_foto[0] = null;
 				$url_foto = $this->input->post("p9");
+				if($url_foto == ''){
+					echo "Falta ingresar una foto";
+					return "ERROR";
+				}
 				list(, $url_foto) = explode(';', $url_foto);
 				list(, $url_foto) = explode(',', $url_foto);
 				$datos_foto[1] = base64_decode($url_foto);
@@ -29,11 +33,12 @@ class DAOSolicitudIMPL extends CI_Controller
 				$datos1_array[3] = $this->input->post("p4");
 				$datos1_array[4] = $this->input->post("p5");
 				$datos1_array[5] = $this->input->post("p6");
-				$datos1_array[6] = $this->input->post("p7");
-				$datos1_array[7] = $this->input->post("p8");
-				$datos1_array[8] = $this->DAOFotos->insert($datos_foto);
-				$datos1_array[9] = time();
+				$datos1_array[6] = $this->input->post("p7s");
+				$datos1_array[7] = $this->input->post("p7");
+				$datos1_array[8] = $this->input->post("p8");
+				$datos1_array[9] = $this->DAOFotos->insert($datos_foto);
 				$datos1_array[10] = time();
+				$datos1_array[11] = time();
 				$id_solicitante = $this->DAOSolicitante->insert($datos1_array);
 			}else{
 				$id_solicitante = $obj_solicitante["id"];
@@ -61,8 +66,40 @@ class DAOSolicitudIMPL extends CI_Controller
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitud');
 			$this->load->model('db/DAOSolicitante');
+			$this->load->model('db/DAOFotos');
 
 			$obj_solicitante = $this->DAOSolicitante->getByCedula($this->input->post("p2"));
+
+			////////////////////////////////////////////////////////////////
+			$datos_foto[0] = null;
+			$url_foto = $this->input->post("p9");
+			if($url_foto == ''){
+				echo "Falta ingresar una foto";
+				return "ERROR";
+			}
+			if(!is_numeric($url_foto)){
+				list(, $url_foto) = explode(';', $url_foto);
+				list(, $url_foto) = explode(',', $url_foto);
+				$datos_foto[1] = base64_decode($url_foto);
+				$this->DAOFotos->delete($obj_solicitante["imagen"]);
+				$datos_foto[0] = $this->DAOFotos->insert($datos_foto);
+			}
+
+			$datos1_array[0] = $obj_solicitante["id"];
+			$datos1_array[1] = $this->input->post("p2");
+			$datos1_array[2] = $this->input->post("p3");
+			$datos1_array[3] = $this->input->post("p4");
+			$datos1_array[4] = $this->input->post("p5");
+			$datos1_array[5] = $this->input->post("p6");
+			$datos1_array[6] = $this->input->post("p7");
+			$datos1_array[7] = $this->input->post("p7s");
+			$datos1_array[8] = $this->input->post("p8");
+			$datos1_array[9] = $datos_foto[0];
+			$datos1_array[10] = time();
+			$datos1_array[11] = time();
+			$id_solicitante = $this->DAOSolicitante->update($datos1_array);
+			/////////////////////////////////////////////////////////////////
+
 
 			$datos2_array[0] = $this->input->post("p1");
 			$datos2_array[1] = $this->input->post("p10");
@@ -77,6 +114,16 @@ class DAOSolicitudIMPL extends CI_Controller
 
 			$this->DAOSolicitud->update($datos2_array);
 
+			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
+	public function delete_fun(){
+		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOSolicitud');
+
+			$this->DAOSolicitud->delete($this->input->post("id"));
 			echo "OK";
 		}else{
 			header("Location: ".base_url());

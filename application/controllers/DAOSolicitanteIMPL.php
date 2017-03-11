@@ -47,6 +47,16 @@ class DAOSolicitanteIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function delete_fun(){
+		if ($this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOSolicitante');
+
+			$this->DAOSolicitante->delete($this->input->post("id"));
+			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 	public function getRecords(){
 		if ($this->lib->tienePermiso(1)) {
 			$this->load->model('db/DAOSolicitante');

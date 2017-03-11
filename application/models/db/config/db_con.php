@@ -45,6 +45,15 @@ class db_con extends CI_Model {
 		}
 	}
 
+	public function delete($tabla, $nameID, $valueID){
+		$sentenciaSQL = "DELETE FROM ".$tabla." WHERE ".$nameID."=".$valueID;
+		if ($this->db->query($sentenciaSQL)) {
+			return "ok";
+		}else{
+			return "error";
+		}
+	}
+
 	public function findWhere($tabla, $parametros, $condicion, $order_by=null){
 		$sentenciaSQL = "SELECT DISTINCT";
 		$tamParam = count($parametros);

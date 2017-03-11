@@ -36,6 +36,16 @@ class DAOVeredaIMPL extends CI_Controller
 			header("Location: ".base_url());
 		}
 	}
+	public function delete_fun(){
+		if ($this->lib->tienePermiso(6)) {
+			$this->load->model('db/DAOVereda');
+
+			$this->DAOVereda->delete($this->input->post("id"));
+			echo "OK";
+		}else{
+			header("Location: ".base_url());
+		}
+	}
 	public function getRecords(){
 		if ($this->lib->tienePermiso(6)) {
 			$this->load->model('db/DAOVereda');
@@ -50,6 +60,14 @@ class DAOVeredaIMPL extends CI_Controller
 			}
 			$datosSTR .= $datos[$etiquetas[$tam-1]]."";
 			echo $datosSTR;
+		}else{
+			header("Location: ".base_url());
+		}
+	}
+	public function getListVeredas(){
+		if ($this->lib->tienePermiso(6) || $this->lib->tienePermiso(1)) {
+			$this->load->model('db/DAOVereda');
+			echo $this->DAOVereda->getList($this->input->post("id"));
 		}else{
 			header("Location: ".base_url());
 		}

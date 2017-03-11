@@ -47,7 +47,7 @@
 				<tbody id="cont_permisos"></tbody>
 			</table>
 		</div>
-		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_rol')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_rol','<?= base_url() ?>accion/roles')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

@@ -75,7 +75,7 @@
 				<tbody id="cont_roles"></tbody>
 			</table>
 		</div>
-		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_usuario','<?= base_url() ?>accion/usuarios')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>

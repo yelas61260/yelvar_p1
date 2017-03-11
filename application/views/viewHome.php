@@ -15,8 +15,8 @@
 	<tr>
 		<td>
 			<form>
-			<h1>Bienvenido(a)</h1>		
-			<Input  class="usuarioLog" type="text" max-length="20" placeholder="Usuario"/>
+			<h1>Bienvenido(a)</h1>
+			<div id="usuarioLog"><?= $userName ?></div>
 			<h4>Este es el  Sistema de gestion y control de acceso a para la Alcaldia de Tiquisio Bolivar</h4>
 			</form>
 		</td>	

@@ -40,6 +40,12 @@ class DAOUsuario extends CI_Model
 		return $this->db_con->update(self::$tabla, [self::$campos[0],self::$campos[1],self::$campos[2],self::$campos[3],self::$campos[4],self::$campos[5],self::$campos[7]], $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function delete($id){
+		$this->load->model('db/DAOUsuarioRol');
+		$this->DAOUsuarioRol->deleteForUser($id);
+		return $this->db_con->delete(self::$tabla, self::$campos[0], $id);
+	}
+
 	public function getListNombre(){
 		return $this->lib->print_lista_filtrada(self::$tabla, ['id','concat(nombres, " ", apellidos)'], ['id','concat(nombres, " ", apellidos)'], ['id <> '.$this->session->userdata("id")], self::$campos[0]);
 	}
@@ -49,7 +55,7 @@ class DAOUsuario extends CI_Model
 		$datetime2 = new DateTime('now');
 
 		$sql1 = $this->db_con->findWhere(self::$tabla, array("*"), array(self::$campos[1]."='".$user."'", self::$campos[2]."='".$pass."'"));
-		if($datetime2>$datetime1 || count($sql1)<=0 || count($sql1[0])<=1){
+		if(/*$datetime2>$datetime1 || */count($sql1)<=0 || count($sql1[0])<=1){
 			header("Location: ".base_url()."login");
 		}else{
 			$userdata = $sql1[0];

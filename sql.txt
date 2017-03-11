@@ -1,0 +1,5 @@
+SELECT t1.cedula, concat(t1.nombres, " ", t1.apellidos) nombre, t1.telefono, t1.direccion, t1.email, t4.nombre corregimiento,
+COALESCE((SELECT vereda.nombre FROM vereda WHERE vereda.id = t1.vereda_id), "") vereda,
+(SELECT SUM(t2.valor) FROM solicitud t2 WHERE t2.solicitante_id = t1.id) valor
+FROM solicitante t1
+JOIN corregimiento t4 ON t1.corregimiento_id = t4.id

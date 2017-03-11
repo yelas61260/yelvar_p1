@@ -26,6 +26,14 @@ class DAORol extends CI_Model
 		return $this->db_con->update(self::$tabla, self::$campos, $param, array(self::$campos[0]), array($param[0]));
 	}
 
+	public function delete($id){
+		$this->load->model('db/DAOUsuarioRol');
+		$this->load->model('db/DAORolPermiso');
+		$this->DAOUsuarioRol->deleteForRol($id);
+		$this->DAORolPermiso->deleteForRol($id);
+		return $this->db_con->delete(self::$tabla, self::$campos[0], $id);
+	}
+
 	public function getTabla(){
 		return self::$tabla;
 	}

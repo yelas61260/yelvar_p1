@@ -8,6 +8,7 @@
 <body>
 	<?= $Header ?>
 	<?= $StyleView ?>
+	<div id="url_base" style="display:none;" ><?= base_url(); ?></div>
 	<div class="modal_solicitante" id="modal_solicitante">
 		<iframe id="solicitante" url="<?= base_url(); ?>accion/actualizarSolicitante/" src=""></iframe>
 	</div>
@@ -15,7 +16,7 @@
 		<div class="title_main"><img src="<?= base_url() ?>recursos/pix/titulo_form.png"><span><?= $titulo ?></span></div>
 		<div class="header-sec-form"><span>Datos del solicitante</span></div>
 		<button class="form_button" id="bus_sol" url='<?= base_url() ?>DAOSolicitanteIMPL/getRecords'>Buscar Solicitante</button>
-		<button class="form_button" id="act_sol">Actualizar Solicitante</button>
+		<!--<button class="form_button" id="act_sol">Actualizar Solicitante</button>-->
 		<div class="cuadro_foto">
 			<div class="form-label"><label for="p9">Foto<span>*</span></label></div>
 			<div class="foto-imag"><div id="cam_sol"></div><div url="<?= base_url(); ?>DAOSolicitanteIMPL/getFoto" id="img_sol"><img src=""></div></div>
@@ -58,6 +59,12 @@
 					<td>
 						<div class="form-label"><label for="p6">Dirección<span>*</span></label></div>
 						<div class="form-input"><input type="text" name="p6" id="p6" size="25" value="" required/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-label"><label for="p7s">Corregimiento<span>*</span></label></div>
+						<div class="form-input"><select name="p7s" id="p7s" onchange="readListVereda('<?= base_url() ?>DAOVeredaIMPL/getListVeredas',this.value)" required><?= $lista_corr ?></select></div>
 					</td>
 				</tr>
 				<tr>
@@ -124,7 +131,7 @@
 				</tbody>
 			</table>
 		</form>
-		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_solicitud')"/><?= $TextoBtn ?></button>
+		<button class="form_button" id="guardar_btn" onclick="createUpdate('<?= $AccionForm ?>','form_solicitud','<?= base_url() ?>accion/solicitud')"/><?= $TextoBtn ?></button>
 	</div>
 	<?= $Footer ?>
 	<?= $Chat ?>
