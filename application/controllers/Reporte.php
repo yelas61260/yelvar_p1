@@ -13,7 +13,7 @@ class Reporte extends CI_Controller
 			$this->load->model('Reportes');
 			$data = array(
 				'titulo' => 'Reporte Completo',
-				'tabla' => $this->Reportes->reporteFiltrado($this->input->post("p1"),$this->input->post("p2"),$this->input->post("p3"),$this->input->post("p4"))
+				'tabla' => $this->Reportes->reporteFiltrado($this->input->post("p1"),$this->input->post("p2"),$this->input->post("p3"),$this->input->post("p4"),explode(',', $this->input->post("p5")))
 				);
 			$this->load->view('reporte/viewExcelExport',$data);
 		}else{

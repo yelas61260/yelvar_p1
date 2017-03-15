@@ -82,4 +82,8 @@ class DAOSolicitante extends CI_Model
 		}
 	}
 
+	public function getList(){
+		return $this->lib->print_lista_filtrada(self::$tabla, [self::$campos[0],self::$campos[1]], [self::$campos[0].','.self::$campos[1]], [], self::$campos[1]);
+	}
+
 }

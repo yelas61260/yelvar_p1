@@ -198,3 +198,37 @@ var loadOldMessages = function(){
 		});
 	}
 }
+
+//doble lista de seleccion
+function findItem(){
+	$("#c1 option").each(function(i, elem){
+		$(elem).prop('selected', false);
+	});
+	$('#c1 option').filter(function () { return $(this).html() == $("#ct1").val(); }).prop('selected', true);
+}
+function selectItem(){
+	$("#c2").append($('#c1 :selected'));
+	$('#c1 :selected').remove();
+	var listSelect = "";
+	$("#c2 option").each(function(i, elem){
+		if(listSelect == ""){
+			listSelect += ""+$(elem).val();
+		}else{
+			listSelect += ","+$(elem).val();
+		}
+	});
+	$("#p5").val(listSelect);
+}
+function quitItem(){
+	$("#c1").append($('#c2 :selected'));
+	$('#c2 :selected').remove();
+	var listSelect = "";
+	$("#c2 option").each(function(i, elem){
+		if(listSelect == ""){
+			listSelect += ""+$(elem).val();
+		}else{
+			listSelect += ","+$(elem).val();
+		}
+	});
+	$("#p5").val(listSelect);
+}

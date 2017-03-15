@@ -23,7 +23,7 @@ class Reportes extends CI_Model
 		$encabezados[6] = "Solicitud";
 		$encabezados[7] = "Fecha";
 		$encabezados[8] = "Descripción";
-		$encabezados[9] = "Deuda";
+		$encabezados[9] = "Valor de ayuda";
 
 		$aliasSQL[0] = "cedula";
 		$aliasSQL[1] = "nombre_completo";
@@ -46,7 +46,7 @@ class Reportes extends CI_Model
 		$encabezados[3] = "Dirección";
 		$encabezados[4] = "E-mail";
 		$encabezados[5] = "Vereda";
-		$encabezados[6] = "Total Deuda";
+		$encabezados[6] = "Total de ayudas";
 
 		$aliasSQL[0] = "cedula";
 		$aliasSQL[1] = "nombre_completo";
@@ -62,7 +62,7 @@ class Reportes extends CI_Model
 	public function reporteDeudaVereda(){
 		$encabezados[0] = "Nombre de la Vereda";
 		$encabezados[1] = "Corregimiento";
-		$encabezados[2] = "Deuda";
+		$encabezados[2] = "Total de ayudas";
 
 		$aliasSQL[0] = "vereda";
 		$aliasSQL[1] = "corregimiento";
@@ -71,13 +71,15 @@ class Reportes extends CI_Model
 		return $this->lib->print_tabla_simple("SELECT t3.nombre vereda, t4.nombre corregimiento, (SELECT SUM(t2.valor) FROM solicitante t1 JOIN solicitud t2 on t1.id = t2.solicitante_id WHERE t1.vereda_id = t3.id) deuda FROM vereda t3 JOIN despacho t4 ON t3.corregimiento_id = t4.id", $encabezados, $aliasSQL);
 	}
 
-	public function reporteFiltrado($filter_corre, $filter_tipo, $filter_estad, $filter_total){
+	public function reporteFiltrado($filter_corre, $filter_tipo, $filter_estad, $filter_total, $filter_cedul){
 		$count_corre = count($filter_corre);
 		$count_tipo = count($filter_tipo);
 		$count_estad = count($filter_estad);
+		$count_cedul = count($filter_cedul);
 		$sentenciaaSQL_corre = '';
 		$sentenciaaSQL_tipo = '';
 		$sentenciaaSQL_estad = '';
+		$sentenciaaSQL_cedul = '';
 
 		$encabezados = [];
 		$aliasSQL = [];
@@ -113,6 +115,16 @@ class Reportes extends CI_Model
 			}
 			$sentenciaaSQL_estad .= ")";
 		}
+		if (!empty($filter_cedul)) {
+			$sentenciaaSQL_cedul .= "(";
+			for ($i=0; $i < $count_cedul ; $i++) { 
+				$sentenciaaSQL_cedul .= "t2.solicitante_id=".$filter_cedul[$i];
+				if ($i<$count_cedul-1) {
+					$sentenciaaSQL_cedul .= " OR ";
+				}
+			}
+			$sentenciaaSQL_cedul .= ")";
+		}
 		$sentenciaaSQL = '';
 		if ($filter_total == 0) {
 			$encabezados[] = "Cedula";
@@ -129,7 +141,7 @@ class Reportes extends CI_Model
 			$encabezados[] = "Estado";
 			$encabezados[] = "Fecha";
 			$encabezados[] = "Descripción";
-			$encabezados[] = "Deuda";
+			$encabezados[] = "Valor de ayuda";
 
 			$aliasSQL[] = "cedula";
 			$aliasSQL[] = "nombre";
@@ -157,7 +169,7 @@ class Reportes extends CI_Model
 			$sentenciaaSQL .=' JOIN tipo_ayuda t5 ON t2.tipo_id = t5.id';
 			$sentenciaaSQL .=' JOIN usuario t6 ON t2.colaborador_id = t6.id';
 			$sentenciaaSQL .=' JOIN despacho t7 ON t2.despacho_id = t7.id';
-			if(!empty($filter_corre) || !empty($filter_tipo) || !empty($filter_estad)){
+			if(!empty($filter_corre) || !empty($filter_tipo) || !empty($filter_estad) || (!empty($filter_cedul) && $filter_cedul[0] != '')){
 				$sentenciaaSQL .= " WHERE ";
 				if(!empty($filter_corre)){
 					$sentenciaaSQL .= $sentenciaaSQL_corre;
@@ -174,6 +186,12 @@ class Reportes extends CI_Model
 					}
 					$sentenciaaSQL .= $sentenciaaSQL_estad;
 				}
+				if (!empty($filter_cedul) && $filter_cedul[0] != '') {
+					if (!empty($filter_tipo) || !empty($filter_estad) || !empty($filter_corre)) {
+						$sentenciaaSQL .= " AND ";
+					}
+					$sentenciaaSQL .= $sentenciaaSQL_cedul;
+				}
 			}
 		}elseif($filter_total == 1){
 			$encabezados[] = "Cedula";
@@ -183,7 +201,7 @@ class Reportes extends CI_Model
 			$encabezados[] = "E-mail";
 			$encabezados[] = "Corregimiento";
 			$encabezados[] = "Vereda";
-			$encabezados[] = "Deuda";
+			$encabezados[] = "Total de ayudas";
 
 			$aliasSQL[] = "cedula";
 			$aliasSQL[] = "nombre";
@@ -197,7 +215,7 @@ class Reportes extends CI_Model
 			$sentenciaaSQL .= 'SELECT t1.cedula, concat(t1.nombres, " ", t1.apellidos) nombre, t1.telefono, t1.direccion, t1.email, t4.nombre corregimiento,';
 			$sentenciaaSQL .= 'COALESCE((SELECT vereda.nombre FROM vereda WHERE vereda.id = t1.vereda_id), "") vereda,';
 			$sentenciaaSQL .= '(SELECT SUM(t2.valor) FROM solicitud t2 WHERE t2.solicitante_id = t1.id ';
-				if (!empty($filter_tipo) || !empty($filter_estad)) {
+				if (!empty($filter_tipo) || !empty($filter_estad) || (!empty($filter_cedul) && $filter_cedul[0] != '')) {
 					$sentenciaaSQL .= " AND (";
 					if (!empty($filter_tipo)) {
 						$sentenciaaSQL .= $sentenciaaSQL_tipo;
@@ -207,6 +225,12 @@ class Reportes extends CI_Model
 							$sentenciaaSQL .= " AND ";
 						}
 						$sentenciaaSQL .= $sentenciaaSQL_estad;
+					}
+					if (!empty($filter_cedul) && $filter_cedul[0] != '') {
+						if (!empty($filter_tipo) || !empty($filter_estad)) {
+							$sentenciaaSQL .= " AND ";
+						}
+						$sentenciaaSQL .= $sentenciaaSQL_cedul;
 					}
 					$sentenciaaSQL .= ")";
 				}
@@ -218,14 +242,14 @@ class Reportes extends CI_Model
 			}
 		}elseif ($filter_total == 2) {
 			$encabezados[] = "Corregimiento";
-			$encabezados[] = "Deuda";
+			$encabezados[] = "Total de ayudas";
 
 			$aliasSQL[] = "corregimiento";
 			$aliasSQL[] = "valor";
 
 			$sentenciaaSQL .= 'SELECT t4.nombre corregimiento,';
 			$sentenciaaSQL .= '(SELECT SUM(t2.valor) FROM solicitante t1 JOIN solicitud t2 on t1.id = t2.solicitante_id WHERE t1.corregimiento_id = t4.id ';
-				if (!empty($filter_tipo) || !empty($filter_estad)) {
+				if (!empty($filter_tipo) || !empty($filter_estad) || (!empty($filter_cedul) && $filter_cedul[0] != '')) {
 					$sentenciaaSQL .= " AND (";
 					if (!empty($filter_tipo)) {
 						$sentenciaaSQL .= $sentenciaaSQL_tipo;
@@ -235,6 +259,12 @@ class Reportes extends CI_Model
 							$sentenciaaSQL .= " AND ";
 						}
 						$sentenciaaSQL .= $sentenciaaSQL_estad;
+					}
+					if (!empty($filter_cedul) && $filter_cedul[0] != '') {
+						if (!empty($filter_tipo) || !empty($filter_estad)) {
+							$sentenciaaSQL .= " AND ";
+						}
+						$sentenciaaSQL .= $sentenciaaSQL_cedul;
 					}
 					$sentenciaaSQL .= ")";
 				}
@@ -246,7 +276,7 @@ class Reportes extends CI_Model
 		}elseif ($filter_total == 3) {
 			$encabezados[] = "Ayuda";
 			$encabezados[] = "Descripción";
-			$encabezados[] = "Deuda";
+			$encabezados[] = "Total de ayudas";
 
 			$aliasSQL[] = "nombre";
 			$aliasSQL[] = "descripcion";
@@ -254,7 +284,7 @@ class Reportes extends CI_Model
 
 			$sentenciaaSQL .= 'SELECT t5.nombre, t5.descripcion, ';
 			$sentenciaaSQL .= '(SELECT SUM(t2.valor) FROM solicitud t2 JOIN solicitante t1 ON t1.id = t2.solicitante_id JOIN corregimiento t4 ON t4.id = t1.corregimiento_id WHERE t2.tipo_id = t5.id ';
-				if (!empty($filter_tipo) || !empty($filter_estad)) {
+				if (!empty($filter_tipo) || !empty($filter_estad) || (!empty($filter_cedul) && $filter_cedul[0] != '')) {
 					$sentenciaaSQL .= " AND (";
 					if (!empty($filter_tipo)) {
 						$sentenciaaSQL .= $sentenciaaSQL_tipo;
@@ -270,6 +300,12 @@ class Reportes extends CI_Model
 							$sentenciaaSQL .= " AND ";
 						}
 						$sentenciaaSQL .= $sentenciaaSQL_corre;
+					}
+					if (!empty($filter_cedul) && $filter_cedul[0] != '') {
+						if (!empty($filter_tipo) || !empty($filter_estad) || !empty($filter_corre)) {
+							$sentenciaaSQL .= " AND ";
+						}
+						$sentenciaaSQL .= $sentenciaaSQL_cedul;
 					}
 					$sentenciaaSQL .= ")";
 				}
@@ -277,14 +313,14 @@ class Reportes extends CI_Model
 			$sentenciaaSQL .= ' FROM tipo_ayuda t5';
 		}elseif ($filter_total == 4) {
 			$encabezados[] = "Estado";
-			$encabezados[] = "Deuda";
+			$encabezados[] = "Total de ayudas";
 
 			$aliasSQL[] = "nombre";
 			$aliasSQL[] = "valor";
 
 			$sentenciaaSQL .= 'SELECT t3.nombre, ';
 			$sentenciaaSQL .= '(SELECT SUM(t2.valor) FROM solicitud t2 JOIN corregimiento t4 ON t4.id = t2.colaborador_id WHERE t2.estado_id = t3.id ';
-				if (!empty($filter_tipo) || !empty($filter_estad)) {
+				if (!empty($filter_tipo) || !empty($filter_estad) || (!empty($filter_cedul) && $filter_cedul[0] != '')) {
 					$sentenciaaSQL .= " AND (";
 					if (!empty($filter_tipo)) {
 						$sentenciaaSQL .= $sentenciaaSQL_tipo;
@@ -300,6 +336,12 @@ class Reportes extends CI_Model
 							$sentenciaaSQL .= " AND ";
 						}
 						$sentenciaaSQL .= $sentenciaaSQL_corre;
+					}
+					if (!empty($filter_cedul) && $filter_cedul[0] != '') {
+						if (!empty($filter_tipo) || !empty($filter_estad) || !empty($filter_corre)) {
+							$sentenciaaSQL .= " AND ";
+						}
+						$sentenciaaSQL .= $sentenciaaSQL_cedul;
 					}
 					$sentenciaaSQL .= ")";
 				}

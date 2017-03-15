@@ -301,6 +301,7 @@ input.inptformc{
 .form-input input, .form-input select {
     border-radius: 10px;
     padding: 5px;
+    min-width: 150px;
 }
 .form_button {
     background: #50A63F;

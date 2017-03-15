@@ -492,6 +492,7 @@ class Accion extends CI_Controller
 			$this->load->model('db/DAOCorregimiento');
 			$this->load->model('db/DAOTipoAyuda');
 			$this->load->model('db/DAOEstado');
+			$this->load->model('db/DAOSolicitante');
 			$this->load->model('Reportes');
 			$data = array(
 				'titulo' => 'Reportes',
@@ -500,6 +501,7 @@ class Accion extends CI_Controller
 				'lista_corre' => $this->DAOCorregimiento->getList(),
 				'lista_ayuda' => $this->DAOTipoAyuda->getList(),
 				'lista_estado' => $this->DAOEstado->getList(),
+				'lista_cedula' => $this->DAOSolicitante->getList(),
 				'TextoBtn' => "Exportar",
 				'Chat' => $this->lib->print_chat(),
 				'Footer' => $this->lib->print_footer()
